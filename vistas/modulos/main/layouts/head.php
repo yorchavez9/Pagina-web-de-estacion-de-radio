@@ -21,14 +21,10 @@
   <!-- jQuery library -->
   <script src="vistas/dist/main/assets/js/lib/jquery-3.6.0.min.js"></script>
 
-  <script>
-    var myModal = document.getElementById('myModal')
-    var myInput = document.getElementById('myInput')
+  <!-- alert Sweetalert2 -->
+  <link rel="stylesheet" href="vistas/dist/sweetalert2/dist/sweetalert2.min.css">
+  <script src="vistas/dist/sweetalert2/dist/sweetalert2.min.js"></script>
 
-    myModal.addEventListener('shown.bs.modal', function() {
-      myInput.focus()
-    })
-  </script>
 
 </head>
 

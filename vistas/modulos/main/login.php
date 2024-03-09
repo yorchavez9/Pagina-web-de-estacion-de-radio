@@ -8,16 +8,31 @@
             <div class="text-center">
                 <h5 class="modal-title text-white" id="exampleModalLabel">Iniciar Sesión</h5>
             </div>
-            <form class="row gy-4 contact-form p-4">
+
+            <!-- Formulario de login -->
+            <form class="row gy-4 contact-form p-4" method="POST">
+
+                <!-- Ingreso de correo -->
                 <div class="col-md-12">
                     <input type="email" name="correo" class="form-control rounded " placeholder="Ingrese su correo electrónico">
                 </div>
+
+                <!-- Ingreso de password -->
                 <div class="col-md-12">
                     <input type="password" name="password" class="form-control rounded " placeholder="Ingrese su contraseña">
                 </div>
+
+                <!-- Boton de ingreso -->
                 <div class="col-lg-12 text-center mt-lg-5 mt-4">
                     <button type="submit" id="contact_form_submit" class="btn btn-main rounded">Iniciar</button>
                 </div>
+
+                <?php
+
+                $ingreso = new ControladorUsuario();
+                $ingreso->ctrIngresoUsuario();
+
+                ?>
             </form>
         </div>
     </div>

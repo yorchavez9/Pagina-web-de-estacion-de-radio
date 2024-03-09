@@ -8,7 +8,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav site-menu m-auto mb-2 mb-lg-0">
-                <li class="menu-item menu-item-has-children">
+                <li class="menu-item">
                     <a href="#0">Inicio</a>
                 </li>
                 <li class="menu-item">
