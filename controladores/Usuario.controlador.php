@@ -148,6 +148,58 @@ class ControladorUsuario
 
     static public function ctrEditarUsuario()
     {
+
+        if(isset($_POST["id_usuario"]))
+        {
+
+            if (preg_match('/^[a-zA-Z0-9_.@]+$/', $_POST["editCorreo"])) {
+
+                $tabla = "usuarios";
+
+                if ($_POST["editPassword"] != "") {
+
+                    $encriptar = crypt($_POST["editPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+                } else {
+
+                    $encriptar = $_POST["passwordActual"];
+                }
+
+                $datos = array(
+                    "id_usuario" => $_POST["id_usuario"],
+                    "nombre" => $_POST["editNombre"],
+                    "apellidos" => $_POST["editApellidos"],
+                    "perfil" => $_POST["editPerfil"],
+                    "correo" => $_POST["editCorreo"],
+                    "password" => $encriptar
+                );
+
+                $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
+
+                if ($respuesta == "ok") {
+
+                    echo '<script>
+
+                    Swal.fire({
+                          icon: "success",
+                          title: "El usuario ha sido editado correctamente",
+                          showConfirmButton: true,
+                          confirmButtonText: "Cerrar"
+                          }).then(function(result) {
+                                    if (result.value) {
+
+                                    window.location = "usuarios";
+
+                                    }
+                                })
+
+                    </script>';
+                }
+
+            }
+
+        }
+
     }
 
     /* ==========================
@@ -156,5 +208,38 @@ class ControladorUsuario
 
     static public function ctrBorrarUsuario()
     {
+
+        if(isset($_GET["idUsuario"])){
+
+			$tabla ="usuarios";
+            
+			$datos = $_GET["idUsuario"];
+
+			$respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
+
+			if($respuesta == "ok"){
+
+				echo'<script>
+
+				Swal.fire({
+					  icon: "success",
+					  title: "El usuario ha sido borrado correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar",
+					  closeOnConfirm: false
+					  }).then(function(result) {
+								if (result.value) {
+
+								window.location = "usuarios";
+
+								}
+							})
+
+				</script>';
+
+			}		
+
+		}
+
     }
 }
