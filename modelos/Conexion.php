@@ -1,17 +1,13 @@
 <?php
 
-class Conexion{
-    static public function conectar(){
-
-        $link = new PDO("mysql:host=localhost;dbname=radio_vivo","root","");
-
-        $link->exec("set names utf8");
-
-        if(!$link){
-            
-            echo "Error al conectar a la base de datos";
-        }else{
+class Conexion {
+    static public function conectar() {
+        try {
+            $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4');
+            $link = new PDO("mysql:host=localhost;dbname=radio", "root", "", $opciones);
             return $link;
+        } catch(PDOException $e) {
+            echo "Error al conectar a la base de datos: " . $e->getMessage();
         }
     }
 }

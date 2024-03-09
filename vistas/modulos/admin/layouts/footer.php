@@ -170,6 +170,7 @@
 <!-- SCRIPT DE MODULOS -->
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/banners.js"></script>
+<script src="vistas/js/script-noticias.js"></script>
 
 </body>
 

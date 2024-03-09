@@ -48,7 +48,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="noticias">
                 <div class="parent-icon"><i class='bx bx-news'></i>
                 </div>
                 <div class="menu-title">Noticias</div>
