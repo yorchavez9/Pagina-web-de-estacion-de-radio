@@ -26,12 +26,8 @@
                         <thead>
                             <tr>
                                 <th>N°</th>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Perfil</th>
-                                <th>Correo</th>
-                                <th>Estado</th>
-                                <th>Acción</th>
+                                <th class="text-center">Imagen</th>
+                                <th class="text-center">Acción</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,28 +35,26 @@
                             $item = null;
                             $valor = null;
 
-                            $usuarios = ControladorUsuario::ctrMostrarUsuarios($item, $valor);
-                            foreach ($usuarios as $key => $value) {
+                            $banners = ControladorBanner::ctrMostrarBanners($item, $valor);
+                            foreach ($banners as $key => $value) {
                             ?>
                                 <tr>
                                     <td><?php echo $key + 1 ?></td>
-                                    <td><?php echo $value["nombre"] ?></td>
-                                    <td><?php echo $value["apellidos"] ?></td>
-                                    <td><?php echo $value["perfil"] ?></td>
-                                    <td><?php echo $value["correo"] ?></td>
-                                    <?php
-                                    if ($value["estado"] == 1) {
+                                    <td class="text-center">
+                                        <?php
 
-                                        echo '<td class="text-center"><button class="btn btn-success btn-sm rounded btnActivar" idUsuario="' . $value["id_usuario"] . '" estadoUsuario="0">Activado</button></td>';
-                                    } else {
+                                        if ($value["imagen"] != null) {
 
-                                        echo '<td class="text-center"><button class="btn btn-danger btn-sm rounded btnActivar" idUsuario="' . $value["id_usuario"] . '" estadoUsuario="1">Desactivado</button></td>';
-                                    }
-                                    ?>
+                                            echo '<img src="' . $value["imagen"] . '" alt="" width="300" height="150">';
+                                        } else {
+                                            echo '<img src="vistas/img/banner/defualt.png" alt="">';
+                                        }
+                                        ?>
+                                    </td>
                                     <td>
                                         <div class="text-center">
-                                            <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarUsuario" idUsuario="<?php echo $value["id_usuario"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario"><i class="bx bx-edit"></i></a>
-                                            <a href="#" class="btn btn-danger rounded btn-sm btnEliminarUsuario" idUsuario="<?php echo $value["id_usuario"] ?>"><i class="bx bx-trash"></i></a>
+                                            <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarBanner" idBanner="<?php echo $value["id_banner"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarBanner"><i class="bx bx-edit"></i></a>
+                                            <a href="#" class="btn btn-danger rounded btn-sm btnEliminarBanner" idBanner="<?php echo $value["id_banner"] ?>" imagen="<?php echo $value["imagen"]?>"><i class="bx bx-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -71,11 +65,7 @@
                         <tfoot>
                             <tr>
                                 <th>N°</th>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Perfil</th>
-                                <th>Correo</th>
-                                <th>Estado</th>
+                                <th>Imagen</th>
                                 <th>Acción</th>
                             </tr>
                         </tfoot>
@@ -98,7 +88,7 @@
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="imagen" class="form-label">Selecionar una imagen</label>
@@ -115,7 +105,8 @@
                     <button type="submit" class="btn btn-primary"><i class="bx bx-save"></i>Guardar</button>
                 </div>
                 <?php
-                
+                $crearBanner = new ControladorBanner();
+                $crearBanner->ctrCrearBanner();
                 ?>
             </form>
         </div>
@@ -123,71 +114,36 @@
 </div>
 
 <!-- MODAL EDITAR BANNER -->
-<div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditarBanner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="text-center">
-                    <h5 class="modal-title" id="exampleModalLabel">Nuevo usuario</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Editar banner</h5>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
-
-                    <!-- editar id -->
-                    <input type="hidden" name="id_usuario" id="id_usuario">
-
-                    <div class="form-group row mb-3">
-
-                        <!-- editar nombre -->
-                        <div class="col-md-6">
-                            <label for="nombre" class="form-label">Ingrese el nombre (<span class="text-danger">*</span>)</label>
-                            <input type="text" name="editNombre" id="editNombre" class="form-control" placeholder="Ingrese el nombre">
+                    <input type="hidden" name="id_banner" id="id_banner">
+                    <div class="form-group">
+                        <label for="imagen" class="form-label">Selecionar una imagen</label>
+                        <input type="file" name="editImagen" id="editImagen" class="form-control mb-2" accept="image/*">
+                        <small class="fw-bold mt-3">* El peso máximo de la imagen 5MB</small><br>
+                        <small class="fw-bold">* El tamaño (1920 x 950) pixels</small>
+                        <div class="text-center mt-3">
+                            <img src="vistas/img/banner/default.png" id="editImagenPreview" class="img img-fluid" alt="">
                         </div>
-
-                        <!-- editar apellidos -->
-                        <div class="col-md-6">
-                            <label for="apellidos" class="form-label">Ingrese el apellido (<span class="text-danger">*</span>)</label>
-                            <input type="text" name="editApellidos" id="editApellidos" class="form-control" placeholder="Ingrese el apellido">
-                        </div>
-
+                        <input type="hidden" name="imagenActual" id="imagenActual">
                     </div>
-                    
-                    <!-- editar perfil -->
-                    <div class="form-group mb-3">
-                        <label for="perfil" class="form-label">Selecione el perfil (<span class="text-danger">*</span>)</label>
-                        <select name="editPerfil" id="editPerfil" class="form-select">
-                            <option value="" selected disabled>Selecion el perfil</option>
-                            <option value="administrador">Administrador</option>
-                            <option value="ayudante">Ayudante</option>
-                            <option value="usuario">Usuario</option>
-                        </select>
-                    </div>
-
-                    <!-- editar correo -->
-                    <div class="form-group mb-3">
-                        <label for="correo" class="form-label">Ingrese el correo electrónico (<span class="text-danger">*</span>)</label>
-                        <input type="email" name="editCorreo" id="editCorreo" class="form-control" placeholder="Ingrese el correo electrónico">
-                    </div>
-
-                    <!-- editar contraseña -->
-                    <div class="form-group mb-3">
-                        <label for="password" class="form-label">Ingrese la nueva contraseña </label>
-                        <div class="input-group" id="show_hide_password">
-                            <input type="password" name="editPassword" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Ingrese la nueva contraseña"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
-                            <input type="hidden" name="passwordActual" id="passwordActual">
-                        </div>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bx bx-x"></i>Cancelar</button>
-                    <button type="submit" class="btn btn-primary"><i class="bx bx-refresh"></i>Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bx bx-x"></i>Cerrar</button>
+                    <button type="submit" class="btn btn-primary"><i class="bx bx-save"></i>Guardar</button>
                 </div>
                 <?php
-                $editarUsuario = new ControladorUsuario();
-                $editarUsuario->ctrEditarUsuario();
+                $editarBanner = new ControladorBanner();
+                $editarBanner->ctrEditarBanner();
                 ?>
             </form>
         </div>
@@ -198,5 +154,6 @@
 <!-- BORRAR BANNER -->
 
 <?php
-
+$borrarBanner = new ControladorBanner();
+$borrarBanner->ctrBorrarBanner();
 ?>
