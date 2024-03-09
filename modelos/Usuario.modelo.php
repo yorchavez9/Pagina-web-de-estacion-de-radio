@@ -39,9 +39,35 @@ class ModeloUsuarios
     INGRESAR USUARIO
     ========================== */
 
-    static public function mdlIngresarUsuario()
+    static public function mdlIngresarUsuario($tabla, $datos)
     {
 
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(
+                                                                nombre, 
+                                                                apellidos, 
+                                                                perfil, 
+                                                                correo, 
+                                                                password
+                                                                ) 
+                                                            VALUES(
+                                                                :nombre,
+                                                                :apellidos, 
+                                                                :perfil, 
+                                                                :correo, 
+                                                                :password)"
+                                                                );
+
+        $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":apellidos", $datos["apellidos"], PDO::PARAM_STR);    
+        $stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);    
+        $stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);    
+        $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);    
+
+        if($stmt->execute()){
+            return "ok";
+        }else{
+            return "error";
+        }
 
 
     }

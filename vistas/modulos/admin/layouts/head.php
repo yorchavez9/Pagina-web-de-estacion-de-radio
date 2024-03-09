@@ -28,7 +28,13 @@
 	<link rel="stylesheet" href="vistas/dist/admin/assets/css/header-colors.css" />
 	<title>Ke buena</title>
 
+	<!-- alert Sweetalert2 -->
+	<link rel="stylesheet" href="vistas/dist/sweetalert2/dist/sweetalert2.min.css">
+	<script src="vistas/dist/sweetalert2/dist/sweetalert2.min.js"></script>
+
 	<script src="vistas/dist/admin/assets/js/jquery.min.js"></script>
+	
+	
 </head>
 
 <body>

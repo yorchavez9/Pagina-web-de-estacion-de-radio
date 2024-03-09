@@ -102,61 +102,50 @@
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="form-group row mb-3">
-                    <div class="col-md-6">
-                        <label for="nombre" class="form-label">Ingrese el nombre (<span class="text-danger">*</span>)</label>
-                        <input type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre">
+            <form method="POST">
+                <div class="modal-body">
+                    <div class="form-group row mb-3">
+                        <div class="col-md-6">
+                            <label for="nombre" class="form-label">Ingrese el nombre (<span class="text-danger">*</span>)</label>
+                            <input type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="apellidos" class="form-label">Ingrese el apellido (<span class="text-danger">*</span>)</label>
+                            <input type="text" name="apellidos" class="form-control" placeholder="Ingrese el apellido">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="apellidos" class="form-label">Ingrese el apellido (<span class="text-danger">*</span>)</label>
-                        <input type="text" name="apellidos" class="form-control" placeholder="Ingrese el apellido">
+                    <div class="form-group mb-3">
+                        <label for="perfil" class="form-label">Selecione el perfil (<span class="text-danger">*</span>)</label>
+                        <select name="perfil" class="form-select">
+                            <option value="" selected disabled>Selecion el perfil</option>
+                            <option value="administrador">Administrador</option>
+                            <option value="ayudante">Ayudante</option>
+                            <option value="usuario">Usuario</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="correo" class="form-label">Ingrese el correo electrónico (<span class="text-danger">*</span>)</label>
+                        <input type="email" name="correo" id="validarCorreo" class="form-control" placeholder="Ingrese el correo electrónico">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password" class="form-label">Ingrese la contraseña (<span class="text-danger">*</span>)</label>
+                        <div class="input-group" id="show_hide_password">
+                            <input type="password" name="password" class="form-control border-end-0" id="inputChoosePassword" value="12345678" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="perfil" class="form-label">Selecione el perfil (<span class="text-danger">*</span>)</label>
-                    <select name="perfil" class="form-select">
-                        <option value="" selected disabled>Selecion el perfil</option>
-                        <option value="administrador">Administrador</option>
-                        <option value="ayudante">Ayudante</option>
-                        <option value="usuario">Usuario</option>
-                    </select>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bx bx-x"></i>Cerrar</button>
+                    <button type="submit" class="btn btn-primary"><i class="bx bx-save"></i>Guardar</button>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="correo" class="form-label">Ingrese el correo electrónico (<span class="text-danger">*</span>)</label>
-                    <input type="email" name="correo" class="form-control" placeholder="Ingrese el correo electrónico">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="password" class="form-label">Ingrese la contraseña (<span class="text-danger">*</span>)</label>
-                    <div class="input-group" id="show_hide_password">
-                        <input type="password" name="password" class="form-control border-end-0" id="inputChoosePassword" value="12345678" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bx bx-x"></i>Cerrar</button>
-                <button type="button" class="btn btn-primary"><i class="bx bx-save"></i>Guardar</button>
-            </div>
+                <?php
+                $crearUsuario = new ControladorUsuario();
+                $crearUsuario->ctrCrearUsuario();
+                ?>
+            </form>
         </div>
     </div>
 </div>
 
 
 
-<!-- SCRIPT DE VALIDACIONES -->
-<script>
-    $(document).ready(function() {
-        $("#show_hide_password a").on('click', function(event) {
-            event.preventDefault();
-            if ($('#show_hide_password input').attr("type") == "text") {
-                $('#show_hide_password input').attr('type', 'password');
-                $('#show_hide_password i').addClass("bx-hide");
-                $('#show_hide_password i').removeClass("bx-show");
-            } else if ($('#show_hide_password input').attr("type") == "password") {
-                $('#show_hide_password input').attr('type', 'text');
-                $('#show_hide_password i').removeClass("bx-hide");
-                $('#show_hide_password i').addClass("bx-show");
-            }
-        });
-    });
-</script>

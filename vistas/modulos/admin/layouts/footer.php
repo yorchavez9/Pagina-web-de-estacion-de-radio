@@ -157,18 +157,20 @@
 <script src="vistas/dist/admin/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="vistas/dist/admin/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script>
-		$(document).ready(function() {
-			$('#example').DataTable();
-		  } );
-	</script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
 <!--app JS-->
 <script src="vistas/dist/admin/assets/js/app.js"></script>
 <script>
     new PerfectScrollbar(".app-container")
 </script>
+
+<!-- SCRIPT DE MODULOS -->
+<script src="vistas/js/usuarios.js"></script>
+
 </body>
 
-
-<!-- Mirrored from codervent.com/rocker/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 08 Mar 2024 18:49:16 GMT -->
 
 </html>

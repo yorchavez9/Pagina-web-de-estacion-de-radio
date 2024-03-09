@@ -68,6 +68,11 @@ class ControladorUsuario
 
     static public function ctrMostrarUsuarios($item, $valor)
     {
+        $tabla = "usuarios";
+
+        $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+
+        return $respuesta;
     }
 
     /* ==========================
@@ -76,6 +81,65 @@ class ControladorUsuario
 
     static public function ctrCrearUsuario()
     {
+
+        if (isset($_POST["nombre"])) {
+
+            if (preg_match('/^[a-zA-Z0-9_.@]+$/', $_POST["correo"])) {
+
+                $tabla = "usuarios";
+
+                $encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+                $datos = array(
+                    "nombre" => $_POST["nombre"],
+                    "apellidos" => $_POST["apellidos"],
+                    "perfil" => $_POST["perfil"],
+                    "correo" => $_POST["correo"],
+                    "password" => $encriptar
+                );
+
+                $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
+
+                if($respuesta == "ok")
+                {
+
+                    echo '<script>
+
+                        Swal.fire({
+                            icon: "success",
+                            title: "¡Los datos del usuario han sido guardados!",
+                            showConfirmButton: true,
+                            confirmButtonText: "Ok"
+                        }).then(function(result){
+                            if(result.value){
+                                window.location = "usuarios";
+                            }
+                        });
+
+                    </script>';
+
+                }
+
+            } 
+            else 
+            {
+
+                echo '<script>
+
+                        Swal.fire({
+                            icon: "error",
+                            title: "¡El correo no puede llevar caracteres especiales!",
+                            showConfirmButton: true,
+                            confirmButtonText: "Ok"
+                        }).then(function(result){
+                            if(result.value){
+                                window.location = "usuarios";
+                            }
+                        });
+
+                    </script>';
+            }
+        }
     }
 
     /* ==========================
