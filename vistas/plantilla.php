@@ -1,5 +1,7 @@
 <?php
 session_start();
+setlocale(LC_ALL, 'es_ES');
+date_default_timezone_set('America/Lima');
 
 if(isset($_SESSION["iniciarSesion"]) && ($_SESSION["iniciarSesion"] == "ok") && ($_SESSION["perfil"] == "administrador" || $_SESSION["perfil"] == "ayudante")){
     

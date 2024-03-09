@@ -1,3 +1,6 @@
+<?php
+setlocale(LC_TIME, "es_ES");
+?>
 <div class="page-wrapper">
     <div class="page-content">
         <!--breadcrumb-->
@@ -43,7 +46,7 @@
                             ?>
                                 <tr>
                                     <td><?php echo $key + 1 ?></td>
-                                    <td ><?php echo $value["titulo"]?></td>
+                                    <td><?php echo $value["titulo"] ?></td>
                                     <td class="text-center">
                                         <?php
 
@@ -55,7 +58,7 @@
                                         }
                                         ?>
                                     </td>
-                                    <td><?php echo $value["fecha"]?></td>
+                                    <td><?php echo $value["fecha"] ?></td>
                                     <?php
                                     if ($value["estado"] == 1) {
 
@@ -68,7 +71,7 @@
                                     <td>
                                         <div class="text-center">
                                             <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarNoticia" idNoticia="<?php echo $value["id_noticia"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarNoticia"><i class="bx bx-edit"></i></a>
-                                            <a href="#" class="btn btn-success rounded btn-sm btnEliminarNoticia" idNoticia="<?php echo $value["id_noticia"] ?>" data-bs-toggle="modal" data-bs-target="#modalVerNoticia<?php echo $value["id_noticia"]?>"><i class="bx bx-show"></i></a>
+                                            <a href="#" class="btn btn-success rounded btn-sm" data-bs-toggle="modal" data-bs-target="#modalVerNoticia<?php echo $value["id_noticia"] ?>"><i class="bx bx-show"></i></a>
                                             <a href="#" class="btn btn-danger rounded btn-sm btnEliminarNoticia" idNoticia="<?php echo $value["id_noticia"] ?>" imagen="<?php echo $value["imagen"] ?>"><i class="bx bx-trash"></i></a>
                                         </div>
                                     </td>
@@ -167,8 +170,8 @@
             <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
 
-                     <!-- id de la noticia -->
-                     <input type="hidden" name="id_noticia" id="id_noticia">
+                    <!-- id de la noticia -->
+                    <input type="hidden" name="id_noticia" id="id_noticia">
 
                     <!-- titulo -->
                     <div class="form-group">
@@ -215,6 +218,50 @@
     </div>
 </div>
 
+<?php
+
+$item = null;
+$valor = null;
+
+$showNoticias = ControladorNoticia::ctrMostrarNoticias($item, $valor);
+foreach ($showNoticias as $key => $value) {
+?>
+    <div class="modal fade" id="modalVerNoticia<?php echo $value["id_noticia"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="text-center">
+                        <h5 class="modal-title" id="exampleModalLabel">Ver noticia</h5>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="card p-3">
+                    <img src="<?php echo $value["imagen"] ?>" class="img img-fluid" alt="Imagen de la noticia">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $value["titulo"] ?></h5>
+                        <p class="card-text"><?php echo $value["descripcion"] ?></p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <?php
+                                setlocale(LC_TIME, 'es_ES.UTF-8');
+
+                                // Suponiendo que $value["fecha"] contiene la fecha en formato YYYY-MM-DD
+                                $fecha = new DateTime($value["fecha"]);
+                                
+                                // Formatea la fecha utilizando el formato específico
+                                echo strftime('%d de %B del %Y', $fecha->getTimestamp());
+                                ?>
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<?php
+}
+?>
 
 <!-- BORRAR BANNER -->
 
