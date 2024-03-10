@@ -40,7 +40,7 @@
                             ?>
                                 <tr>
                                     <td><?php echo $key + 1 ?></td>
-                                    <td class="text-center">
+                                    <td class="text-center align-middle">
                                         <?php
 
                                         if ($value["imagen"] != null) {
@@ -51,8 +51,8 @@
                                         }
                                         ?>
                                     </td>
-                                    <td>
-                                        <div class="text-center">
+                                    <td class="align-middle">
+                                        <div class="text-center align-middle">
                                             <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarBanner" idBanner="<?php echo $value["id_banner"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarBanner"><i class="bx bx-edit"></i></a>
                                             <a href="#" class="btn btn-danger rounded btn-sm btnEliminarBanner" idBanner="<?php echo $value["id_banner"] ?>" imagen="<?php echo $value["imagen"]?>"><i class="bx bx-trash"></i></a>
                                         </div>

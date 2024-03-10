@@ -46,8 +46,8 @@ setlocale(LC_TIME, "es_ES");
                             ?>
                                 <tr>
                                     <td><?php echo $key + 1 ?></td>
-                                    <td><?php echo $value["titulo"] ?></td>
-                                    <td class="text-center">
+                                    <td class="align-middle"><?php echo $value["titulo"] ?></td>
+                                    <td class="text-center align-middle">
                                         <?php
 
                                         if ($value["imagen"] != null) {
@@ -58,18 +58,18 @@ setlocale(LC_TIME, "es_ES");
                                         }
                                         ?>
                                     </td>
-                                    <td><?php echo $value["fecha"] ?></td>
+                                    <td class="align-middle"><?php echo $value["fecha"] ?></td>
                                     <?php
                                     if ($value["estado"] == 1) {
 
-                                        echo '<td class="text-center"><button class="btn btn-success btn-sm rounded btnActivar" idNoticia="' . $value["id_noticia"] . '" estadoNoticia="0">Activado</button></td>';
+                                        echo '<td class="text-center align-middle"><button class="btn btn-success btn-sm rounded btnActivar" idNoticia="' . $value["id_noticia"] . '" estadoNoticia="0">Activado</button></td>';
                                     } else {
 
-                                        echo '<td class="text-center"><button class="btn btn-danger btn-sm rounded btnActivar" idNoticia="' . $value["id_noticia"] . '" estadoNoticia="1">Desactivado</button></td>';
+                                        echo '<td class="text-center align-middle"><button class="btn btn-danger btn-sm rounded btnActivar" idNoticia="' . $value["id_noticia"] . '" estadoNoticia="1">Desactivado</button></td>';
                                     }
                                     ?>
-                                    <td>
-                                        <div class="text-center">
+                                    <td class="align-middle">
+                                        <div class="text-center align-middle">
                                             <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarNoticia" idNoticia="<?php echo $value["id_noticia"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarNoticia"><i class="bx bx-edit"></i></a>
                                             <a href="#" class="btn btn-success rounded btn-sm" data-bs-toggle="modal" data-bs-target="#modalVerNoticia<?php echo $value["id_noticia"] ?>"><i class="bx bx-show"></i></a>
                                             <a href="#" class="btn btn-danger rounded btn-sm btnEliminarNoticia" idNoticia="<?php echo $value["id_noticia"] ?>" imagen="<?php echo $value["imagen"] ?>"><i class="bx bx-trash"></i></a>
