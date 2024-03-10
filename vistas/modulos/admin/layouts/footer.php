@@ -171,6 +171,7 @@
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/banners.js"></script>
 <script src="vistas/js/script-noticias.js"></script>
+<script src="vistas/js/videos.js"></script>
 
 </body>
 

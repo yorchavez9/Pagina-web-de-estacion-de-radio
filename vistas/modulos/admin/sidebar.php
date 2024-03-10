@@ -55,14 +55,14 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="rankings">
                 <div class="parent-icon"><i class='bx bx-star'></i>
                 </div>
                 <div class="menu-title">Ranking</div>
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="videos">
                 <div class="parent-icon"><i class='bx bx-video'></i>
                 </div>
                 <div class="menu-title">Videos</div>
