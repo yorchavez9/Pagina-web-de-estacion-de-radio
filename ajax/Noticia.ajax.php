@@ -1,6 +1,6 @@
 <?php
 require_once "../controladores/Noticia.controlador.php";
-require_once "../modelos//Noticia.modelo.php";
+require_once "../modelos/Noticia.modelo.php";
 
 class AjaxNoticia
 {

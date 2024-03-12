@@ -69,7 +69,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="eventos">
                 <div class="parent-icon"><i class='bx bx-calendar-event'></i>
                 </div>
                 <div class="menu-title">Eventos</div>
