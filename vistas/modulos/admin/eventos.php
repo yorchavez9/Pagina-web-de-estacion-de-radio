@@ -247,6 +247,9 @@ foreach ($showEvento as $key => $value) {
                         </p>
                     </div>
                 </div>
+                <div class="card-header p-2 text-center">
+                    <button type="button" class="btn btn-danger m-2" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+                </div>
 
             </div>
         </div>
