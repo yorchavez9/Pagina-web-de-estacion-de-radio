@@ -22,21 +22,21 @@ $("#newImagen").change(function () {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
-        $("#editImagenPreview").attr("src", e.target.result).show();
+        $("#editImagenPreviewGG").attr("src", e.target.result).show();
       };
       reader.readAsDataURL(input.files[0]);
     }
   });
   
-  /* EDITAR USUARIO */
+  /* EDITAR GALERIA */
   
-  $(".tabla_galeria").on("click", ".btnEditarBanner", function () {
-    var idBanner = $(this).attr("idBanner");
+  $(".tabla_galeria").on("click", ".btnEditarGaleria", function () {
+    var idGaleria = $(this).attr("idGaleria");
     var datos = new FormData();
-    datos.append("idBanner", idBanner);
+    datos.append("idGaleria", idGaleria);
   
     $.ajax({
-      url: "ajax/Banner.ajax.php",
+      url: "ajax/Galeria.ajax.php",
       method: "POST",
       data: datos,
       cache: false,
@@ -45,26 +45,27 @@ $("#newImagen").change(function () {
       dataType: "json",
       success: function (respuesta) {
   
-        $("#id_banner").val(respuesta["id_banner"]);
+        $("#id_galeria").val(respuesta["id_galeria"]);
+        $("#editTipo").val(respuesta["tipo"]);
   
         if (respuesta["imagen"] != "") {
-          $("#editImagenPreview").attr("src", respuesta["imagen"]);
+          $("#editImagenPreviewG").attr("src", respuesta["imagen"]);
         } else {
-          $("#editImagenPreview").attr(
+          $("#editImagenPreviewG").attr(
             "src",
             "vistas/img/banner/default.png"
           );
         }
   
-        $("#imagenActual").val(respuesta["imagen"]);
+        $("#imagenActualG").val(respuesta["imagen"]);
       },
     });
   });
   
-  /* ELIMINAR USUARIO */
+  /* ELIMINAR GALERIA */
   
-  $(".tabla_galeria").on("click", ".btnEliminarBanner", function () {
-    var idBanner = $(this).attr("idBanner");
+  $(".tabla_galeria").on("click", ".btnEliminarGaleria", function () {
+    var idGaleria = $(this).attr("idGaleria");
     var imagen = $(this).attr("imagen");
   
     Swal.fire({
@@ -79,7 +80,7 @@ $("#newImagen").change(function () {
     }).then(function (result) {
       if (result.value) {
         window.location =
-          "index.php?ruta=banners&idBanner=" + idBanner + "&imagen=" + imagen;
+          "index.php?ruta=galerias&idGaleria=" + idGaleria + "&imagen=" + imagen;
       }
     });
   });

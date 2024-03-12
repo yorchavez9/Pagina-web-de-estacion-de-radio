@@ -86,14 +86,16 @@ class ModeloGaleria
     {
 
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET
+                                                                tipo = :tipo,
                                                                 imagen = :imagen
                                                             WHERE 
-                                                                id_banner = :id_banner
+                                                                id_galeria = :id_galeria
                                                             ");
 
+        $stmt->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
         $stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
-        $stmt->bindParam(":id_banner", $datos["id_banner"], PDO::PARAM_INT);
- 
+        $stmt->bindParam(":id_galeria", $datos["id_galeria"], PDO::PARAM_INT);
+
 
         if ($stmt->execute()) {
 
@@ -102,7 +104,6 @@ class ModeloGaleria
 
             return "error";
         }
-
     }
 
     /* ==========================
@@ -112,9 +113,9 @@ class ModeloGaleria
     static public function mdlBorrarGaleria($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_banner = :id_banner");
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_galeria = :id_galeria");
 
-		$stmt -> bindParam(":id_banner", $datos, PDO::PARAM_INT);
+		$stmt -> bindParam(":id_galeria", $datos, PDO::PARAM_INT);
 
 		if($stmt -> execute()){
 
@@ -127,6 +128,9 @@ class ModeloGaleria
 		}
 
 		$stmt = null;
+
+
+    
 
 
     }

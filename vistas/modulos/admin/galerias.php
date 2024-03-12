@@ -137,25 +137,39 @@
             </div>
             <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
+
+                    <!-- Id -->
                     <input type="hidden" name="id_galeria" id="id_galeria">
+
+                    <!-- Tipo -->
+                    <div class="form-group mb-4">
+                        <label for="tipo" class="form-label">Selecione el tipo (Radio - TV)</label>
+                        <select name="editTipo" id="editTipo" class="form-select">
+                            <option value="" selected disabled>Selecione una opción</option>
+                            <option value="radio">Radio</option>
+                            <option value="tv">TV</option>
+                        </select>
+                    </div>
+
+                    <!-- Imagen -->
                     <div class="form-group">
                         <label for="imagen" class="form-label">Selecionar una imagen</label>
                         <input type="file" name="editImagen" id="editImagen" class="form-control mb-2" accept="image/*">
-                        <small class="fw-bold mt-3">* El peso máximo de la imagen 5MB</small><br>
-                        <small class="fw-bold">* El tamaño (1920 x 950) pixels</small>
+                       
                         <div class="text-center mt-3">
-                            <img src="vistas/img/banner/default.png" id="editImagenPreview" class="img img-fluid" alt="">
+                            <img src="vistas/img/banner/default.png" id="editImagenPreviewG" class="img img-fluid" alt="">
                         </div>
-                        <input type="hidden" name="imagenActual" id="imagenActual">
+                        <input type="hidden" name="imagenActualG" id="imagenActualG">
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bx bx-x"></i>Cerrar</button>
                     <button type="submit" class="btn btn-primary"><i class="bx bx-save"></i>Guardar</button>
                 </div>
                 <?php
-                $editarBanner = new ControladorBanner();
-                $editarBanner->ctrEditarBanner();
+                $editarGaleria = new ControladorGaleria();
+                $editarGaleria->ctrEditarGaleria();
                 ?>
             </form>
         </div>
@@ -166,6 +180,6 @@
 <!-- BORRAR GALERIA -->
 
 <?php
-$borrarBanner = new ControladorBanner();
-$borrarBanner->ctrBorrarBanner();
+$borrarGaleria = new ControladorGaleria();
+$borrarGaleria->ctrBorrarGaleria();
 ?>

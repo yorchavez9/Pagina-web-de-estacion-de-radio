@@ -92,7 +92,7 @@ class ControladorGaleria
     static public function ctrEditarGaleria()
     {
 
-        if (isset($_POST["id_banner"])) {
+        if (isset($_POST["id_galeria"])) {
 
             /* ============================
             VALIDANDO IMAGEN
@@ -100,7 +100,7 @@ class ControladorGaleria
 
             $ruta = "vistas/img/galeria/";
 
-            $ruta_imagen = $_POST["imagenActual"];
+            $ruta_imagen = $_POST["imagenActualG"];
 
             if (isset($_FILES["editImagen"]["tmp_name"]) && !empty($_FILES["editImagen"]["tmp_name"])) {
 
@@ -132,11 +132,12 @@ class ControladorGaleria
             }
 
 
-            $tabla = "banners";
+            $tabla = "galarias";
 
 
             $datos = array(
-                "id_banner" => $_POST["id_banner"],
+                "id_galeria" => $_POST["id_galeria"],
+                "tipo" => $_POST["editTipo"],
                 "imagen" => $ruta_imagen
             );
 
@@ -154,7 +155,7 @@ class ControladorGaleria
                               }).then(function(result) {
                                         if (result.value) {
     
-                                        window.location = "banners";
+                                        window.location = "galerias";
     
                                         }
                                     })
@@ -170,10 +171,11 @@ class ControladorGaleria
 
     static public function ctrBorrarGaleria(){
 
-		if(isset($_GET["idBanner"])){
+        if(isset($_GET["idGaleria"])){
 
-			$tabla ="banners";
-			$datos = $_GET["idBanner"];
+			$tabla ="galarias";
+
+			$datos = $_GET["idGaleria"];
 
 			if($_GET["imagen"] != ""){
 
@@ -197,7 +199,7 @@ class ControladorGaleria
 					  }).then(function(result) {
 								if (result.value) {
 
-								window.location = "banners";
+								window.location = "galerias";
 
 								}
 							})
@@ -207,6 +209,5 @@ class ControladorGaleria
 			}		
 
 		}
-
 	}
 }
