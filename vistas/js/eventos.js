@@ -106,23 +106,23 @@ $("#imagenEvento").change(function () {
   
   /* ELIMINAR USUARIO */
   
-  $(".tabla_evento").on("click", ".btnEliminarNoticia", function () {
+  $(".tabla_evento").on("click", ".btnEliminarEvento", function () {
     var idEvento = $(this).attr("idEvento");
     var imagen = $(this).attr("imagen");
   
     Swal.fire({
-      title: "¿Está seguro de borrar la noticia?",
+      title: "¿Está seguro de borrar el evento?",
       text: "¡Si no lo está puede cancelar la accíón!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       cancelButtonText: "Cancelar",
-      confirmButtonText: "Si, borrar noticia!",
+      confirmButtonText: "Si, borrar evento!",
     }).then(function (result) {
       if (result.value) {
         window.location =
-          "index.php?ruta=noticias&idEvento=" + idEvento + "&imagen=" + imagen;
+          "index.php?ruta=eventos&idEvento=" + idEvento + "&imagen=" + imagen;
       }
     });
   });

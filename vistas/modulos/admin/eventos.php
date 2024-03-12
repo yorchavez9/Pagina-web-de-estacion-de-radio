@@ -255,9 +255,9 @@ foreach ($showEvento as $key => $value) {
 }
 ?>
 
-<!-- BORRAR BANNER -->
+<!-- BORRAR EVENTO -->
 
 <?php
-$borrarNoticias = new ControladorNoticia();
-$borrarNoticias->ctrBorrarNoticia();
+$borrarEvento = new ControladorEvento();
+$borrarEvento->ctrBorrarEvento();
 ?>

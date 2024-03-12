@@ -172,10 +172,10 @@ class ControladorEvento
 
     static public function ctrBorrarEvento(){
 
-		if(isset($_GET["idNoticia"])){
+		if(isset($_GET["idEvento"])){
 
-			$tabla ="noticias";
-			$datos = $_GET["idNoticia"];
+			$tabla ="eventos";
+			$datos = $_GET["idEvento"];
 
 			if($_GET["imagen"] != ""){
 
@@ -192,14 +192,14 @@ class ControladorEvento
 
 				Swal.fire({
 					  icon: "success",
-					  title: "La noticia ha sido borrado correctamente",
+					  title: "El evento ha sido borrado correctamente",
 					  showConfirmButton: true,
 					  confirmButtonText: "Cerrar",
 					  closeOnConfirm: false
 					  }).then(function(result) {
 								if (result.value) {
 
-								window.location = "noticias";
+								window.location = "eventos";
 
 								}
 							})
