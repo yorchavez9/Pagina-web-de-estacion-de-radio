@@ -92,7 +92,7 @@ class ControladorEvento
     static public function ctrEditarEvento()
     {
 
-        if (isset($_POST["id_noticia"])) {
+        if (isset($_POST["id_evento"])) {
 
             /* ============================
             VALIDANDO IMAGEN
@@ -100,7 +100,7 @@ class ControladorEvento
 
             $ruta = "vistas/img/eventos/";
 
-            $ruta_imagen = $_POST["imagenActualN"];
+            $ruta_imagen = $_POST["imagenActualE"];
 
             if (isset($_FILES["editImagen"]["tmp_name"]) && !empty($_FILES["editImagen"]["tmp_name"])) {
 
@@ -132,15 +132,14 @@ class ControladorEvento
             }
 
 
-            $tabla = "noticias";
+            $tabla = "eventos";
 
 
             $datos = array(
-                "id_noticia" => $_POST["id_noticia"],
+                "id_evento" => $_POST["id_evento"],
                 "titulo" => $_POST["editTitulo"],
                 "imagen" => $ruta_imagen,
-                "fecha" => $_POST["editFecha"],
-                "descripcion" => $_POST["editDescripcion"]
+                "fecha" => $_POST["editFecha"]
             );
 
             $respuesta = ModeloEvento::mdlEditarEvento($tabla, $datos);
@@ -157,7 +156,7 @@ class ControladorEvento
                               }).then(function(result) {
                                         if (result.value) {
     
-                                        window.location = "noticias";
+                                        window.location = "eventos";
     
                                         }
                                     })

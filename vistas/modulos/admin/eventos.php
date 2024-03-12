@@ -46,7 +46,7 @@ setlocale(LC_TIME, "es_ES");
                             ?>
                                 <tr>
                                     <td class="align-middle"><?php echo $key + 1 ?></td>
-                                    <td class="align-middle"><?php echo $value["titulo"] ?></td>
+                                    <td class="align-middle" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><?php echo $value["titulo"] ?></td>
                                     <td class="text-center align-middle">
                                         <?php
 
@@ -70,7 +70,7 @@ setlocale(LC_TIME, "es_ES");
                                     ?>
                                     <td class="align-middle">
                                         <div class="text-center align-middle">
-                                            <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarEvento" idEvento="<?php echo $value["id_evento"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarNoticia"><i class="bx bx-edit"></i></a>
+                                            <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarEvento" idEvento="<?php echo $value["id_evento"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarEvento"><i class="bx bx-edit"></i></a>
                                             <a href="#" class="btn btn-success rounded btn-sm" data-bs-toggle="modal" data-bs-target="#modalVerEvento<?php echo $value["id_evento"] ?>"><i class="bx bx-show"></i></a>
                                             <a href="#" class="btn btn-danger rounded btn-sm btnEliminarEvento" idEvento="<?php echo $value["id_evento"] ?>" imagen="<?php echo $value["imagen"] ?>"><i class="bx bx-trash"></i></a>
                                         </div>
@@ -152,7 +152,7 @@ setlocale(LC_TIME, "es_ES");
 
 
 <!-- MODAL EDITAR NOTICIA -->
-<div class="modal fade" id="modalEditarNoticia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditarEvento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -178,11 +178,11 @@ setlocale(LC_TIME, "es_ES");
                         <!-- Imagen -->
                         <div class="col-md-6">
                             <label for="imagen" class="form-label">Selecionar una imagen</label>
-                            <input type="file" name="editImagen" id="editImagenNoticia" class="form-control" accept="image/*">
+                            <input type="file" name="editImagen" id="editImagenEvento" class="form-control" accept="image/*">
                             <div class="text-center mt-3">
-                                <img src="vistas/img/banner/default.png" id="editPreviewImgNoticia" class="img img-fluid" alt="">
+                                <img src="vistas/img/banner/default.png" id="editPreviewImgEvento" class="img img-fluid" alt="">
                             </div>
-                            <input type="hidden" name="imagenActualN" id="imagenActualN">
+                            <input type="hidden" name="imagenActualE" id="imagenActualE">
                         </div>
 
                         <!-- Fecha -->
@@ -192,20 +192,14 @@ setlocale(LC_TIME, "es_ES");
                         </div>
                     </div>
 
-                    <!-- descripción -->
-                    <div class="form-group">
-                        <label for="descripcion" class="form-label">Ingrese la descripción</label>
-                        <textarea name="editDescripcion" id="editDescripcion" class="form-control" rows="4"></textarea>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bx bx-x"></i>Cerrar</button>
-                    <button type="submit" class="btn btn-primary"><i class="bx bx-save"></i>Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bx bx-x"></i>Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><i class="bx bx-refresh"></i>Actualizar</button>
                 </div>
                 <?php
-                $editarNoticia = new ControladorNoticia();
-                $editarNoticia->ctrEditarNoticia();
+                $editarEvento = new ControladorEvento();
+                $editarEvento->ctrEditarEvento();
                 ?>
             </form>
         </div>

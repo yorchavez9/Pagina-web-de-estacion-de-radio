@@ -89,17 +89,15 @@ class ModeloEvento
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET
                                                                 titulo = :titulo,
                                                                 imagen = :imagen,
-                                                                fecha = :fecha,
-                                                                descripcion = :descripcion
+                                                                fecha = :fecha
                                                             WHERE 
-                                                                id_noticia = :id_noticia
+                                                                id_evento = :id_evento
                                                             ");
 
         $stmt->bindParam(":titulo", $datos["titulo"], PDO::PARAM_STR);
         $stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
         $stmt->bindParam(":fecha", $datos["fecha"], PDO::PARAM_STR);
-        $stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-        $stmt->bindParam(":id_noticia", $datos["id_noticia"], PDO::PARAM_INT);
+        $stmt->bindParam(":id_evento", $datos["id_evento"], PDO::PARAM_INT);
  
 
         if ($stmt->execute()) {
@@ -119,9 +117,9 @@ class ModeloEvento
     static public function mdlBorrarEvento($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_noticia = :id_noticia");
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_evento = :id_evento");
 
-		$stmt -> bindParam(":id_noticia", $datos, PDO::PARAM_INT);
+		$stmt -> bindParam(":id_evento", $datos, PDO::PARAM_INT);
 
 		if($stmt -> execute()){
 
