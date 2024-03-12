@@ -219,17 +219,21 @@ foreach ($showEvento as $key => $value) {
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="text-center">
-                        <h5 class="modal-title" id="exampleModalLabel">Ver noticia</h5>
+                        <h3 class="modal-title fw-bold" id="exampleModalLabel">Detalles del evento</h3>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="card p-3">
-                    <img src="<?php echo $value["imagen"] ?>" class="img img-fluid" alt="Imagen de la noticia">
+                    <div class="text-center mb-2">
+                        <h3 class="card-title"><?php echo $value["titulo"] ?></h3>
+                    </div>
+                    <div class="text-center">
+                        <img src="<?php echo $value["imagen"] ?>" class="img img-fluid" alt="Imagen de la noticia">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title"><?php echo $value["titulo"] ?></h5>
-                        <p class="card-text"><?php echo $value["descripcion"] ?></p>
-                        <p class="card-text">
-                            <small class="text-muted">
+                        
+                        <p class="card-text text-center">
+                            <small class="text-muted h4 fw-bold">
                                 <?php
                                 setlocale(LC_TIME, 'es_ES.UTF-8');
 
