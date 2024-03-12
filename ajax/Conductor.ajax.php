@@ -46,23 +46,6 @@ class AjaxConductor
 
     }
 
-    /* ===========================
-    VALIDAR NO REPETIR CONDUCTOR
-    =========================== */
-
-    public $validarCorreo;
-
-    public function ajaxValidarConductor()
-    {
-
-        $item = "correo";
-        $valor = $this->validarCorreo;
-
-        $respuesta = ControladorConductor::ctrMostrarConductores($item, $valor);
-
-        echo json_encode($respuesta);
-
-    }
 
 }
 
@@ -92,19 +75,4 @@ if(isset($_POST["activarConductor"]))
     $activarConductor->ajaxActivarConductor();
 
 }
-
-/* ===========================
- VALIDAR NO REPETIR CONDUCTOR
-=========================== */
-
-if(isset($_POST["validarCorreo"])){
-
-    $validarCorreo = new AjaxConductor();
-    $validarCorreo->validarCorreo = $_POST["validarCorreo"];
-    $validarCorreo->ajaxValidarConductor();
-
-}
-
-
-
 ?>

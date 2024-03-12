@@ -22,7 +22,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered tabla_usuario" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered tabla_conductor" style="width:100%">
                         <thead>
                             <tr>
                                 <th>N°</th>
@@ -39,28 +39,30 @@
                             $item = null;
                             $valor = null;
 
-                            $usuarios = ControladorUsuario::ctrMostrarUsuarios($item, $valor);
-                            foreach ($usuarios as $key => $value) {
+                            $conductores = ControladorConductor::ctrMostrarConductores($item, $valor);
+                            foreach ($conductores as $key => $value) {
                             ?>
                                 <tr>
                                     <td><?php echo $key + 1 ?></td>
                                     <td><?php echo $value["nombre"] ?></td>
                                     <td><?php echo $value["apellidos"] ?></td>
-                                    <td><?php echo $value["perfil"] ?></td>
+                                    <td><?php echo $value["tipo"] ?></td>
                                     <td><?php echo $value["correo"] ?></td>
+                                    <td><?php echo $value["telefono"] ?></td>
+                                    <td><?php echo $value["habilidad"] ?></td>
                                     <?php
                                     if ($value["estado"] == 1) {
 
-                                        echo '<td class="text-center"><button class="btn btn-success btn-sm rounded btnActivar" idConductor="' . $value["id_usuario"] . '" estadoConductor="0">Activado</button></td>';
+                                        echo '<td class="text-center"><button class="btn btn-success btn-sm rounded btnActivar" idConductor="' . $value["id_conductor"] . '" estadoConductor="0">Activado</button></td>';
                                     } else {
 
-                                        echo '<td class="text-center"><button class="btn btn-danger btn-sm rounded btnActivar" idConductor="' . $value["id_usuario"] . '" estadoConductor="1">Desactivado</button></td>';
+                                        echo '<td class="text-center"><button class="btn btn-danger btn-sm rounded btnActivar" idConductor="' . $value["id_conductor"] . '" estadoConductor="1">Desactivado</button></td>';
                                     }
                                     ?>
                                     <td>
                                         <div class="text-center">
-                                            <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarConductor" idConductor="<?php echo $value["id_usuario"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarConductor"><i class="bx bx-edit"></i></a>
-                                            <a href="#" class="btn btn-danger rounded btn-sm btnEliminarConductor" idConductor="<?php echo $value["id_usuario"] ?>"><i class="bx bx-trash"></i></a>
+                                            <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarConductor" idConductor="<?php echo $value["id_conductor"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarConductor"><i class="bx bx-edit"></i></a>
+                                            <a href="#" class="btn btn-danger rounded btn-sm btnEliminarConductor" idConductor="<?php echo $value["id_conductor"] ?>"><i class="bx bx-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -129,7 +131,7 @@
                     <!-- Correo electrónico -->
                     <div class="form-group mb-3">
                         <label for="correo" class="form-label">Ingrese el correo electrónico (<span class="text-danger">*</span>)</label>
-                        <input type="email" name="correo" id="validarCorreo" class="form-control" placeholder="Ingrese el correo electrónico" required>
+                        <input type="email" name="correo" class="form-control" placeholder="Ingrese el correo electrónico" required>
                     </div>
 
                     <div class="row">
@@ -143,7 +145,7 @@
                         <!-- Experiencia -->
                         <div class="form-group col-md-6">
                             <label for="" class="form-label">Ingrese la experiencia (<span class="text-danger">*</span>)</label>
-                            <input type="number" name="experiencia" class="form-control" placeholder="Ingrese experiencia" required>
+                            <input type="text" name="experiencia" class="form-control" placeholder="Ingrese experiencia" required>
                         </div>
 
                         <div class="form-group">
@@ -180,18 +182,22 @@
             </div>
             <form method="POST">
                 <div class="modal-body">
+
+                    <!-- id conductor -->
+                    <input type="hidden" name="id_conductor" id="id_conductor">
+
                     <div class="form-group row mb-3">
 
                         <!-- nombre  -->
                         <div class="col-md-6">
                             <label for="nombre" class="form-label">Ingrese el nombre (<span class="text-danger">*</span>)</label>
-                            <input type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre" required>
+                            <input type="text" name="editNombre" id="editNombre" class="form-control" placeholder="Ingrese el nombre" required>
                         </div>
 
                         <!-- Apellidos -->
                         <div class="col-md-6">
                             <label for="apellidos" class="form-label">Ingrese el apellido (<span class="text-danger">*</span>)</label>
-                            <input type="text" name="apellidos" class="form-control" placeholder="Ingrese el apellido" required>
+                            <input type="text" name="editApellidos" id="editApellidos" class="form-control" placeholder="Ingrese el apellido" required>
                         </div>
 
                     </div>
@@ -199,7 +205,7 @@
                     <!-- Tipo de trabajador -->
                     <div class="form-group mb-3">
                         <label for="perfil" class="form-label">Selecione el tipo (<span class="text-danger">*</span>)</label>
-                        <select name="perfil" class="form-select" required>
+                        <select name="editTipo" id="editTipo" class="form-select" required>
                             <option value="" selected disabled>Selecion el tipo</option>
                             <option value="radio">Radio</option>
                             <option value="tv">TV</option>
@@ -209,7 +215,7 @@
                     <!-- Correo electrónico -->
                     <div class="form-group mb-3">
                         <label for="correo" class="form-label">Ingrese el correo electrónico (<span class="text-danger">*</span>)</label>
-                        <input type="email" name="correo" id="validarCorreo" class="form-control" placeholder="Ingrese el correo electrónico" required>
+                        <input type="email" name="editCorreo" id="editCorreo" class="form-control" placeholder="Ingrese el correo electrónico" required>
                     </div>
 
                     <div class="row">
@@ -217,18 +223,18 @@
                         <!-- Telefono -->
                         <div class="form-group col-md-6">
                             <label for="" class="form-label">Ingrese el teléfono (<span class="text-danger">*</span>)</label>
-                            <input type="text" name="telefono" class="form-control" placeholder="Ingrese el teléfono" required>
+                            <input type="text" name="editTelefono" id="editTelefono" class="form-control" placeholder="Ingrese el teléfono" required>
                         </div>
 
                         <!-- Experiencia -->
                         <div class="form-group col-md-6">
                             <label for="" class="form-label">Ingrese la experiencia (<span class="text-danger">*</span>)</label>
-                            <input type="number" name="experiencia" class="form-control" placeholder="Ingrese experiencia" required>
+                            <input type="text" name="editExperiencia" id="editExperiencia" class="form-control" placeholder="Ingrese experiencia" required>
                         </div>
 
                         <div class="form-group">
                             <label for="habilidades" class="form-label">Ingrese las habilidades</label>
-                            <textarea name="habilidades" class="form-control" cols="30" rows="3" placeholder="Ingrese las habilidades"></textarea>
+                            <textarea name="editHabilidad" id="editHabilidad" class="form-control" cols="30" rows="3" placeholder="Ingrese las habilidades"></textarea>
                         </div>
 
                     </div>
@@ -238,8 +244,8 @@
                     <button type="submit" class="btn btn-primary"><i class="bx bx-refresh"></i>Guardar</button>
                 </div>
                 <?php
-                /* $crearUsuario = new ControladorUsuario();
-                $crearUsuario->ctrCrearUsuario(); */
+                $editarConductor = new ControladorConductor();
+                $editarConductor->ctrEditarConductor();
                 ?>
             </form>
         </div>
@@ -252,6 +258,6 @@
 <!-- BORRAR CONDUCTOR -->
 
 <?php
-$borrarConductor = new ControladorConductor();
-$borrarConductor->ctrBorrarConductor();
+$borrarConductores = new ControladorConductor();
+$borrarConductores->ctrBorrarConductor();
 ?>

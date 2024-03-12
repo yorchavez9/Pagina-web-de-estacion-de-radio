@@ -76,7 +76,7 @@ class ControladorConductor
                             confirmButtonText: "Ok"
                         }).then(function(result){
                             if(result.value){
-                                window.location = "usuarios";
+                                window.location = "conductores";
                             }
                         });
 
@@ -92,29 +92,23 @@ class ControladorConductor
     static public function ctrEditarConductor()
     {
 
-        if(isset($_POST["id_usuario"]))
+        if(isset($_POST["id_conductor"]))
         {
 
             if (preg_match('/^[a-zA-Z0-9_.@]+$/', $_POST["editCorreo"])) {
 
-                $tabla = "usuarios";
+                $tabla = "conductores";
 
-                if ($_POST["editPassword"] != "") {
-
-                    $encriptar = crypt($_POST["editPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-
-                } else {
-
-                    $encriptar = $_POST["passwordActual"];
-                }
-
+                
                 $datos = array(
-                    "id_usuario" => $_POST["id_usuario"],
+                    "id_conductor" => $_POST["id_conductor"],
                     "nombre" => $_POST["editNombre"],
                     "apellidos" => $_POST["editApellidos"],
-                    "perfil" => $_POST["editPerfil"],
+                    "tipo" => $_POST["editTipo"],
                     "correo" => $_POST["editCorreo"],
-                    "password" => $encriptar
+                    "telefono" => $_POST["editTelefono"],
+                    "experiencia" => $_POST["editExperiencia"],
+                    "habilidad" => $_POST["editHabilidad"]
                 );
 
                 $respuesta = ModeloConductor::mdlEditarConductor($tabla, $datos);
@@ -131,7 +125,7 @@ class ControladorConductor
                           }).then(function(result) {
                                     if (result.value) {
 
-                                    window.location = "usuarios";
+                                    window.location = "conductores";
 
                                     }
                                 })
@@ -152,11 +146,11 @@ class ControladorConductor
     static public function ctrBorrarConductor()
     {
 
-        if(isset($_GET["idUsuario"])){
+        if(isset($_GET["idConductor"])){
 
-			$tabla ="usuarios";
+			$tabla ="conductores";
             
-			$datos = $_GET["idUsuario"];
+			$datos = $_GET["idConductor"];
 
 			$respuesta = ModeloConductor::mdlBorrarConductor($tabla, $datos);
 
@@ -166,14 +160,14 @@ class ControladorConductor
 
 				Swal.fire({
 					  icon: "success",
-					  title: "El usuario ha sido borrado correctamente",
+					  title: "El conductor ha sido borrado correctamente",
 					  showConfirmButton: true,
 					  confirmButtonText: "Cerrar",
 					  closeOnConfirm: false
 					  }).then(function(result) {
 								if (result.value) {
 
-								window.location = "usuarios";
+								window.location = "conductores";
 
 								}
 							})

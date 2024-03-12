@@ -109,21 +109,25 @@ class ModeloConductor
     {
 
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET
+                                                                tipo = :tipo,
                                                                 nombre = :nombre, 
                                                                 apellidos = :apellidos, 
-                                                                tipo = :tipo, 
                                                                 correo = :correo, 
-                                                                telefono = :telefono
+                                                                telefono = :telefono,
+                                                                experiencia = :experiencia,
+                                                                habilidad = :habilidad
                                                             WHERE 
-                                                                id_usuario = :id_usuario
+                                                                id_conductor = :id_conductor
                                                             ");
 
+        $stmt->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
         $stmt->bindParam(":apellidos", $datos["apellidos"], PDO::PARAM_STR);
-        $stmt->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
         $stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
         $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
-        $stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT);
+        $stmt->bindParam(":experiencia", $datos["experiencia"], PDO::PARAM_STR);
+        $stmt->bindParam(":habilidad", $datos["habilidad"], PDO::PARAM_STR);
+        $stmt->bindParam(":id_conductor", $datos["id_conductor"], PDO::PARAM_INT);
  
 
         if ($stmt->execute()) {
@@ -143,9 +147,9 @@ class ModeloConductor
     static public function mdlBorrarConductor($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_usuario = :id_usuario");
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_conductor = :id_conductor");
 
-		$stmt -> bindParam(":id_usuario", $datos, PDO::PARAM_INT);
+		$stmt -> bindParam(":id_conductor", $datos, PDO::PARAM_INT);
 
 		if($stmt -> execute()){
 
