@@ -83,7 +83,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="conductores">
                 <div class="parent-icon"><i class='bx bx-user-voice'></i>
                 </div>
                 <div class="menu-title">Conductores</div>
