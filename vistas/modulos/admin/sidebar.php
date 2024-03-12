@@ -76,7 +76,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="galerias">
                 <div class="parent-icon"><i class='bx bx-image'></i>
                 </div>
                 <div class="menu-title">Galería</div>
