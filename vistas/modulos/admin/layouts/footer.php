@@ -175,6 +175,7 @@
 <script src="vistas/js/eventos.js"></script>
 <script src="vistas/js/galeria.js"></script>
 <script src="vistas/js/conductor.js"></script>
+<script src="vistas/js/programacionRadial.js"></script>
 
 </body>
 

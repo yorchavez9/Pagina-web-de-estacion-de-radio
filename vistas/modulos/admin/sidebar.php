@@ -96,9 +96,9 @@
                 <div class="menu-title">Programación</div>
             </a>
             <ul>
-                <li> <a href="ecommerce-products.html"><i class='bx bx-radio-circle'></i>Radial</a>
+                <li> <a href="programacionRadial"><i class='bx bx-radio-circle'></i>Radial</a>
                 </li>
-                <li> <a href="ecommerce-products-details.html"><i class='bx bx-radio-circle'></i>TV</a>
+                <li> <a href="programacionTV"><i class='bx bx-radio-circle'></i>TV</a>
                 </li>
             </ul>
         </li>

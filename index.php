@@ -9,6 +9,7 @@ require_once "controladores/Video.controlador.php";
 require_once "controladores/Evento.controlador.php";
 require_once "controladores/Galeria.controlador.php";
 require_once "controladores/Conductor.controlador.php";
+require_once "controladores/ProgramacionRadial.controlador.php";
 
 /* MODELOS */
 require_once "modelos/Usuario.modelo.php";
@@ -18,6 +19,7 @@ require_once "modelos/Video.modelo.php";
 require_once "modelos/Evento.modelo.php";
 require_once "modelos/Galeria.modelo.php";
 require_once "modelos/Conductor.modelo.php";
+require_once "modelos/ProgramacionRadial.modelo.php";
 
 
 
