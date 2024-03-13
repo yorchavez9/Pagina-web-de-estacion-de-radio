@@ -67,7 +67,7 @@ create table programaciones_radial(
     titulo varchar(255) not null,
     imagen varchar(255) not null,
     hora time not null,
-    estado int not null,
+    estado int default 1,
     foreign key(id_conductor) references conductores(id_conductor)
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -78,7 +78,7 @@ create table programaciones_tv(
     titulo varchar(255) not null,
     imagen varchar(255) not null,
     hora time not null,
-    estado int not null,
+    estado int default 1,
     foreign key(id_conductor) references conductores(id_conductor)
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -148,7 +148,7 @@ create table contactos(
     telefono varchar(20) not null,
     compania varchar(255),
     mensaje text not null,
-    estado int default 0,
+    estado int default 1,
     fecha datetime default current_timestamp()
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

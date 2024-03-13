@@ -3,12 +3,12 @@
 VISTA PREVIA DE NUEVA IMAGEN
 ================================ */
 
-$("#imagenEvento").change(function () {
+$("#imagenRadial").change(function () {
     var input = this;
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
-        $("#previewImgEvento").attr("src", e.target.result).show();
+        $("#previewImgRadial").attr("src", e.target.result).show();
       };
       reader.readAsDataURL(input.files[0]);
     }
@@ -18,32 +18,32 @@ $("#imagenEvento").change(function () {
     VISTA PREVIA DE EDITAR IMAGEN
     ================================ */
   
-  $("#editImagenEvento").change(function () {
+  $("#editImagenRadial").change(function () {
     var input = this;
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
-        $("#editPreviewImgEvento").attr("src", e.target.result).show();
+        $("#editPreviewImgRadial").attr("src", e.target.result).show();
       };
       reader.readAsDataURL(input.files[0]);
     }
   });
   
   /* ===================================
-  ACTIVAR NOTICIA
+  ACTIVAR PROGRAMACION RADIAL
   =================================== */
   
-  $(".tabla_evento").on("click", ".btnActivar", function () {
+  $(".tabla_programacion_radial").on("click", ".btnActivar", function () {
 
-    var idEvento = $(this).attr("idEvento");
-    var estadoEvento = $(this).attr("estadoEvento");
+    var idRadial = $(this).attr("idRadial");
+    var estadoRadial = $(this).attr("estadoRadial");
   
     var datos = new FormData();
-    datos.append("activarId", idEvento);
-    datos.append("activarEvento", estadoEvento);
+    datos.append("activarId", idRadial);
+    datos.append("activarRadial", estadoRadial);
   
     $.ajax({
-      url: "ajax/Eventos.ajax.php",
+      url: "ajax/ProgramacionRadial.ajax.php",
       method: "POST",
       data: datos,
       cache: false,
@@ -57,28 +57,28 @@ $("#imagenEvento").change(function () {
       }
     });
   
-    if (estadoEvento == 0) {
+    if (estadoRadial == 0) {
       $(this).removeClass("btn-success");
       $(this).addClass("btn-danger");
       $(this).html("Desactivado");
-      $(this).attr("estadoEvento", 1);
+      $(this).attr("estadoRadial", 1);
     } else {
       $(this).addClass("btn-success");
       $(this).removeClass("btn-danger");
       $(this).html("Activado");
-      $(this).attr("estadoEvento", 0);
+      $(this).attr("estadoRadial", 0);
     }
   });
   
-  /* EDITAR USUARIO */
+  /* EDITAR PROGRAMACION RADIAL */
   
-  $(".tabla_evento").on("click", ".btnEditarEvento", function () {
-    var idEvento = $(this).attr("idEvento");
+  $(".tabla_programacion_radial").on("click", ".btnEditarProgramacionRadial", function () {
+    var idRadial = $(this).attr("idRadial");
     var datos = new FormData();
-    datos.append("idEvento", idEvento);
+    datos.append("idRadial", idRadial);
   
     $.ajax({
-      url: "ajax/Eventos.ajax.php",
+      url: "ajax/ProgramacionRadial.ajax.php",
       method: "POST",
       data: datos,
       cache: false,
@@ -86,43 +86,52 @@ $("#imagenEvento").change(function () {
       processData: false,
       dataType: "json",
       success: function (respuesta) {
-        $("#id_evento").val(respuesta["id_evento"]);
+        $("#id_radial").val(respuesta["id_radial"]);
+
+        $("#editId_conductor").val(respuesta["id_conductor"]);
+        $("#id_conductorEdit").val(respuesta["id_conductor"]);
+
+
+        $("#editDia").val(respuesta["dia"]);
+        $("#idDia").val(respuesta["dia"]);
+
         $("#editTitulo").val(respuesta["titulo"]);
   
         if (respuesta["imagen"] != "") {
-          $("#editPreviewImgEvento").attr("src", respuesta["imagen"]);
+          $("#editPreviewImgRadial").attr("src", respuesta["imagen"]);
         } else {
-          $("#editPreviewImgEvento").attr(
+          $("#editPreviewImgRadial").attr(
             "src",
             "vistas/img/banner/default.png"
           );
         }
   
-        $("#imagenActualE").val(respuesta["imagen"]);
-        $("#editFecha").val(respuesta["fecha"]);
+        $("#imagenActualRadial").val(respuesta["imagen"]);
+
+        $("#editHora").val(respuesta["hora"]);
       },
     });
   });
   
-  /* ELIMINAR USUARIO */
+  /* ELIMINAR PROGRAMACION RADIAL */
   
-  $(".tabla_evento").on("click", ".btnEliminarEvento", function () {
-    var idEvento = $(this).attr("idEvento");
+  $(".tabla_programacion_radial").on("click", ".btnEliminarProgramacionRadial", function () {
+    var idRadial = $(this).attr("idRadial");
     var imagen = $(this).attr("imagen");
   
     Swal.fire({
-      title: "¿Está seguro de borrar el evento?",
+      title: "¿Está seguro de borrar la programación?",
       text: "¡Si no lo está puede cancelar la accíón!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       cancelButtonText: "Cancelar",
-      confirmButtonText: "Si, borrar evento!",
+      confirmButtonText: "Si, borrar programación!",
     }).then(function (result) {
       if (result.value) {
         window.location =
-          "index.php?ruta=eventos&idEvento=" + idEvento + "&imagen=" + imagen;
+          "index.php?ruta=programacionRadial&idRadial=" + idRadial + "&imagen=" + imagen;
       }
     });
   });

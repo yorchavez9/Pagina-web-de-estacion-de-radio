@@ -9,9 +9,10 @@ class ControladorProgramacionRadial
 
     static public function ctrMostrarProgramacionRadial($item, $valor)
     {
-        $tabla = "eventos";
+        $tablaR = "programaciones_radial";
+        $tablaC = "conductores";
 
-        $respuesta = ModeloProgramacionRadial::mdlMostrarProgramacionRadial($tabla, $item, $valor);
+        $respuesta = ModeloProgramacionRadial::mdlMostrarProgramacionRadial($tablaR, $tablaC, $item, $valor);
 
         return $respuesta;
     }
@@ -23,13 +24,13 @@ class ControladorProgramacionRadial
     static public function ctrCrearProgramacionRadial()
     {
 
-        if (isset($_POST["titulo"])) {
+        if (isset($_POST["id_conductor"])) {
 
             /* ============================
                 VALIDANDO IMAGEN
             ============================ */
 
-            $ruta = "vistas/img/eventos/";
+            $ruta = "vistas/img/programacionRadial/";
 
             if (isset($_FILES["imagen"]["tmp_name"])) {
 
@@ -57,12 +58,15 @@ class ControladorProgramacionRadial
             }
 
 
-            $tabla = "eventos";
+            $tabla = "programaciones_radial";
 
             $datos = array(
+                "id_conductor" => $_POST["id_conductor"],
+                "dia" => $_POST["dia"],
                 "titulo" => $_POST["titulo"],
                 "imagen" => $ruta_imagen,
-                "fecha" => $_POST["fecha"]            );
+                "hora" => $_POST["hora"]
+            );
 
             $respuesta = ModeloProgramacionRadial::mdlIngresarProgramacionRadial($tabla, $datos);
 
@@ -71,12 +75,12 @@ class ControladorProgramacionRadial
 
                             Swal.fire({
                                 icon: "success",
-                                title: "¡El evento fue guardado con éxito!",
+                                title: "¡La programación fue guardado con éxito!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
                             }).then(function(result){
                                 if(result.value){
-                                    window.location = "eventos";
+                                    window.location = "programacionRadial";
                                 }
                             });
 
@@ -92,23 +96,23 @@ class ControladorProgramacionRadial
     static public function ctrEditarProgramacionRadial()
     {
 
-        if (isset($_POST["id_evento"])) {
+        if (isset($_POST["id_radial"])) {
 
             /* ============================
             VALIDANDO IMAGEN
             ============================ */
 
-            $ruta = "vistas/img/eventos/";
+            $ruta = "vistas/img/programacionRadial/";
 
-            $ruta_imagen = $_POST["imagenActualE"];
+            $ruta_imagen = $_POST["imagenActualRadial"];
 
-            if (isset($_FILES["editImagen"]["tmp_name"]) && !empty($_FILES["editImagen"]["tmp_name"])) {
+            if (isset($_FILES["editImagenR"]["tmp_name"]) && !empty($_FILES["editImagenR"]["tmp_name"])) {
 
                 if (file_exists($ruta_imagen)) {
                     unlink($ruta_imagen);
                 }
 
-                $extension = pathinfo($_FILES["editImagen"]["name"], PATHINFO_EXTENSION);
+                $extension = pathinfo($_FILES["editImagenR"]["name"], PATHINFO_EXTENSION);
 
                 $tipos_permitidos = array("jpg", "jpeg", "png", "gif");
 
@@ -118,7 +122,7 @@ class ControladorProgramacionRadial
 
                     $ruta_imagen = $ruta . $nombre_imagen . "." . $extension;
 
-                    if (move_uploaded_file($_FILES["editImagen"]["tmp_name"], $ruta_imagen)) {
+                    if (move_uploaded_file($_FILES["editImagenR"]["tmp_name"], $ruta_imagen)) {
 
                         echo "Imagen subida correctamente.";
                     } else {
@@ -132,14 +136,16 @@ class ControladorProgramacionRadial
             }
 
 
-            $tabla = "eventos";
+            $tabla = "programaciones_radial";
 
 
             $datos = array(
-                "id_evento" => $_POST["id_evento"],
+                "id_radial" => $_POST["id_radial"],
+                "id_conductor" => $_POST["editId_conductor"],
+                "dia" => $_POST["editDia"],
                 "titulo" => $_POST["editTitulo"],
                 "imagen" => $ruta_imagen,
-                "fecha" => $_POST["editFecha"]
+                "hora" => $_POST["editHora"]
             );
 
             $respuesta = ModeloProgramacionRadial::mdlEditarProgramacionRadial($tabla, $datos);
@@ -156,7 +162,7 @@ class ControladorProgramacionRadial
                               }).then(function(result) {
                                         if (result.value) {
     
-                                        window.location = "eventos";
+                                        window.location = "programacionRadial";
     
                                         }
                                     })
@@ -172,10 +178,10 @@ class ControladorProgramacionRadial
 
     static public function ctrBorrarProgramacionRadial(){
 
-		if(isset($_GET["idEvento"])){
+		if(isset($_GET["idRadial"])){
 
-			$tabla ="eventos";
-			$datos = $_GET["idEvento"];
+			$tabla ="programaciones_radial";
+			$datos = $_GET["idRadial"];
 
 			if($_GET["imagen"] != ""){
 
@@ -192,14 +198,14 @@ class ControladorProgramacionRadial
 
 				Swal.fire({
 					  icon: "success",
-					  title: "El evento ha sido borrado correctamente",
+					  title: "La programación ha sido borrado correctamente",
 					  showConfirmButton: true,
 					  confirmButtonText: "Cerrar",
 					  closeOnConfirm: false
 					  }).then(function(result) {
 								if (result.value) {
 
-								window.location = "eventos";
+								window.location = "programacionRadial";
 
 								}
 							})

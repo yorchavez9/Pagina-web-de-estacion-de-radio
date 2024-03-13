@@ -1,6 +1,6 @@
 <?php
-require_once "../controladores/Evento.controlador.php";
-require_once "../modelos/Evento.modelo.php";
+require_once "../controladores/ProgramacionRadial.controlador.php";
+require_once "../modelos/ProgramacionRadial.modelo.php";
 
 class AjaxProgramacionRadial
 {
