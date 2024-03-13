@@ -111,7 +111,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="datosContacto">
                 <div class="parent-icon"><i class="bx bx-envelope"></i>
                 </div>
                 <div class="menu-title">Datos de contacto</div>

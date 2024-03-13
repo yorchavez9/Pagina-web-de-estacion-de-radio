@@ -40,7 +40,6 @@ $totalRedesSociales = count($redesSociales);
                     <table id="example" class="table table-striped table-bordered tabla_redes_sociales" style="width:100%">
                         <thead>
                             <tr>
-                                <th>N°</th>
                                 <th>Facebook</th>
                                 <th>Whatsapp</th>
                                 <th>Youtube</th>
@@ -56,7 +55,7 @@ $totalRedesSociales = count($redesSociales);
                             foreach ($redesSociales as $key => $value) {
                             ?>
                                 <tr>
-                                    <td><?php echo $key + 1 ?></td>
+                                
                                     <td><a href="<?php echo $value["facebook"] ?>" target="_blank"><i class="bx bxl-facebook bx-lg"></i></a></td>
                                     <td><a href="<?php echo $value["whatsapp"] ?>" target="_blank"><i class="bx bxl-whatsapp bx-lg text-success"></i></a></td>
                                     <td><a href="<?php echo $value["youtube"] ?>" target="_blank"><i class="bx bxl-youtube bx-lg text-danger"></i></a></td>
@@ -65,7 +64,7 @@ $totalRedesSociales = count($redesSociales);
                                     <td class="align-middle"><a href="<?php echo $value["tiktok"] ?>" target="_blank"><img src="vistas/img/icon/tik-tok.png" width="45" alt=""></a></td>
                                     <td><a href="<?php echo $value["instagram"] ?>" target="_blank"><i class="bx bxl-instagram bx-lg text-warning"></i></a></td>
                                     
-                                    <td>
+                                    <td class="align-middle">
                                         <div class="text-center">
                                             <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarRedesSociales" idRedes="<?php echo $value["id_redes"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarRedSocial"><i class="bx bx-edit"></i></a>
                                             <a href="#" class="btn btn-danger rounded btn-sm btnEliminarRedesSociales" idRedes="<?php echo $value["id_redes"] ?>"><i class="bx bx-trash"></i></a>
@@ -78,7 +77,6 @@ $totalRedesSociales = count($redesSociales);
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>N°</th>
                                 <th>Facebook</th>
                                 <th>Whatsapp</th>
                                 <th>Youtube</th>
