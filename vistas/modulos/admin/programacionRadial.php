@@ -294,9 +294,9 @@ setlocale(LC_TIME, "es_ES");
 
 
 
-<!-- BORRAR PROGRAMACION RADIAL -->
+<!-- BORRAR PROGRAMACION TV -->
 
 <?php
-$borrarEvento = new ControladorProgramacionRadial();
-$borrarEvento->ctrBorrarProgramacionRadial();
+$borrarRadial = new ControladorProgramacionRadial();
+$borrarRadial->ctrBorrarProgramacionRadial();
 ?>

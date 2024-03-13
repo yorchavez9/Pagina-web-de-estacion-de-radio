@@ -176,6 +176,7 @@
 <script src="vistas/js/galeria.js"></script>
 <script src="vistas/js/conductor.js"></script>
 <script src="vistas/js/programacionRadial.js"></script>
+<script src="vistas/js/programacionTV.js"></script>
 
 </body>
 

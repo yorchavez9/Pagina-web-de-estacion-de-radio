@@ -2,46 +2,46 @@
 VISTA PREVIA DE NUEVA IMAGEN
 ================================ */
 
-$("#imagenRadial").change(function () {
+$("#imagenTV").change(function () {
   var input = this;
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     reader.onload = function (e) {
-      $("#previewImgRadial").attr("src", e.target.result).show();
+      $("#previewImgTV").attr("src", e.target.result).show();
     };
     reader.readAsDataURL(input.files[0]);
   }
 });
 
 /* ================================
-    VISTA PREVIA DE EDITAR IMAGEN
-    ================================ */
+      VISTA PREVIA DE EDITAR IMAGEN
+      ================================ */
 
-$("#editImagenRadial").change(function () {
+$("#editimagenTV").change(function () {
   var input = this;
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     reader.onload = function (e) {
-      $("#editPreviewImgRadial").attr("src", e.target.result).show();
+      $("#editPreviewImgTV").attr("src", e.target.result).show();
     };
     reader.readAsDataURL(input.files[0]);
   }
 });
 
 /* ===================================
-  ACTIVAR PROGRAMACION RADIAL
-  =================================== */
+    ACTIVAR PROGRAMACION TV
+    =================================== */
 
-$(".tabla_programacion_radial").on("click", ".btnActivar", function () {
-  var idRadial = $(this).attr("idRadial");
-  var estadoRadial = $(this).attr("estadoRadial");
+$(".tabla_programacion_tv").on("click", ".btnActivar", function () {
+  var idTV = $(this).attr("idTV");
+  var estadoTV = $(this).attr("estadoTV");
 
   var datos = new FormData();
-  datos.append("activarId", idRadial);
-  datos.append("activarRadial", estadoRadial);
+  datos.append("activarId", idTV);
+  datos.append("activarTV", estadoTV);
 
   $.ajax({
-    url: "ajax/ProgramacionRadial.ajax.php",
+    url: "ajax/ProgramacionTV.ajax.php",
     method: "POST",
     data: datos,
     cache: false,
@@ -53,31 +53,28 @@ $(".tabla_programacion_radial").on("click", ".btnActivar", function () {
     },
   });
 
-  if (estadoRadial == 0) {
+  if (estadoTV == 0) {
     $(this).removeClass("btn-success");
     $(this).addClass("btn-danger");
     $(this).html("Desactivado");
-    $(this).attr("estadoRadial", 1);
+    $(this).attr("estadoTV", 1);
   } else {
     $(this).addClass("btn-success");
     $(this).removeClass("btn-danger");
     $(this).html("Activado");
-    $(this).attr("estadoRadial", 0);
+    $(this).attr("estadoTV", 0);
   }
 });
 
 /* EDITAR PROGRAMACION RADIAL */
 
-$(".tabla_programacion_radial").on(
-  "click",
-  ".btnEditarProgramacionRadial",
-  function () {
-    var idRadial = $(this).attr("idRadial");
+$(".tabla_programacion_tv").on("click",".btnEditarProgramacionTV",function () {
+    var idTV = $(this).attr("idTV");
     var datos = new FormData();
-    datos.append("idRadial", idRadial);
+    datos.append("idTV", idTV);
 
     $.ajax({
-      url: "ajax/ProgramacionRadial.ajax.php",
+      url: "ajax/ProgramacionTV.ajax.php",
       method: "POST",
       data: datos,
       cache: false,
@@ -85,7 +82,7 @@ $(".tabla_programacion_radial").on(
       processData: false,
       dataType: "json",
       success: function (respuesta) {
-        $("#id_radial").val(respuesta["id_radial"]);
+        $("#id_tv").val(respuesta["id_tv"]);
 
         $("#editId_conductor").val(respuesta["id_conductor"]);
         $("#id_conductorEdit").val(respuesta["id_conductor"]);
@@ -96,15 +93,12 @@ $(".tabla_programacion_radial").on(
         $("#editTitulo").val(respuesta["titulo"]);
 
         if (respuesta["imagen"] != "") {
-          $("#editPreviewImgRadial").attr("src", respuesta["imagen"]);
+          $("#editPreviewImgTV").attr("src", respuesta["imagen"]);
         } else {
-          $("#editPreviewImgRadial").attr(
-            "src",
-            "vistas/img/banner/default.png"
-          );
+          $("#editPreviewImgTV").attr("src","vistas/img/banner/default.png");
         }
 
-        $("#imagenActualRadial").val(respuesta["imagen"]);
+        $("#imagenActualTV").val(respuesta["imagen"]);
 
         $("#editHora").val(respuesta["hora"]);
       },
@@ -112,13 +106,10 @@ $(".tabla_programacion_radial").on(
   }
 );
 
-/* ELIMINAR PROGRAMACION RADIAL */
+/* ELIMINAR PROGRAMACION TV */
 
-$(".tabla_programacion_radial").on(
-  "click",
-  ".btnEliminarProgramacionRadial",
-  function () {
-    var idRadial = $(this).attr("idRadial");
+$(".tabla_programacion_tv").on("click",".btnEliminarProgramacionTV",function () {
+    var idTV = $(this).attr("idTV");
     var imagen = $(this).attr("imagen");
 
     Swal.fire({
@@ -133,10 +124,7 @@ $(".tabla_programacion_radial").on(
     }).then(function (result) {
       if (result.value) {
         window.location =
-          "index.php?ruta=programacionRadial&idRadial=" +
-          idRadial +
-          "&imagen=" +
-          imagen;
+          "index.php?ruta=programacionTV&idTV=" + idTV + "&imagen=" + imagen;
       }
     });
   }

@@ -5,33 +5,35 @@ setlocale(LC_TIME, "es_ES");
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-4">
-            <div class="breadcrumb-title pe-3">Programación radial</div>
+            <div class="breadcrumb-title pe-3">Programación TV</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="inicio"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Programación radial</li>
+                        <li class="breadcrumb-item active" aria-current="page">Programación TV</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <!--end breadcrumb-->
         <div>
-            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#modalNuevoProgramacionRadial"><i class="bx bx-plus"></i> Nuevo programación radial</button>
-            <h6 class="mb-3 text-uppercase mt-2">Tabla de programación radial</h6>
+            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#modalNuevoProgramacionTV"><i class="bx bx-plus"></i> Nueva programación TV</button>
+            <h6 class="mb-3 text-uppercase mt-2">Tabla de programación TV</h6>
         </div>
         <hr />
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered tabla_evento" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered tabla_programacion_tv" style="width:100%">
                         <thead>
                             <tr>
                                 <th>N°</th>
+                                <th class="text-center">Conductor</th>
+                                <th class="text-center">Día</th>
                                 <th class="text-center">Título</th>
                                 <th class="text-center">Imagen</th>
-                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Hora</th>
                                 <th class="text-center">Estado</th>
                                 <th class="text-center">Acción</th>
                             </tr>
@@ -41,37 +43,42 @@ setlocale(LC_TIME, "es_ES");
                             $item = null;
                             $valor = null;
 
-                            $eventos = ControladorEvento::ctrMostrarEvento($item, $valor);
-                            foreach ($eventos as $key => $value) {
+                            $programacionesTV = ControladorProgramacionTV::ctrMostrarProgramacionTV($item, $valor);
+                            foreach ($programacionesTV as $key => $value) {
                             ?>
                                 <tr>
                                     <td class="align-middle"><?php echo $key + 1 ?></td>
-                                    <td class="align-middle" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><?php echo $value["titulo"] ?></td>
+                                    <td class="align-middle">
+                                        <span><?php echo $value["nombre"] ?></span>
+                                        <span><?php echo $value["apellidos"] ?></span>
+                                    </td>
+                                    <td class="aling-middle"><?php echo $value["dia"]?></td>
+                                    <td class="aling-middle"><?php echo $value["titulo"]?></td>
                                     <td class="text-center align-middle">
                                         <?php
 
                                         if ($value["imagen"] != null) {
 
-                                            echo '<img src="' . $value["imagen"] . '" alt="" width="300" height="150">';
+                                            echo '<img src="' . $value["imagen"] . '" alt="" width="150" height="80">';
                                         } else {
                                             echo '<img src="vistas/img/banner/defualt.png" alt="">';
                                         }
                                         ?>
                                     </td>
-                                    <td class="align-middle"><?php echo $value["fecha"] ?></td>
+                                    <td class="align-middle"><?php echo $value["hora"] ?></td>
                                     <?php
                                     if ($value["estado"] == 1) {
 
-                                        echo '<td class="text-center align-middle"><button class="btn btn-success btn-sm rounded btnActivar" idEvento="' . $value["id_evento"] . '" estadoEvento="0">Activado</button></td>';
+                                        echo '<td class="text-center align-middle"><button class="btn btn-success btn-sm rounded btnActivar" idTV="' . $value["id_tv"] . '" estadoTV="0">Activado</button></td>';
                                     } else {
 
-                                        echo '<td class="text-center align-middle"><button class="btn btn-danger btn-sm rounded btnActivar" idEvento="' . $value["id_evento"] . '" estadoEvento="1">Desactivado</button></td>';
+                                        echo '<td class="text-center align-middle"><button class="btn btn-danger btn-sm rounded btnActivar" idTV="' . $value["id_tv"] . '" estadoTV="1">Desactivado</button></td>';
                                     }
                                     ?>
                                     <td class="align-middle">
                                         <div class="text-center align-middle">
-                                            <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarEvento" idEvento="<?php echo $value["id_evento"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarProgramacionRadial"><i class="bx bx-edit"></i></a>
-                                            <a href="#" class="btn btn-danger rounded btn-sm btnEliminarEvento" idEvento="<?php echo $value["id_evento"] ?>" imagen="<?php echo $value["imagen"] ?>"><i class="bx bx-trash"></i></a>
+                                            <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarProgramacionTV" idTV="<?php echo $value["id_tv"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarProgramacionTV"><i class="bx bx-edit"></i></a>
+                                            <a href="#" class="btn btn-danger rounded btn-sm btnEliminarProgramacionTV" idTV="<?php echo $value["id_tv"] ?>" imagen="<?php echo $value["imagen"] ?>"><i class="bx bx-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -82,9 +89,11 @@ setlocale(LC_TIME, "es_ES");
                         <tfoot>
                             <tr>
                                 <th>N°</th>
+                                <th class="text-center">Conductor</th>
+                                <th class="text-center">Día</th>
                                 <th class="text-center">Título</th>
                                 <th class="text-center">Imagen</th>
-                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Hora</th>
                                 <th class="text-center">Estado</th>
                                 <th class="text-center">Acción</th>
                             </tr>
@@ -98,40 +107,79 @@ setlocale(LC_TIME, "es_ES");
 </div>
 
 
-<!-- MODAL NUEVO NOTICIA -->
-<div class="modal fade" id="modalNuevoProgramacionRadial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- MODAL NUEVO PROGRAMACION TV -->
+<div class="modal fade" id="modalNuevoProgramacionTV" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="text-center">
-                    <h5 class="modal-title" id="exampleModalLabel">Nueva evento</h5>
+                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Nueva programación TV</h5>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
 
-                    <!-- titulo -->
-                    <div class="form-group">
+                    <div class="row">
+
+                        <!-- Conductores -->
+                        <div class="form-group col-md-6">
+                            <label for="conductores" class="form-label">Seleccione el conductor</label>
+                            <select name="id_conductor" class="form-select">
+                                <option value="" selected disabled>Seleccione el conductor</option>
+                                <?php
+
+                                $item = null;
+                                $valor = null;
+                                $conductores = ControladorConductor::ctrMostrarConductores($item, $valor);
+
+                                foreach ($conductores as $key => $value) {
+                                ?>
+                                    <option value="<?php echo $value["id_conductor"] ?>"><?php echo $value["nombre"]; echo ' ' . $value["apellidos"] ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <!-- Dia -->
+                        <div class="form-group col-md-6">
+                            <label for="dia" class="form-label">Seleccione el día</label>
+                            <select name="dia" class="form-control">
+                                <option value="" selected disabled>Selecione el día</option>
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miercoles">Miercoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sábado">Sábado</option>
+                                <option value="Domingo">Domingo</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <!-- Titulo -->
+                    <div class="form-group mt-3">
                         <label for="titulo" class="form-label">Ingrese el título</label>
                         <input type="text" name="titulo" class="form-control" placeholder="Ingrese el título" required>
                     </div>
 
-                    <div class="form-group row mt-4 mb-4">
 
+                    <div class="row mt-4">
                         <!-- Imagen -->
                         <div class="col-md-6">
                             <label for="imagen" class="form-label">Selecionar una imagen</label>
-                            <input type="file" name="imagen" id="imagenEvento" class="form-control" accept="image/*" required>
+                            <input type="file" name="imagen" id="imagenTV" class="form-control" accept="image/*" required>
                             <div class="text-center mt-3">
-                                <img src="vistas/img/banner/default.png" id="previewImgEvento" class="img img-fluid" alt="">
+                                <img src="vistas/img/banner/default.png" id="previewImgTV" class="img img-fluid" alt="">
                             </div>
                         </div>
 
-                        <!-- Fecha -->
+                        <!-- Hora -->
                         <div class="col-md-6">
-                            <label for="fecha" class="form-label">Ingrese la fecha</label>
-                            <input type="date" name="fecha" class="form-control" placeholder="Ingrese la fecha" required>
+                            <label for="hora" class="form-label">Ingrese la hora</label>
+                            <input type="time" name="hora" class="form-control" required>
                         </div>
                     </div>
 
@@ -141,125 +189,114 @@ setlocale(LC_TIME, "es_ES");
                     <button type="submit" class="btn btn-primary"><i class="bx bx-save"></i>Guardar</button>
                 </div>
                 <?php
-                $crearEvento = new ControladorEvento();
-                $crearEvento->ctrCrearEvento();
+                $crearProgramacionTV = new ControladorProgramacionTV();
+                $crearProgramacionTV->ctrCrearProgramacionTV();
                 ?>
             </form>
         </div>
     </div>
 </div>
 
-
-<!-- MODAL EDITAR NOTICIA -->
-<div class="modal fade" id="modalEditarProgramacionRadial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- MODAL EDITAR PROGRAMACION TV -->
+<div class="modal fade" id="modalEditarProgramacionTV" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="text-center">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar noticia</h5>
+                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Editar programación TV</h5>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
+                    
+                    <!-- id programacion radial -->
+                    <input type="hidden" name="id_tv" id="id_tv">
 
-                    <!-- id de la noticia -->
-                    <input type="hidden" name="id_evento" id="id_evento">
+                    <div class="row">
 
-                    <!-- titulo -->
-                    <div class="form-group">
-                        <label for="titulo" class="form-label">Ingrese el título</label>
-                        <input type="text" name="editTitulo" id="editTitulo" class="form-control" placeholder="Ingrese el título">
+                        <!-- Conductores -->
+                        <div class="form-group col-md-6">
+                            <label for="conductores" class="form-label">Seleccione el conductor</label>
+                            <select name="editId_conductor" id="editId_conductor" class="form-select">
+                                <option value="" id="id_conductorEdit"></option>
+                                <?php
+
+                                $item = null;
+                                $valor = null;
+                                $conductores = ControladorConductor::ctrMostrarConductores($item, $valor);
+
+                                foreach ($conductores as $key => $value) {
+                                ?>
+                                    <option value="<?php echo $value["id_conductor"] ?>"><?php echo $value["nombre"]; echo ' ' . $value["apellidos"] ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <!-- Dia -->
+                        <div class="form-group col-md-6">
+                            <label for="dia" class="form-label">Seleccione el día</label>
+                            <select name="editDia" id="editDia" class="form-control">
+                                <option value="" id="idDia">Selecione el día</option>
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miercoles">Miercoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sábado">Sábado</option>
+                                <option value="Domingo">Domingo</option>
+                            </select>
+                        </div>
+
                     </div>
 
-                    <div class="form-group row mt-4 mb-4">
+                    <!-- Titulo -->
+                    <div class="form-group mt-3">
+                        <label for="titulo" class="form-label">Ingrese el título</label>
+                        <input type="text" name="editTitulo" id="editTitulo" class="form-control" placeholder="Ingrese el título" required>
+                    </div>
 
+
+                    <div class="row mt-4">
                         <!-- Imagen -->
                         <div class="col-md-6">
                             <label for="imagen" class="form-label">Selecionar una imagen</label>
-                            <input type="file" name="editImagen" id="editImagenEvento" class="form-control" accept="image/*">
+                            <input type="file" name="editImagenTV" id="editimagenTV" class="form-control" accept="image/*">
                             <div class="text-center mt-3">
-                                <img src="vistas/img/banner/default.png" id="editPreviewImgEvento" class="img img-fluid" alt="">
+                                <img src="vistas/img/banner/default.png" id="editPreviewImgTV" class="img img-fluid" alt="">
                             </div>
-                            <input type="hidden" name="imagenActualE" id="imagenActualE">
+                            <input type="hidden" name="imagenActualTV" id="imagenActualTV">
                         </div>
 
-                        <!-- Fecha -->
+                        <!-- Hora -->
                         <div class="col-md-6">
-                            <label for="fecha" class="form-label">Ingrese la fecha</label>
-                            <input type="date" name="editFecha" id="editFecha" class="form-control" placeholder="Ingrese la fecha">
+                            <label for="hora" class="form-label">Ingrese la hora</label>
+                            <input type="time" name="editHora" id="editHora" class="form-control" required>
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bx bx-x"></i>Cancelar</button>
-                    <button type="submit" class="btn btn-primary"><i class="bx bx-refresh"></i>Actualizar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bx bx-x"></i>Cerrar</button>
+                    <button type="submit" class="btn btn-primary"><i class="bx bx-save"></i>Guardar</button>
                 </div>
                 <?php
-                $editarEvento = new ControladorEvento();
-                $editarEvento->ctrEditarEvento();
+                $editarProgramacionTV = new ControladorProgramacionTV();
+                $editarProgramacionTV->ctrEditarProgramacionTV();
                 ?>
             </form>
         </div>
     </div>
 </div>
 
-<?php
 
-$item = null;
-$valor = null;
 
-$showEvento = ControladorEvento::ctrMostrarEvento($item, $valor);
-foreach ($showEvento as $key => $value) {
-?>
-    <div class="modal fade" id="modalVerEvento<?php echo $value["id_evento"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="text-center">
-                        <h3 class="modal-title fw-bold" id="exampleModalLabel">Detalles del evento</h3>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="card p-3">
-                    <div class="text-center mb-2">
-                        <h3 class="card-title"><?php echo $value["titulo"] ?></h3>
-                    </div>
-                    <div class="text-center">
-                        <img src="<?php echo $value["imagen"] ?>" class="img img-fluid" alt="Imagen de la noticia">
-                    </div>
-                    <div class="card-body">
-                        
-                        <p class="card-text text-center">
-                            <small class="text-muted h4 fw-bold">
-                                <?php
-                                setlocale(LC_TIME, 'es_ES.UTF-8');
 
-                                // Suponiendo que $value["fecha"] contiene la fecha en formato YYYY-MM-DD
-                                $fecha = new DateTime($value["fecha"]);
-                                
-                                // Formatea la fecha utilizando el formato específico
-                                echo strftime('%d de %B del %Y', $fecha->getTimestamp());
-                                ?>
-                            </small>
-                        </p>
-                    </div>
-                </div>
-                <div class="card-header p-2 text-center">
-                    <button type="button" class="btn btn-danger m-2" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-<?php
-}
-?>
-
-<!-- BORRAR EVENTO -->
+<!-- BORRAR PROGRAMACION TV -->
 
 <?php
-$borrarEvento = new ControladorEvento();
-$borrarEvento->ctrBorrarEvento();
+$borrarTV = new ControladorProgramacionTV();
+$borrarTV->ctrBorrarProgramacionTV();
 ?>
