@@ -38,7 +38,7 @@ class ControladorConductor
                     "correo" => $_POST["correo"],
                     "telefono" => $_POST["telefono"],
                     "experiencia" => $_POST["experiencia"],
-                    "habilidades" => $_POST["habilidad"]
+                    "habilidad" => $_POST["habilidad"]
                 );
 
                 $respuesta = ModeloConductor::mdlIngresarConductor($tabla, $datos);

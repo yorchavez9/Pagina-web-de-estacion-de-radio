@@ -30,6 +30,8 @@
                                 <th>Apellidos</th>
                                 <th>Perfil</th>
                                 <th>Correo</th>
+                                <th>Teléfono</th>
+                                <th>Habilidades</th>
                                 <th>Estado</th>
                                 <th>Acción</th>
                             </tr>
@@ -49,7 +51,7 @@
                                     <td><?php echo $value["tipo"] ?></td>
                                     <td><?php echo $value["correo"] ?></td>
                                     <td><?php echo $value["telefono"] ?></td>
-                                    <td><?php echo $value["habilidades"] ?></td>
+                                    <td><?php echo $value["habilidad"] ?></td>
                                     <?php
                                     if ($value["estado"] == 1) {
 
@@ -77,6 +79,8 @@
                                 <th>Apellidos</th>
                                 <th>Perfil</th>
                                 <th>Correo</th>
+                                <th>Teléfono</th>
+                                <th>Habilidades</th>
                                 <th>Estado</th>
                                 <th>Acción</th>
                             </tr>

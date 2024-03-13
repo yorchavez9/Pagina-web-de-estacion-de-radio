@@ -49,7 +49,7 @@ class ModeloConductor
                                                                 correo, 
                                                                 telefono,
                                                                 experiencia,
-                                                                habilidades
+                                                                habilidad
                                                                 ) 
                                                             VALUES(
                                                                 :tipo,
@@ -58,7 +58,7 @@ class ModeloConductor
                                                                 :correo, 
                                                                 :telefono,
                                                                 :experiencia,
-                                                                :habilidades
+                                                                :habilidad
                                                                 )"
                                                                 );
 
@@ -68,7 +68,7 @@ class ModeloConductor
         $stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);    
         $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);    
         $stmt->bindParam(":experiencia", $datos["experiencia"], PDO::PARAM_STR);    
-        $stmt->bindParam(":habilidades", $datos["habilidades"], PDO::PARAM_STR);    
+        $stmt->bindParam(":habilidad", $datos["habilidad"], PDO::PARAM_STR);    
 
         if($stmt->execute()){
             return "ok";

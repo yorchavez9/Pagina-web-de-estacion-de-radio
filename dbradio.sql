@@ -55,7 +55,7 @@ create table conductores(
     correo varchar(255) not null,
     telefono varchar(20) not null,
     experiencia varchar(255) not null,
-    habilidades text,
+    habilidad text,
     estado int default 1,
     fecha datetime default current_timestamp
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
