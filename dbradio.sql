@@ -124,7 +124,8 @@ create table redes_sociales(
     youtube varchar(300),
     linkedin varchar(300),
     twitter varchar(300),
-    tiktok varchar(300)
+    tiktok varchar(300),
+    instagram varchar(300),
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 create table visitas(
