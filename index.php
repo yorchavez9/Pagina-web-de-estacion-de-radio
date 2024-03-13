@@ -11,6 +11,7 @@ require_once "controladores/Galeria.controlador.php";
 require_once "controladores/Conductor.controlador.php";
 require_once "controladores/ProgramacionRadial.controlador.php";
 require_once "controladores/ProgramacionTV.controlador.php";
+require_once "controladores/RedesSociales.controladores.php";
 
 /* MODELOS */
 require_once "modelos/Usuario.modelo.php";
@@ -22,7 +23,7 @@ require_once "modelos/Galeria.modelo.php";
 require_once "modelos/Conductor.modelo.php";
 require_once "modelos/ProgramacionRadial.modelo.php";
 require_once "modelos/ProgramacionTV.modelo.php";
-
+require_once "modelos/RedesSociales.modelo.php";
 
 
 

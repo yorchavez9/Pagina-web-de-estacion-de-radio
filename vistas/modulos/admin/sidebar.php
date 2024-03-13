@@ -104,7 +104,7 @@
         </li>
         <li class="menu-label">Contactos</li>
         <li>
-            <a href="javascript:;">
+            <a href="redesSociales">
                 <div class="parent-icon"><i class="bx bx-share-alt"></i>
                 </div>
                 <div class="menu-title">Redes sociales</div>
