@@ -1,7 +1,7 @@
-CREATE DATABASE radio_vivo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+/* CREATE DATABASE radio_vivo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 use sis_radio;
-
+ */
 
 create table usuarios(
 	id_usuario int primary key auto_increment,
@@ -54,7 +54,7 @@ create table conductores(
     apellidos varchar(255) not null,
     correo varchar(255) not null,
     telefono varchar(20) not null,
-    experiencia int not null,
+    experiencia varchar(255) not null,
     habilidades text,
     estado int default 1,
     fecha datetime default current_timestamp
@@ -98,7 +98,7 @@ create table videos(
 	id_video int not null primary key auto_increment,
     titulo varchar(255) not null,
     video_url varchar(300) not null,
-    estado int not null,
+    estado int default 1,
     fecha datetime default current_timestamp()
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -106,7 +106,8 @@ create table eventos(
 	id_evento int not null primary key auto_increment,
     titulo varchar(255) not null,
     imagen varchar(255) not null,
-    estado int not null
+    fecha date not null,
+    estado int default 1
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 create table galarias(

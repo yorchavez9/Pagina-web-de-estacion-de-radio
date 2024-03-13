@@ -43,32 +43,32 @@ class ModeloConductor
     {
 
         $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(
+                                                                tipo,
                                                                 nombre, 
-                                                                apellidos, 
-                                                                tipo, 
+                                                                apellidos,  
                                                                 correo, 
                                                                 telefono,
                                                                 experiencia,
-                                                                habilidad
+                                                                habilidades
                                                                 ) 
                                                             VALUES(
+                                                                :tipo,
                                                                 :nombre,
                                                                 :apellidos, 
-                                                                :tipo, 
                                                                 :correo, 
                                                                 :telefono,
                                                                 :experiencia,
-                                                                :habilidad
+                                                                :habilidades
                                                                 )"
                                                                 );
 
+        $stmt->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR); 
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-        $stmt->bindParam(":apellidos", $datos["apellidos"], PDO::PARAM_STR);    
-        $stmt->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);    
+        $stmt->bindParam(":apellidos", $datos["apellidos"], PDO::PARAM_STR);       
         $stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);    
         $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);    
         $stmt->bindParam(":experiencia", $datos["experiencia"], PDO::PARAM_STR);    
-        $stmt->bindParam(":habilidad", $datos["habilidad"], PDO::PARAM_STR);    
+        $stmt->bindParam(":habilidades", $datos["habilidades"], PDO::PARAM_STR);    
 
         if($stmt->execute()){
             return "ok";

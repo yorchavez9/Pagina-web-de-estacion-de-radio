@@ -49,7 +49,7 @@
                                     <td><?php echo $value["tipo"] ?></td>
                                     <td><?php echo $value["correo"] ?></td>
                                     <td><?php echo $value["telefono"] ?></td>
-                                    <td><?php echo $value["habilidad"] ?></td>
+                                    <td><?php echo $value["habilidades"] ?></td>
                                     <?php
                                     if ($value["estado"] == 1) {
 

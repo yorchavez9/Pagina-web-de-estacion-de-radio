@@ -32,13 +32,13 @@ class ControladorConductor
 
 
                 $datos = array(
+                    "tipo" => $_POST["tipo"],
                     "nombre" => $_POST["nombre"],
                     "apellidos" => $_POST["apellidos"],
-                    "tipo" => $_POST["tipo"],
                     "correo" => $_POST["correo"],
                     "telefono" => $_POST["telefono"],
                     "experiencia" => $_POST["experiencia"],
-                    "habilidad" => $_POST["habilidad"]
+                    "habilidades" => $_POST["habilidad"]
                 );
 
                 $respuesta = ModeloConductor::mdlIngresarConductor($tabla, $datos);
