@@ -6,18 +6,17 @@
         <a href="index.html" class="footer-logo">
           <img src="vistas/dist/main/assets/images/logo.png" alt="image">
         </a>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit nibh aenean eu, mattis egestas ut et.
-        </p>
+        <p>¿Ke Buena, La radio perfecta para disfrutar de éxitos musicales y ritmos contagiosos todo el día.!</p>
       </div>
       <div class="col-xxl-8 col-xl-7 col-lg-8">
         <nav class="footer-nav">
           <ul class="footer-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="show-schedule.html">Show Schedule</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="sponsor.html">Sponsors</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="inicio">Inicio</a></li>
+            <li><a href="noticias">Noticias</a></li>
+            <li><a href="videos">videos</a></li>
+            <li><a href="galeria">Galeria</a></li>
+            <li><a href="eventos">Eventos</a></li>
+            <li><a href="contactos">Contacto</a></li>
           </ul>
         </nav>
       </div>
@@ -25,22 +24,32 @@
     <hr>
     <div class="row gy-2 align-items-center">
       <div class="col-md-6 text-md-start text-center">
-        <p>© 2023 FMland. All rights reserved</p>
+        <p>© 2023 Ke buena. Todos los derechos reservados</p>
       </div>
       <div class="col-md-6">
         <ul class="social-links">
+          <?php 
+          $item = null;
+          $valor = null;
+
+          $redesSociales = ControladorRedesSociales::ctrMostrarRedesSociales($item, $valor);
+          foreach ($redesSociales as $key => $value) {
+          ?>
           <li>
-            <a href="#0"><i class="fab fa-facebook-f"></i></a>
+            <a href="<?php echo $value["facebook"]?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
           </li>
           <li>
-            <a href="#0"><i class="fab fa-instagram"></i></a>
+            <a href="<?php echo $value["instagram"]?>" target="_blank"><i class="fab fa-instagram"></i></a>
           </li>
           <li>
-            <a href="#0"><i class="fab fa-linkedin-in"></i></a>
+            <a href="<?php echo $value["linkedin"]?>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           </li>
           <li>
-            <a href="#0"><i class="fab fa-twitter"></i></a>
+            <a href="<?php echo $value["twitter"]?>" target="_blank"><i class="fab fa-twitter"></i></a>
           </li>
+          <?php
+          }
+          ?>
         </ul>
       </div>
     </div>
@@ -60,6 +69,10 @@
 <script src="vistas/dist/main/assets/js/contact.js"></script>
 <!-- main js -->
 <script src="vistas/dist/main/assets/js/main.js"></script>
+
+
+<!-- SCRIPT DE MODULOS -->
+<script src="vistas/js/detalleNoticia.js"></script>
 
 </body>
 
