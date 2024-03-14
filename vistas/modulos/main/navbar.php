@@ -9,34 +9,35 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav site-menu m-auto mb-2 mb-lg-0">
                 <li class="menu-item">
-                    <a href="#0">Inicio</a>
+                    <a href="inicio">Inicio</a>
                 </li>
                 <li class="menu-item">
-                    <a href="about.html">Noticias</a>
+                    <a href="noticias">Noticias</a>
                 </li>
                 <li class="menu-item menu-item-has-children">
                     <a href="#0">Programación</a>
                     <ul class="sub-menu">
                         <li class="menu-item">
-                            <a href="show-details.html">Radial</a>
+                            <a href="programacionRadial">Radial</a>
                         </li>
                         <li class="menu-item">
-                            <a href="radio-jockey.html">Tv</a>
+                            <a href="programacionTV">Tv</a>
                         </li>
                     </ul>
                 </li>
                 <li class="menu-item">
-                    <a href="contact.html">Ranking</a>
+                    <a href="ranking">Ranking</a>
                 </li>
                 <li class="menu-item">
-                    <a href="contact.html">Videos</a>
+                    <a href="videos">Videos</a>
                 </li>
                 <li class="menu-item">
-                    <a href="contact.html">Eventos</a>
+                    <a href="eventos">Eventos</a>
                 </li>
                 <li class="menu-item">
-                    <a href="contact.html">Galería</a>
+                    <a href="galeria">Galería</a>
                 </li>
+                
             </ul>
 
             <a href="sponsor.html" class="btn btn-main mt-xl-0 mt-3 mx-2 rounded btn-sm">Sponsor</a>

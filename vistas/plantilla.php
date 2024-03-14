@@ -59,7 +59,15 @@ if(isset($_SESSION["iniciarSesion"]) && ($_SESSION["iniciarSesion"] == "ok") && 
     {
 
         if(
-            $_GET["ruta"] == "inicio"
+            $_GET["ruta"] == "inicio" ||
+            $_GET["ruta"] == "noticias" ||
+            $_GET["ruta"] == "programacionRadial" || 
+            $_GET["ruta"] == "programacionTV" || 
+            $_GET["ruta"] == "ranking" || 
+            $_GET["ruta"] == "videos" || 
+            $_GET["ruta"] == "eventos" || 
+            $_GET["ruta"] == "galeria" ||
+            $_GET["ruta"] == "contactos"
           )
         {
             include "modulos/main/".$_GET["ruta"].".php";
