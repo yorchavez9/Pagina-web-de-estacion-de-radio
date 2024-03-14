@@ -47,7 +47,16 @@
                                         <small><?php echo $value["telefono"] ?></small>
                                     </td>
                                     <td><?php echo $value["compania"] ?></td>
-                                    <td><?php echo $value["mensaje"] ?></td>
+                                    <td>
+                                        <?php
+                                        $words = str_word_count($value["mensaje"], 1);
+                                        $first_five_words = implode(' ', array_slice($words, 0, 5));
+                                        echo $first_five_words;
+                                        if(count($words) > 5) {
+                                            echo '...'; // Agregar tres puntos si hay más palabras
+                                        }
+                                        ?>
+                                    </td>
                                     <td><?php echo $value["fecha"] ?></td>
                                     <?php
                                     if ($value["estado"] == 1) {
