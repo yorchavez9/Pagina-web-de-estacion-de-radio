@@ -179,7 +179,7 @@ setlocale(LC_TIME, "es_ES");
                         <!-- Hora -->
                         <div class="col-md-6">
                             <label for="hora" class="form-label">Ingrese la hora</label>
-                            <input type="time" name="hora" class="form-control" required>
+                            <input type="text" name="hora" class="form-control" placeholder="Ingrese el horario" required>
                         </div>
                     </div>
 
@@ -273,7 +273,7 @@ setlocale(LC_TIME, "es_ES");
                         <!-- Hora -->
                         <div class="col-md-6">
                             <label for="hora" class="form-label">Ingrese la hora</label>
-                            <input type="time" name="editHora" id="editHora" class="form-control" required>
+                            <input type="text" name="editHora" id="editHora" class="form-control" required>
                         </div>
                     </div>
 

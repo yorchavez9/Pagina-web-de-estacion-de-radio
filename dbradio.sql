@@ -66,7 +66,7 @@ create table programaciones_radial(
     dia varchar(50) not null,
     titulo varchar(255) not null,
     imagen varchar(255) not null,
-    hora time not null,
+    hora varchar(100) not null,
     estado int default 1,
     foreign key(id_conductor) references conductores(id_conductor)
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -77,7 +77,7 @@ create table programaciones_tv(
     dia varchar(50) not null,
     titulo varchar(255) not null,
     imagen varchar(255) not null,
-    hora time not null,
+    hora varchar(100) not null,
     estado int default 1,
     foreign key(id_conductor) references conductores(id_conductor)
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
