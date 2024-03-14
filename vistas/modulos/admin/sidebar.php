@@ -118,7 +118,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="mensajeContacto">
                 <div class="parent-icon"><i class="bx bx-message-rounded-dots"></i>
                 </div>
                 <div class="menu-title">Mensaje contacto</div>

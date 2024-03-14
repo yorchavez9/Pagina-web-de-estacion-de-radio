@@ -30,6 +30,7 @@ if(isset($_SESSION["iniciarSesion"]) && ($_SESSION["iniciarSesion"] == "ok") && 
             $_GET["ruta"] == "programacionTV" ||
             $_GET["ruta"] == "redesSociales" ||
             $_GET["ruta"] == "datosContacto" ||
+            $_GET["ruta"] == "mensajeContacto" ||
             $_GET["ruta"] == "salir"
         ) {
 

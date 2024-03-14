@@ -1,6 +1,6 @@
 <nav class="navbar main-navbar navbar-expand-xl">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="inicio">
             <img src="vistas/dist/main/assets/images/logo.png" alt="site logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,22 +25,35 @@
                         </li>
                     </ul>
                 </li>
-                <li class="menu-item">
-                    <a href="ranking">Ranking</a>
+                <li class="menu-item menu-item-has-children">
+                    <a href="#0">Actividades</a>
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="programacionRadial">Ranking</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="programacionTV">Eventos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item menu-item-has-children">
+                    <a href="#0">Multimedia</a>
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="programacionRadial">Videos</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="programacionTV">Galeria</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="menu-item">
-                    <a href="videos">Videos</a>
-                </li>
-                <li class="menu-item">
-                    <a href="eventos">Eventos</a>
-                </li>
-                <li class="menu-item">
-                    <a href="galeria">Galería</a>
+                    <a href="contactos">Contacto</a>
                 </li>
                 
             </ul>
 
-            <a href="sponsor.html" class="btn btn-main mt-xl-0 mt-3 mx-2 rounded btn-sm">Sponsor</a>
+            <a href="sponsor.html" class="btn btn-main mt-xl-0 mt-3 mx-2 rounded btn-sm">Patrocinador</a>
             <a href="#" class="btn btn-main mt-xl-0 mt-3 rounded btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
         </div>
     </div>
