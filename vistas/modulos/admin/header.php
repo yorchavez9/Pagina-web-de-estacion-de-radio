@@ -308,12 +308,12 @@ foreach ($mensajesContacto as $key => $value) {
 
 												<p class="msg-info">
 													<?php
-														$words = str_word_count($value["mensaje"], 1);
-														$first_five_words = implode(' ', array_slice($words, 0, 5));
-														echo $first_five_words;
-														if (count($words) > 5) {
-															echo '...'; // Agregar tres puntos si hay más palabras
-														}
+													$words = str_word_count($value["mensaje"], 1);
+													$first_five_words = implode(' ', array_slice($words, 0, 5));
+													echo $first_five_words;
+													if (count($words) > 5) {
+														echo '...'; // Agregar tres puntos si hay más palabras
+													}
 													?>
 												</p>
 

@@ -29,17 +29,18 @@ if (isset($_GET["idNoticiaDetalle"])) {
         <!-- ==============================
         DETALLE DE LA NOTICIA
         ================================= -->
-        <?php
-        foreach ($noticiasDetalle as $key => $value) {
-            if ($value["id_noticia"] == $_GET["idNoticiaDetalle"]) {
-            ?>
-                <section class="pt-120 pb-120 section-bg">
-                    <div class="container">
-                        <div class="row gy-5">
+
+        <section class="pt-120 pb-120 section-bg">
+            <div class="container">
+                <div class="row gy-5">
+                    <?php
+                    foreach ($noticiasDetalle as $key => $value) {
+                        if ($value["id_noticia"] == $_GET["idNoticiaDetalle"]) {
+                    ?>
                             <div class="col-xl-8">
                                 <div class="blog-details-wrapper">
                                     <div class="blog-details-thumb">
-                                        <img src="vistas/dist/main/assets/images/blog/b1.jpg" alt="image">
+                                        <img src="<?php echo $value["imagen"]?>" alt="image">
                                     </div>
                                     <div class="blog-details-content">
                                         <div class="blog-meta">
@@ -72,62 +73,59 @@ if (isset($_GET["idNoticiaDetalle"])) {
                                 </div><!-- blog-details-footer end -->
 
                             </div>
-                            <div class="col-xl-4">
-                                <div class="widget-box">
-                                    <form class="search-form">
-                                        <input type="text" name="#0" class="form-control" placeholder="Search...">
-                                        <button type="submit" class="search-form-btn"><i class="ri-search-line"></i></button>
-                                    </form>
+                    <?php
+                        }
+                    }
+                    ?>
+                    <div class="col-xl-4">
+                        <div class="widget-box" id="seccion_noticia">
+                            <form class="search-form">
+                                <input type="text" name="#0" class="form-control" placeholder="Buscar...">
+                                <button type="submit" class="search-form-btn"><i class="ri-search-line"></i></button>
+                            </form>
 
-                                    <h4 class="widget-box-title mt-30">Post Category</h4>
-                                    <ul class="cat-list">
-                                        <li><a href="multi-blog.html"><i class="ri-arrow-right-s-line"></i> Music </a></li>
-                                        <li><a href="multi-blog.html"><i class="ri-arrow-right-s-line"></i> Artist</a></li>
-                                        <li><a href="multi-blog.html"><i class="ri-arrow-right-s-line"></i> Podcast</a></li>
-                                        <li><a href="multi-blog.html"><i class="ri-arrow-right-s-line"></i> Song</a></li>
-                                    </ul>
+                            <h4 class="widget-box-title mt-30">Categorías</h4>
+                            <ul class="cat-list">
+                                <li><a href="inicio"><i class="ri-arrow-right-s-line"></i> Inicio </a></li>
+                                <li><a href="noticias"><i class="ri-arrow-right-s-line"></i> Noticias</a></li>
+                                <li><a href="Eventos"><i class="ri-arrow-right-s-line"></i> Eventos</a></li>
+                                <li><a href="galeria"><i class="ri-arrow-right-s-line"></i> Galería</a></li>
+                            </ul>
 
-                                    <h4 class="widget-box-title mt-30">Latest Post</h4>
+                            <h4 class="widget-box-title mt-30">Mas noticias</h4>
+                            <?php
+                            foreach ($noticiasDetalle as $key => $value) {
+                                $key++;
+                                if ($key <= 3) {
+                                ?>
                                     <div class="side-post">
                                         <div class="side-post-thumb">
-                                            <img src="vistas/dist/main/assets/images/blog/1.jpg" alt="image">
+                                            <img src="<?php echo $value["imagen"] ?>" alt="image">
                                         </div>
                                         <div class="side-post-content">
-                                            <h6 class="side-post-title"><a href="multi-blog-details.html">Myself in the world of travel where
-                                                    anything
-                                                    is possible.</a>
+                                            <h6 class="side-post-title"><a href="#" class="btnMostrarDetalleNoticia"  idNoticiaDetalle="<?php echo $value["id_noticia"]?>"><?php echo $value["titulo"] ?></a>
                                             </h6>
                                             <p class="side-post-date"><i class="ri-alarm-line me-2"></i> 21 JUN, 2022</p>
                                         </div>
                                     </div><!-- side-post end -->
-                                    <div class="side-post">
-                                        <div class="side-post-thumb">
-                                            <img src="vistas/dist/main/assets/images/blog/2.jpg" alt="image">
-                                        </div>
-                                        <div class="side-post-content">
-                                            <h6 class="side-post-title"><a href="multi-blog-details.html">Myself in the world of travel where
-                                                    anything
-                                                    is possible.</a>
-                                            </h6>
-                                            <p class="side-post-date"><i class="ri-alarm-line me-2"></i> 21 JUN, 2022</p>
-                                        </div>
-                                    </div><!-- side-post end -->
-                                </div><!-- widget-box end -->
+                                <?php
+                                }
+                            }
+                            ?>
+                        </div><!-- widget-box end -->
 
-                            </div>
-                        </div>
                     </div>
-                </section>
-            <?php
-            }
-        }
-        ?>
+
+                </div>
+            </div>
+        </section>
+
 
 
         <!-- ==============================
         SIDEBAR DE DETALLE NOTICIA
         ================================= -->
-        <?php include "boletin.php"?>
+        <?php include "boletin.php" ?>
 
     </main>
 <?php

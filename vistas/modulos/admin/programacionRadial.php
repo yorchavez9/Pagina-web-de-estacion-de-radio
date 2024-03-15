@@ -211,7 +211,7 @@ setlocale(LC_TIME, "es_ES");
                 <div class="modal-body">
                     
                     <!-- id programacion radial -->
-                    <input type="text" name="id_radial" id="id_radial">
+                    <input type="hidden" name="id_radial" id="id_radial">
 
                     <div class="row">
 
@@ -267,7 +267,7 @@ setlocale(LC_TIME, "es_ES");
                             <div class="text-center mt-3">
                                 <img src="vistas/img/banner/default.png" id="editPreviewImgRadial" class="img img-fluid" alt="">
                             </div>
-                            <input type="text" name="imagenActualRadial" id="imagenActualRadial">
+                            <input type="hidden" name="imagenActualRadial" id="imagenActualRadial">
                         </div>
 
                         <!-- Hora -->
@@ -290,8 +290,6 @@ setlocale(LC_TIME, "es_ES");
         </div>
     </div>
 </div>
-
-
 
 
 <!-- BORRAR PROGRAMACION TV -->
