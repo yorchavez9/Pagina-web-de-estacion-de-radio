@@ -7,11 +7,11 @@ class ControladorBanner
     MOSTRAR BANNER
     ========================== */
 
-    static public function ctrMostrarBanners($item, $valor)
+    static public function ctrMostrarBanners($item, $valor, $tipo)
     {
         $tabla = "banners";
 
-        $respuesta = ModeloBanner::mdlMostrarBanners($tabla, $item, $valor);
+        $respuesta = ModeloBanner::mdlMostrarBanners($tabla, $item, $valor, $tipo);
 
         return $respuesta;
     }

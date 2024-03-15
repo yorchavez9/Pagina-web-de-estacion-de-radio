@@ -9,7 +9,7 @@ class ModeloBanner
     MOSTRAR BANNER
     ========================== */
 
-    static public function mdlMostrarBanners($tabla, $item, $valor)
+    static public function mdlMostrarBanners($tabla, $item, $valor, $tipo)
     {
 
         $conexion = Conexion::conectar();
@@ -23,6 +23,15 @@ class ModeloBanner
             $stmt->execute();
 
             return $stmt->fetch();
+
+        }else if($tipo == "random"){
+
+            $stmt = $conexion->prepare("SELECT * FROM $tabla ORDER BY RAND() LIMIT 1");
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
         } else {
 
             $stmt = $conexion->prepare("SELECT * FROM $tabla");

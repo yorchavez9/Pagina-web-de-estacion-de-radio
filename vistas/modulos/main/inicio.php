@@ -1,5 +1,8 @@
 <?php
+
 include "banner.php";
-include "player.php";
+
+include "contenidoInicio.php";
+
 include "boletin.php";
 ?>

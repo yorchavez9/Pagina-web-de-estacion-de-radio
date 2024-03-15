@@ -34,8 +34,8 @@
                             <?php
                             $item = null;
                             $valor = null;
-
-                            $banners = ControladorBanner::ctrMostrarBanners($item, $valor);
+                            $tipo = null;
+                            $banners = ControladorBanner::ctrMostrarBanners($item, $valor, $tipo);
                             foreach ($banners as $key => $value) {
                             ?>
                                 <tr>
@@ -92,7 +92,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="imagen" class="form-label">Selecionar una imagen</label>
-                        <input type="file" name="imagen" id="newImagen" class="form-control" accept="image/*">
+                        <input type="file" name="imagen" id="newImagen" class="form-control" accept="image/*" required>
                         <small class="fw-bold">* El peso máximo de la imagen 5MB</small><br>
                         <small class="fw-bold">* El tamaño (1920 x 950) pixels</small>
                         <div class="text-center">
@@ -128,7 +128,7 @@
                     <input type="hidden" name="id_banner" id="id_banner">
                     <div class="form-group">
                         <label for="imagen" class="form-label">Selecionar una imagen</label>
-                        <input type="file" name="editImagen" id="editImagen" class="form-control mb-2" accept="image/*">
+                        <input type="file" name="editImagen" id="editImagen" class="form-control mb-2" accept="image/*" >
                         <small class="fw-bold mt-3">* El peso máximo de la imagen 5MB</small><br>
                         <small class="fw-bold">* El tamaño (1920 x 950) pixels</small>
                         <div class="text-center mt-3">

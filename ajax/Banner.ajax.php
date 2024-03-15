@@ -15,9 +15,10 @@ class AjaxBanner
     {
 
         $item = "id_banner";
+        $tipo = null;
         $valor = $this->idBanner;
 
-        $respuesta = ControladorBanner::ctrMostrarBanners($item, $valor);
+        $respuesta = ControladorBanner::ctrMostrarBanners($item, $valor, $tipo);
 
 
         echo json_encode($respuesta);
