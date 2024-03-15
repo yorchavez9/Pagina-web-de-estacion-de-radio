@@ -40,10 +40,10 @@
                     <a href="#0">Multimedia</a>
                     <ul class="sub-menu">
                         <li class="menu-item">
-                            <a href="programacionRadial">Videos</a>
+                            <a href="videos">Videos</a>
                         </li>
                         <li class="menu-item">
-                            <a href="programacionTV">Galeria</a>
+                            <a href="galeria">Galeria</a>
                         </li>
                     </ul>
                 </li>
