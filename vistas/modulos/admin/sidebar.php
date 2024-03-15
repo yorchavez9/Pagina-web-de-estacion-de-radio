@@ -33,13 +33,13 @@
         }
         ?>
         <li class="menu-label">Contenido</li>
-        <li>
+        <!-- <li>
             <a href="categorias">
                 <div class="parent-icon"><i class='bx bx-menu-alt-right'></i>
                 </div>
                 <div class="menu-title">Categorias</div>
             </a>
-        </li>
+        </li> -->
         <li>
             <a href="banners">
                 <div class="parent-icon"><i class='bx bx-flag'></i>
@@ -138,16 +138,31 @@
                 <div class="menu-title">Suscriptores</div>
             </a>
         </li>
+        <li class="menu-label">Publicidad</li>
+        <li>
+            <a href="anuncioa">
+                <div class="parent-icon"><i class="bx bx-news"></i>
+                </div>
+                <div class="menu-title">Anuncio 1</div>
+            </a>
+        </li>
+        <li>
+            <a href="anunciob">
+                <div class="parent-icon"><i class="bx bx-news"></i>
+                </div>
+                <div class="menu-title">Anuncio 2</div>
+            </a>
+        </li>
         <li class="menu-label">Sistema</li>
         <li>
-            <a href="https://codervent.com/rocker/documentation/index.html" target="_blank">
+            <a href="#" target="_blank">
                 <div class="parent-icon"><i class="bx bx-folder"></i>
                 </div>
                 <div class="menu-title">Documentación</div>
             </a>
         </li>
         <li>
-            <a href="https://themeforest.net/user/codervent" target="_blank">
+            <a href="#" target="_blank">
                 <div class="parent-icon"><i class="bx bx-support"></i>
                 </div>
                 <div class="menu-title">Soporte</div>

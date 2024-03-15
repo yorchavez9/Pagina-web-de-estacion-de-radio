@@ -160,5 +160,18 @@ create table suscriptores(
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
+create table anunciosa(
+    id_anuncioa int not null primary key auto_increment,
+    imagen varchar(255) not null,
+    estado int default 1,
+    fecha datetime default current_timestamp()
+)CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+
+create table anunciosb(
+    id_anunciob int not null primary key auto_increment,
+    imagen varchar(255) not null,
+    estado int default 1,
+    fecha datetime default current_timestamp()
+)CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

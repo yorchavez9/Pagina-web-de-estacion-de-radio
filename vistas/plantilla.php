@@ -32,6 +32,8 @@ if(isset($_SESSION["iniciarSesion"]) && ($_SESSION["iniciarSesion"] == "ok") && 
             $_GET["ruta"] == "datosContacto" ||
             $_GET["ruta"] == "mensajeContacto" ||
             $_GET["ruta"] == "suscriptor" ||
+            $_GET["ruta"] == "anuncioa" ||
+            $_GET["ruta"] == "anunciob" ||
             $_GET["ruta"] == "salir"
         ) {
 
@@ -70,7 +72,8 @@ if(isset($_SESSION["iniciarSesion"]) && ($_SESSION["iniciarSesion"] == "ok") && 
             $_GET["ruta"] == "eventos" || 
             $_GET["ruta"] == "galeria" ||
             $_GET["ruta"] == "detalleNoticia" ||
-            $_GET["ruta"] == "contactos"
+            $_GET["ruta"] == "contactos" ||
+            $_GET["ruta"] == "patrocinador"
           )
         {
             include "modulos/main/".$_GET["ruta"].".php";

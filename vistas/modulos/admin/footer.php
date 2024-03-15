@@ -4,5 +4,8 @@
 <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
 <!--End Back To Top Button-->
 <footer class="page-footer">
-    <p class="mb-0">Copyright © 2022. All right reserved.</p>
+    <?php
+    $año_actual = date("Y");
+    ?>
+    <p class="mb-0">Copyright © <?php echo $año_actual;?>. Todos los derechos reservados.</p>
 </footer>

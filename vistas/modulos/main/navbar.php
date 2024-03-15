@@ -53,7 +53,7 @@
                 
             </ul>
 
-            <a href="sponsor.html" class="btn btn-main mt-xl-0 mt-3 mx-2 rounded btn-sm">Patrocinador</a>
+            <a href="patrocinador" class="btn btn-main mt-xl-0 mt-3 mx-2 rounded btn-sm">Patrocinador</a>
             <a href="#" class="btn btn-main mt-xl-0 mt-3 rounded btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
         </div>
     </div>
