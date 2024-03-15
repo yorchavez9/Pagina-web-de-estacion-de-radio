@@ -74,6 +74,7 @@
 <!-- SCRIPT DE MODULOS -->
 <script src="vistas/js/detalleNoticia.js"></script>
 <script src="vistas/js/programacionDia.js"></script>
+<script src="vistas/js/programcionTVdia.js"></script>
 
 </body>
 
