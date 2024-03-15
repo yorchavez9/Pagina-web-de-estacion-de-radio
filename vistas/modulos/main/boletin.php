@@ -6,8 +6,12 @@
                 <h2 class="section-title">Suscríbete a nuestro boletín</h2>
                 <p class="subscribe-section-des">¡Suscríbete ahora para no perderte nada!</p>
                 <form class="subscribe-form" method="POST">
-                    <input type="email" name="correo" class="form-control" placeholder="Correo">
+                    <input type="email" name="correoBeletin" class="form-control" placeholder="Correo">
                     <button type="submit" class="btn btn-main">Subscribe</button>
+                    <?php 
+                    $newBoletin = new ControladorSuscriptor();
+                    $newBoletin->ctrCrearSuscriptor();
+                    ?>
                 </form>
             </div>
         </div>

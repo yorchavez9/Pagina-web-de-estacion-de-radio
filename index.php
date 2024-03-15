@@ -14,6 +14,7 @@ require_once "controladores/ProgramacionTV.controlador.php";
 require_once "controladores/RedesSociales.controladores.php";
 require_once "controladores/DatosContacto.controlador.php";
 require_once "controladores/MesajeContacto.controlador.php";
+require_once "controladores/Boletin.controlador.php";
 
 /* MODELOS */
 require_once "modelos/Usuario.modelo.php";
@@ -28,6 +29,7 @@ require_once "modelos/ProgramacionTV.modelo.php";
 require_once "modelos/RedesSociales.modelo.php";
 require_once "modelos/DatosContacto.modelo.php";
 require_once "modelos/MensajeContacto.modelo.php";
+require_once "modelos/Boletin.modelo.php";
 
 
 

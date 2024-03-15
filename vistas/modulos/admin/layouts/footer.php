@@ -180,6 +180,7 @@
 <script src="vistas/js/script-redesSociales.js"></script>
 <script src="vistas/js/datosContacto.js"></script>
 <script src="vistas/js/mensajeContacto.js"></script>
+<script src="vistas/js/botelin.js"></script>
 
 </body>
 

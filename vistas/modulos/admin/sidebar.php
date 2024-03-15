@@ -132,7 +132,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="suscriptor">
                 <div class="parent-icon"><i class="bx bx-user-plus"></i>
                 </div>
                 <div class="menu-title">Suscriptores</div>

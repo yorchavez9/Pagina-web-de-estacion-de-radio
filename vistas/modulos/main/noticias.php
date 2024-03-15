@@ -54,20 +54,7 @@ date_default_timezone_set('America/Lima');
     <!-- blog section end -->
 
     <!-- subscribe section start -->
-    <section class="subscribe-section" style="background-image: url('vistas/dist/main/assets/images/bg/subscribe.jpg');">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xxl-6 col-lg-8 text-center">
-                    <h2 class="section-title">Subscribe Our Newsletter</h2>
-                    <p class="subscribe-section-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <form class="subscribe-form">
-                        <input type="email" name="#0" class="form-control" placeholder="Email">
-                        <button type="submit" class="btn btn-main">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php include "boletin.php"?>
     <!-- subscribe section end -->
 
 </main><!-- site-body end -->

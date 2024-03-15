@@ -1,23 +1,8 @@
 <main class="site-body">
-    <!-- page banner start -->
-    <section class="inner-page-banner" style="background-image: url('assets/images/bg/inner-page-banner.jpg');">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="inner-page-title text-white">Videos</h2>
-                    <ul class="page-breadcrumb">
-                        <li><a href="inicio">Inicio</a></li>
-                        <li>Videos</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- page banner end -->
 
     <!-- blog section start -->
     <section class="pt-120 pb-120 section-bg">
-        <div class="container">
+        <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-top">
