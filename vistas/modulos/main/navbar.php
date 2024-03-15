@@ -29,10 +29,10 @@
                     <a href="#0">Actividades</a>
                     <ul class="sub-menu">
                         <li class="menu-item">
-                            <a href="programacionRadial">Ranking</a>
+                            <a href="ranking">Ranking</a>
                         </li>
                         <li class="menu-item">
-                            <a href="programacionTV">Eventos</a>
+                            <a href="eventos">Eventos</a>
                         </li>
                     </ul>
                 </li>
