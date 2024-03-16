@@ -161,7 +161,7 @@ setlocale(LC_TIME, "es_ES");
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bx bx-x"></i>Cerrar</button>
-                    <button type="submit" class="btn btn-primary"><i class="bx bx-save"></i>Guardar</button>
+                    <button type="submit" class="btn btn-primary"><i class="bx bx-refresh"></i>Guardar</button>
                 </div>
                 <?php
                 $editarAnuncioA = new ControladorAnuncioA();
