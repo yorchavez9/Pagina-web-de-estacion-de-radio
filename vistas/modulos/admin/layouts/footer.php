@@ -135,6 +135,7 @@
 <script src="vistas/js/datosContacto.js"></script>
 <script src="vistas/js/mensajeContacto.js"></script>
 <script src="vistas/js/botelin.js"></script>
+<script src="vistas/js/anuncioa.js"></script>
 
 </body>
 
