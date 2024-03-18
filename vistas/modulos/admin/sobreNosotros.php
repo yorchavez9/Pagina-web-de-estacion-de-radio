@@ -7,6 +7,7 @@ $valor = null;
 $sobreNosotros = ControladorSobreNosotros::ctrMostrarSobreNosotros($item, $valor);
 $totalRegistro = count($sobreNosotros);
 ?>
+
 <div class="page-wrapper">
     <div class="page-content">
         <!--breadcrumb-->
@@ -53,8 +54,8 @@ $totalRegistro = count($sobreNosotros);
                             ?>
                                 <tr>
                                     <td class="align-middle"><?php echo $key + 1 ?></td>
-                                    <td class="align-middle" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><?php echo $value["titulo"] ?></td>
-                                    <td class="align-middle"><?php echo $value["descripcion"] ?></td>
+                                    <td class="align-middle text-wrap" style="word-break: break-word;"><?php echo $value["titulo"] ?></td>
+                                    <td class="align-middle text-wrap" style="word-break: break-word;"><?php echo $value["descripcion"] ?></td>
                                     <td class="align-middle">
                                         <div class="text-center align-middle">
                                             <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarSobreNosotros" idSobreNosotros="<?php echo $value["id_sobre_nosotros"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarSobreNosotros"><i class="bx bx-edit"></i></a>
