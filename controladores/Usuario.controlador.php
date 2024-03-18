@@ -41,6 +41,22 @@ class ControladorUsuario
                                 window.location = "inicio";
                                </script>';
                     }
+                }else{
+                    echo
+                    '<script>
+        
+                        Swal.fire({
+                            icon: "error",
+                            title: "¡Los datos son incorrectos!",
+                            showConfirmButton: true,
+                            confirmButtonText: "Ok"
+                        }).then(function(result){
+                            if(result.value){
+                                window.location = "inicio";
+                            }
+                        });
+        
+                    </script>';
                 }
             } else {
                 echo
