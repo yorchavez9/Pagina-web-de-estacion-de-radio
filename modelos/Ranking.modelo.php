@@ -25,7 +25,7 @@ class ModeloRanking
             return $stmt->fetch();
         } else {
 
-            $stmt = $conexion->prepare("SELECT * FROM $tabla");
+            $stmt = $conexion->prepare("SELECT * FROM $tabla ORDER BY id_ranking DESC");
 
             $stmt->execute();
 
