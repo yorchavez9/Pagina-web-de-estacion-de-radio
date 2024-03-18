@@ -11,7 +11,7 @@ foreach ($banners as $key => $value) {
     <div class="container">
         <div class="row align-items-center justify-content-end">
             <div class="col-lg-6 text-lg-end text-center">
-                <h2 class="banner-title">Escuchar FM. <span>92.7</span></h2>
+                <h2 class="banner-title">Ke Buena<span>Escuchar FM. 92.7</span></h2>
                 <p class="banner-details">¡La radio que une, entretiene y lleva buena energía.!</p>
             </div>
         </div><!-- row end -->

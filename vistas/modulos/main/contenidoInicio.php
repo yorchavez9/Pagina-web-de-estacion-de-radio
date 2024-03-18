@@ -13,17 +13,13 @@ if ($countAnuncio1 > 0) {
         <div class="container-fluid">
             <div class="sponsor-slider">
 
-                <?php
-                foreach ($anuncio1 as $key => $value) {
-                ?>
+                <?php foreach ($anuncio1 as $key => $value) { ?>
                     <div class="single-slide mx-1">
-                        <div class="sponsor-item">
+                        <div class="">
                             <img src="<?php echo $value["imagen"] ?>" alt="image">
                         </div>
                     </div>
-                <?php
-                }
-                ?>
+                <?php } ?>
 
             </div>
         </div>
@@ -343,26 +339,26 @@ $valor = null;
 
 $anuncio2 = ControladorAnuncioB::ctrMostrarAnuncioB($item, $valor);
 $totalAnuncio = count($anuncio2);
-if($totalAnuncio > 0){
+if ($totalAnuncio > 0) {
 ?>
-<section class="pt-120 pb-120 section-bg overflow-hidden">
-    <div class="container">
-        
-        <div class="testimonial-slider">
-            <?php
-            foreach ($anuncio2 as $key => $value) {
-            ?>
-            <div class="single-slide">
-                <div class="testimonial-item">
-                    <img src="<?php echo $value["imagen"]?>" alt="image">
-                </div>
-            </div><!-- single-slide end -->
-            <?php 
-            }
-            ?>
+    <section class="pt-120 pb-120 section-bg overflow-hidden">
+        <div class="container">
+
+            <div class="testimonial-slider">
+                <?php
+                foreach ($anuncio2 as $key => $value) {
+                ?>
+                    <div class="single-slide">
+                        <div class="testimonial-item">
+                            <img src="<?php echo $value["imagen"] ?>" alt="image">
+                        </div>
+                    </div><!-- single-slide end -->
+                <?php
+                }
+                ?>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 <?php
 }
 ?>
@@ -457,3 +453,22 @@ SECCION DE ULTIMAS NOTICIAS
         </div>
     </div>
 </section>
+
+
+<!-- =================================
+SCRIPT
+================================= -->
+
+<script>
+    $(document).ready(function(){
+        $('.sponsor-slider').slick({
+            autoplay: true, // Slider se reproduce automáticamente
+            autoplaySpeed: 2000, // Velocidad del slider en milisegundos
+            arrows: false, // Oculta las flechas de navegación
+            dots: true, // Muestra los puntos de navegación
+            infinite: true, // Habilita el desplazamiento infinito del slider
+            slidesToShow: 3, // Número de diapositivas que se muestran al mismo tiempo
+            slidesToScroll: 1 // Número de diapositivas que se desplazan al mismo tiempo
+        });
+    });
+</script>

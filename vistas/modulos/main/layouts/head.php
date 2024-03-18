@@ -24,6 +24,8 @@
   <!-- alert Sweetalert2 -->
   <link rel="stylesheet" href="vistas/dist/sweetalert2/dist/sweetalert2.min.css">
   <script src="vistas/dist/sweetalert2/dist/sweetalert2.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 
 </head>
