@@ -60,16 +60,16 @@ class ControladorSobreNosotros
     static public function ctrEditarSobreNosotros()
     {
 
-        if (isset($_POST["id_evento"])) {
+        if (isset($_POST["id_sobre_nosotros"])) {
 
 
             $tabla = "sobrenosotros";
 
 
             $datos = array(
-                "id_evento" => $_POST["id_evento"],
+                "id_sobre_nosotros" => $_POST["id_sobre_nosotros"],
                 "titulo" => $_POST["editTitulo"],
-                "fecha" => $_POST["editFecha"]
+                "descripcion" => $_POST["editDescripcion"]
             );
 
             $respuesta = ModeloSobreNosotros::mdlEditarSobreNosotros($tabla, $datos);
@@ -80,7 +80,7 @@ class ControladorSobreNosotros
     
                         Swal.fire({
                               icon: "success",
-                              title: "¡La noticia fue actualizado con éxito!",
+                              title: "¡Los datos fue actualizado con éxito!",
                               showConfirmButton: true,
                               confirmButtonText: "Cerrar"
                               }).then(function(result) {
@@ -102,17 +102,10 @@ class ControladorSobreNosotros
 
     static public function ctrBorrarSobreNosotros(){
 
-		if(isset($_GET["idEvento"])){
+		if(isset($_GET["idSobreNosotros"])){
 
-			$tabla ="eventos";
-			$datos = $_GET["idEvento"];
-
-			if($_GET["imagen"] != ""){
-
-				unlink($_GET["imagen"]);
-				rmdir($_GET["imagen"]);
-
-			}
+			$tabla ="sobrenosotros";
+			$datos = $_GET["idSobreNosotros"];
 
 			$respuesta = ModeloSobreNosotros::mdlBorrarSobreNosotros($tabla, $datos);
 
@@ -122,7 +115,7 @@ class ControladorSobreNosotros
 
 				Swal.fire({
 					  icon: "success",
-					  title: "El evento ha sido borrado correctamente",
+					  title: "Los datos fueron borrados",
 					  showConfirmButton: true,
 					  confirmButtonText: "Cerrar",
 					  closeOnConfirm: false

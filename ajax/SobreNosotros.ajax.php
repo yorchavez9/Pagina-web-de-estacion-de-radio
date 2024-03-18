@@ -1,79 +1,43 @@
 <?php
-require_once "../controladores/Evento.controlador.php";
-require_once "../modelos/Evento.modelo.php";
+require_once "../controladores/SobreNosotros.controlador.php";
+require_once "../modelos/SobreNosotros.modelo.php";
 
-class AjaxEvento
+class AjaxSobreNosotros
 {
 
     /* ===========================
-    EDITAR EVENTO
+    EDITAR SOBRE NOSOTROS
     =========================== */
 
-    public $idEvento;
+    public $idSobreNosotros;
 
-    public function ajaxEditarEvento()
+    public function ajaxEditarSobreNosotros()
     {
 
-        $item = "id_evento";
-        $valor = $this->idEvento;
+        $item = "id_sobre_nosotros";
+        $valor = $this->idSobreNosotros;
 
-        $respuesta = ControladorEvento::ctrMostrarEvento($item, $valor);
+        $respuesta = ControladorSobreNosotros::ctrMostrarSobreNosotros($item, $valor);
 
 
         echo json_encode($respuesta);
 
     }
 
-    /* ===========================
-    ACTIVAR EVENTO
-    =========================== */
-
-    public $activarEvento;
-    public $activarId;
-
-    public function ajaxactivarEvento()
-    {
-
-        $tabla = "eventos";
-
-        $item1 = "estado";
-        $valor1 = $this->activarEvento;
-
-        $item2 = "id_evento";
-        $valor2 = $this->activarId;
-
-        $respuesta = ModeloEvento::mdlActualizarEvento($tabla, $item1, $valor1, $item2, $valor2);
-
-    }
-
-
 }
 
 /* ===========================
- EDITAR EVENTO
+ EDITAR SOBRE NOSOTROS
 =========================== */
 
-if(isset($_POST["idEvento"]))
+if(isset($_POST["idSobreNosotros"]))
 {
 
-    $editar = new AjaxEvento();
-    $editar->idEvento = $_POST["idEvento"];
-    $editar->ajaxEditarEvento();
+    $editar = new AjaxSobreNosotros();
+    $editar->idSobreNosotros = $_POST["idSobreNosotros"];
+    $editar->ajaxEditarSobreNosotros();
 
 }
 
-/* ===========================
- ACTIVAR EVENTO
-=========================== */
-
-if(isset($_POST["activarEvento"]))
-{
-
-    $activarEvento = new AjaxEvento();
-    $activarEvento->activarEvento = $_POST["activarEvento"];
-    $activarEvento->activarId = $_POST["activarId"];
-    $activarEvento->ajaxactivarEvento();
-
-}
 
 ?>

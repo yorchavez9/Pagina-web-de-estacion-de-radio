@@ -57,27 +57,6 @@ class ModeloSobreNosotros
 
     }
 
-    /* ==========================
-    ACTUALIZAR SIBRE NOSOTROS
-    ========================== */
-
-    static public function mdlActualizarSobreNosotros($tabla, $item1, $valor1, $item2, $valor2)
-    {
-
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
-
-        $stmt->bindParam(":" . $item1, $valor1, PDO::PARAM_STR);
-        $stmt->bindParam(":" . $item2, $valor2, PDO::PARAM_STR);
-
-        if ($stmt->execute()) {
-
-            return "ok";
-        } else {
-
-            return "error";
-        }
-
-    }
 
     /* ==========================
     EDITAR SOBRE NOSOTROS
@@ -88,16 +67,14 @@ class ModeloSobreNosotros
 
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET
                                                                 titulo = :titulo,
-                                                                descripcion = :descripcion,
-                                                                fecha = :fecha
+                                                                descripcion = :descripcion
                                                             WHERE 
-                                                                id_evento = :id_evento
+                                                                id_sobre_nosotros = :id_sobre_nosotros
                                                             ");
 
         $stmt->bindParam(":titulo", $datos["titulo"], PDO::PARAM_STR);
         $stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-        $stmt->bindParam(":fecha", $datos["fecha"], PDO::PARAM_STR);
-        $stmt->bindParam(":id_evento", $datos["id_evento"], PDO::PARAM_INT);
+        $stmt->bindParam(":id_sobre_nosotros", $datos["id_sobre_nosotros"], PDO::PARAM_INT);
  
 
         if ($stmt->execute()) {
@@ -117,9 +94,9 @@ class ModeloSobreNosotros
     static public function mdlBorrarSobreNosotros($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_evento = :id_evento");
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_sobre_nosotros = :id_sobre_nosotros");
 
-		$stmt -> bindParam(":id_evento", $datos, PDO::PARAM_INT);
+		$stmt -> bindParam(":id_sobre_nosotros", $datos, PDO::PARAM_INT);
 
 		if($stmt -> execute()){
 

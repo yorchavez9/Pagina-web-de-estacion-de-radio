@@ -25,7 +25,7 @@ $totalRegistro = count($sobreNosotros);
         <!--end breadcrumb-->
         <div>
             <?php
-            if($totalRegistro < 0){
+            if($totalRegistro <= 0){
             ?>
             <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#modalNuevoSobreNosotros"><i class="bx bx-plus"></i>Ingresar datos sobre nosotros</button>
             <?php
@@ -43,49 +43,22 @@ $totalRegistro = count($sobreNosotros);
                             <tr>
                                 <th>N°</th>
                                 <th class="text-center">Título</th>
-                                <th class="text-center">Imagen</th>
-                                <th class="text-center">Fecha</th>
-                                <th class="text-center">Estado</th>
+                                <th class="text-center">Descripción</th>
                                 <th class="text-center">Acción</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $item = null;
-                            $valor = null;
-
-                            $eventos = ControladorEvento::ctrMostrarEvento($item, $valor);
-                            foreach ($eventos as $key => $value) {
+                             foreach ($sobreNosotros as $key => $value) {
                             ?>
                                 <tr>
                                     <td class="align-middle"><?php echo $key + 1 ?></td>
                                     <td class="align-middle" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><?php echo $value["titulo"] ?></td>
-                                    <td class="text-center align-middle">
-                                        <?php
-
-                                        if ($value["imagen"] != null) {
-
-                                            echo '<img src="' . $value["imagen"] . '" alt="" width="300" height="150">';
-                                        } else {
-                                            echo '<img src="vistas/img/banner/defualt.png" alt="">';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="align-middle"><?php echo $value["fecha"] ?></td>
-                                    <?php
-                                    if ($value["estado"] == 1) {
-
-                                        echo '<td class="text-center align-middle"><button class="btn btn-success btn-sm rounded btnActivar" idEvento="' . $value["id_evento"] . '" estadoEvento="0">Activado</button></td>';
-                                    } else {
-
-                                        echo '<td class="text-center align-middle"><button class="btn btn-danger btn-sm rounded btnActivar" idEvento="' . $value["id_evento"] . '" estadoEvento="1">Desactivado</button></td>';
-                                    }
-                                    ?>
+                                    <td class="align-middle"><?php echo $value["descripcion"] ?></td>
                                     <td class="align-middle">
                                         <div class="text-center align-middle">
-                                            <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarEvento" idEvento="<?php echo $value["id_evento"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarSobreNosotros"><i class="bx bx-edit"></i></a>
-                                            <a href="#" class="btn btn-success rounded btn-sm" data-bs-toggle="modal" data-bs-target="#modalVerEvento<?php echo $value["id_evento"] ?>"><i class="bx bx-show"></i></a>
-                                            <a href="#" class="btn btn-danger rounded btn-sm btnEliminarEvento" idEvento="<?php echo $value["id_evento"] ?>" imagen="<?php echo $value["imagen"] ?>"><i class="bx bx-trash"></i></a>
+                                            <a href="#" class="btn btn-warning rounded btn-sm me-1 btnEditarSobreNosotros" idSobreNosotros="<?php echo $value["id_sobre_nosotros"] ?>" data-bs-toggle="modal" data-bs-target="#modalEditarSobreNosotros"><i class="bx bx-edit"></i></a>
+                                            <a href="#" class="btn btn-danger rounded btn-sm btnEliminarSobreNosotros" idSobreNosotros="<?php echo $value["id_sobre_nosotros"] ?>"><i class="bx bx-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -97,9 +70,7 @@ $totalRegistro = count($sobreNosotros);
                             <tr>
                                 <th>N°</th>
                                 <th class="text-center">Título</th>
-                                <th class="text-center">Imagen</th>
-                                <th class="text-center">Fecha</th>
-                                <th class="text-center">Estado</th>
+                                <th class="text-center">Descripción</th>
                                 <th class="text-center">Acción</th>
                             </tr>
                         </tfoot>
@@ -165,18 +136,18 @@ $totalRegistro = count($sobreNosotros);
                 <div class="modal-body">
 
                     <!-- id --> 
-                    <input type="text" name="id_sobre_nosotros" id="id_sobre_nosotros">
+                    <input type="hidden" name="id_sobre_nosotros" id="id_sobre_nosotros">
 
                     <!-- titulo -->
                     <div class="form-group">
                         <label for="titulo" class="form-label">Ingrese el título (<span class="text-danger">*</span>)</label>
-                        <input type="text" name="titulo" class="form-control" placeholder="Ingrese el título" required>
+                        <input type="text" name="editTitulo" id="editTitulo" class="form-control" placeholder="Ingrese el título" required>
                     </div>
 
                     <!-- Descripcion -->
                     <div class="form-group">
                         <label for="descripcion" class="form-control">Ingrese la descripción (<span class="text-danger">*</span>)</label>
-                        <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="Ingrese la descripción" required></textarea>
+                        <textarea name="editDescripcion" id="editDescripcion" cols="30" rows="10" class="form-control" placeholder="Ingrese la descripción" required></textarea>
                     </div>
 
                 </div>
@@ -185,8 +156,8 @@ $totalRegistro = count($sobreNosotros);
                     <button type="submit" class="btn btn-primary"><i class="bx bx-save"></i>Guardar</button>
                 </div>
                 <?php
-                $crearEvento = new ControladorEvento();
-                $crearEvento->ctrCrearEvento();
+                $editarSobreNosotros = new ControladorSobreNosotros();
+                $editarSobreNosotros->ctrEditarSobreNosotros();
                 ?>
             </form>
         </div>
@@ -198,6 +169,6 @@ $totalRegistro = count($sobreNosotros);
 <!-- BORRAR SOBRE NOSOTROS -->
 
 <?php
-$borrarEvento = new ControladorEvento();
-$borrarEvento->ctrBorrarEvento();
+$borrarSobreNosotros = new ControladorSobreNosotros();
+$borrarSobreNosotros->ctrBorrarSobreNosotros();
 ?>
