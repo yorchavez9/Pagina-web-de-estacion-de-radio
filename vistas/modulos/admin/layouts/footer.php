@@ -137,6 +137,7 @@
 <script src="vistas/js/botelin.js"></script>
 <script src="vistas/js/anuncioa.js"></script>
 <script src="vistas/js/anunciob.js"></script>
+<script src="vistas/js/sobreNosotros.js"></script>
 
 </body>
 

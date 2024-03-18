@@ -33,13 +33,6 @@
         }
         ?>
         <li class="menu-label">Contenido</li>
-        <!-- <li>
-            <a href="categorias">
-                <div class="parent-icon"><i class='bx bx-menu-alt-right'></i>
-                </div>
-                <div class="menu-title">Categorias</div>
-            </a>
-        </li> -->
         <li>
             <a href="banners">
                 <div class="parent-icon"><i class='bx bx-flag'></i>
@@ -115,6 +108,13 @@
                 <div class="parent-icon"><i class="bx bx-envelope"></i>
                 </div>
                 <div class="menu-title">Datos de contacto</div>
+            </a>
+        </li>
+        <li>
+            <a href="sobreNosotros">
+                <div class="parent-icon"><i class="bx bx-envelope"></i>
+                </div>
+                <div class="menu-title">Sobre nosotros</div>
             </a>
         </li>
         <li>

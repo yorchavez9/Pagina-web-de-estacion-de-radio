@@ -175,3 +175,10 @@ create table anunciosb(
     fecha datetime default current_timestamp()
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+
+create table sobreNosotros(
+    id_sobre_nosotros int not null primary key auto_increment,
+    titulo varchar(255) not null,
+    descripcion text not null,
+    fecha datetime default current_timestamp()
+)CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
