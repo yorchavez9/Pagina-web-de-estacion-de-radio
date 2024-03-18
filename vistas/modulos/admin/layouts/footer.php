@@ -139,6 +139,7 @@
 <script src="vistas/js/anunciob.js"></script>
 <script src="vistas/js/script-sobreNosotros.js"></script>
 <script src="vistas/js/patrocinador.js"></script>
+<script src="vistas/js/ranking.js"></script>
 
 </body>
 
