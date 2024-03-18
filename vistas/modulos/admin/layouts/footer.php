@@ -138,6 +138,7 @@
 <script src="vistas/js/anuncioa.js"></script>
 <script src="vistas/js/anunciob.js"></script>
 <script src="vistas/js/script-sobreNosotros.js"></script>
+<script src="vistas/js/patrocinador.js"></script>
 
 </body>
 

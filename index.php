@@ -18,6 +18,7 @@ require_once "controladores/Boletin.controlador.php";
 require_once "controladores/Anuncioa.controlador.php";
 require_once "controladores/Anunciob.controlador.php";
 require_once "controladores/SobreNosotros.controlador.php";
+require_once "controladores/Patrocinador.controlador.php";
 
 /* MODELOS */
 require_once "modelos/Usuario.modelo.php";
@@ -36,7 +37,7 @@ require_once "modelos/Boletin.modelo.php";
 require_once "modelos/Anuncioa.modelo.php";
 require_once "modelos/Anunciob.modelo.php";
 require_once "modelos/SobreNosotros.modelo.php";
-
+require_once "modelos/Patrocinador.modelo.php";
 
 
 /* INICIANDO PLANTILLA */

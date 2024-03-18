@@ -1,34 +1,103 @@
-<!-- about section start -->
-<section class="pt-120 pb-120 section-bg overflow-hidden">
-    <div class="container">
-        <div class="row gy-5 align-items-center justify-content-between">
-            <div class="col-lg-6">
-                <div class="about-thumb-wrapper-two">
-                    <img src="vistas/dist/main/assets/images/about/left-img2.jpg" alt="image">
-                    <img src="vistas/dist/main/assets/images/about/about-circle2.png" alt="image" class="about-thumb-circle">
+<!-- =========================================
+SECCION DE SOBRE NOSOTROS
+========================================= -->
+
+<?php
+$item = null;
+$valor = null;
+
+$sobreNosotros = ControladorSobreNosotros::ctrMostrarSobreNosotros($item, $valor);
+$countSobreNosotros = count($sobreNosotros);
+if ($countSobreNosotros > 0) {
+?>
+    <section class="pt-120 pb-120 section-bg overflow-hidden">
+        <div class="container">
+            <div class="row gy-5 align-items-center justify-content-between">
+                <div class="col-lg-6">
+                    <div class="about-thumb-wrapper-two">
+                        <img src="vistas/dist/main/assets/images/about/left-img2.jpg" alt="image">
+                        <img src="vistas/dist/main/assets/images/about/about-circle2.png" alt="image" class="about-thumb-circle">
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-6">
+                    <div class="about-content">
+                        <span class="top-title">Sobre nosotros</span>
+                        <?php
+                        foreach ($sobreNosotros as $key => $value) {
+                        ?>
+                            <h2 class="section-title"><?php echo $value["titulo"] ?></h2>
+                            <p>
+                                <?php
+                                $descripcion = $value["descripcion"];
+                                $palabras = explode(' ', $descripcion);
+                                $limite_palabras = 60;
+
+                                // Verificar si la cantidad de palabras excede el límite
+                                if (count($palabras) > $limite_palabras) {
+                                    // Cortar el arreglo de palabras para incluir solo las primeras 60 palabras
+                                    $palabras = array_slice($palabras, 0, $limite_palabras);
+                                    // Unir las palabras nuevamente en una cadena
+                                    $descripcion_recortada = implode(' ', $palabras);
+                                    echo $descripcion_recortada . '...';
+                                } else {
+                                    echo $descripcion;
+                                }
+                                ?>
+                            </p>
+
+                            <a href="#" class="btn btn-main" data-bs-toggle="modal" data-bs-target="#modalSobreNosotros<?php echo $value["id_sobre_nosotros"] ?>">Ver más</a>
+                        <?php
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
-            <div class="col-xl-5 col-lg-6">
-                <div class="about-content">
-                    <span class="top-title">Sobre nosotros</span>
-                    <h2 class="section-title">Mejor Música FM Tu Lestening</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aliquam sed, quod molestiae illo accusamus necessitatibus error tempore veritatis atque dolore quisquam perferendis hic. Deleniti, rem. Voluptatem nesciunt beatae aspernatur.</p>
-                    <a href="about.html" class="btn btn-main">Ver más</a>
+        </div>
+    </section>
+<?php
+}
+?>
+
+<!-- ===============================
+MODAL SOBRE NOSOTROS
+=============================== -->
+<?php
+foreach ($sobreNosotros as $key => $value) {
+?>
+    <div class="modal fade" id="modalSobreNosotros<?php echo $value["id_sobre_nosotros"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #071126">
+                <div class="d-flex justify-content-between m-3">
+                    <button type="button" class="btn ms-auto p-1 btn-sm rounded-circle fw-bold" style="color: #66FCF1" data-bs-dismiss="modal" aria-label="Close">X</button>
+                </div>
+                <div class="text-center">
+                    <h5 class="modal-title text-white" id="exampleModalLabel"><?php echo $value["titulo"] ?></h5>
+                </div>
+                <div>
+                    <div class="m-4">
+                        <p><?php echo $value["descripcion"] ?></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- about section end -->
+<?php
+}
+?>
 
-<!-- podcast section start -->
+
+<!-- ====================================
+SECCION DE PROGRAMACION
+==================================== -->
+
 <section class="pt-120 pb-120 overflow-hidden">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-6 text-center">
+            <div class="col-lg-8 text-center">
                 <div class="section-top">
                     <span class="top-title">Espectáculo en vivo</span>
-                    <h2 class="section-title">Programación de podcasts</h2>
+                    <h2 class="section-title">Programación radial</h2>
+
                 </div>
             </div>
         </div> <!-- row end -->
@@ -36,1198 +105,65 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="tab-content" id="myTabContent">
+
                     <div class="tab-pane fade show active" id="day1-tab-pane" role="tabpanel" aria-labelledby="day1-tab" tabindex="0">
                         <div class="podcast-slider-two">
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s3.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s3.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s4.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s4.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s5.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s5.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s6.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s6.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                        </div><!-- podcast-slider end-->
-                    </div>
-                    <div class="tab-pane fade" id="day2-tab-pane" role="tabpanel" aria-labelledby="day2-tab" tabindex="0">
-                        <div class="podcast-slider-two">
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s3.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s3.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s4.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s4.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s5.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s5.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s6.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s6.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                        </div><!-- podcast-slider end-->
-                    </div>
-                    <div class="tab-pane fade" id="day3-tab-pane" role="tabpanel" aria-labelledby="day3-tab" tabindex="0">
-                        <div class="podcast-slider-two">
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s3.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s3.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s4.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s4.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s5.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s5.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s6.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s6.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                        </div><!-- podcast-slider end-->
-                    </div>
-                    <div class="tab-pane fade" id="day4-tab-pane" role="tabpanel" aria-labelledby="day4-tab" tabindex="0">
-                        <div class="podcast-slider-two">
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s3.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s3.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s4.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s4.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s5.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s5.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s6.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s6.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                        </div><!-- podcast-slider end-->
-                    </div>
-                    <div class="tab-pane fade" id="day5-tab-pane" role="tabpanel" aria-labelledby="day5-tab" tabindex="0">
-                        <div class="podcast-slider-two">
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s3.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s3.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s4.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s4.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s5.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s5.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s6.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s6.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                        </div><!-- podcast-slider end-->
-                    </div>
-                    <div class="tab-pane fade" id="day6-tab-pane" role="tabpanel" aria-labelledby="day6-tab" tabindex="0">
-                        <div class="podcast-slider-two">
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s3.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s3.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s4.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s4.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s5.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s5.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s6.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s6.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                        </div><!-- podcast-slider end-->
-                    </div>
-                    <div class="tab-pane fade" id="day7-tab-pane" role="tabpanel" aria-labelledby="day7-tab" tabindex="0">
-                        <div class="podcast-slider-two">
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s3.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s3.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s4.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s4.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s5.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s5.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s6.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s6.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s1.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s1.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                            <div class="single-slide">
-                                <div class="podcast-item style-two link-item">
-                                    <a href="show-details.html" class="full-link"></a>
-                                    <div class="podcast-item-thumb">
-                                        <img src="vistas/dist/main/assets/images/shows/podcast/s2.jpg" alt="image">
-                                        <div class="thumb-content">
-                                            <p>09:00-10:AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="podcast-item-content">
-                                        <div class="artist-thumb">
-                                            <img src="vistas/dist/main/assets/images/artist/s2.jpg" alt="image">
-                                        </div>
-                                        <div class="artist-content">
-                                            <h5 class="show-name">Music of Pop</h5>
-                                            <p class="artist-name">RJ Janeski</p>
-                                        </div>
-                                    </div>
-                                </div><!-- podcast-item end -->
-                            </div>
-                        </div><!-- podcast-slider end-->
-                    </div>
-                </div><!-- tab-content end -->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- podcast section end -->
+                            <?php
 
-<!-- upcoming section start -->
-<section class="upcoming-section pt-120 pb-120">
-    <div class="container">
-        <div class="row justify-content-end gy-4">
-            <div class="col-lg-6">
-                <div class="upcoming-section-thumb">
-                    <img src="vistas/dist/main/assets/images/bg/upcoming.jpg" alt="image">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="upcoming-content">
-                    <span class="top-title">Próximo espectáculo</span>
-                    <h2 class="section-title">Evento de vida musical</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue maecenas commodo mollis sagittis
-                        quisque.
-                    </p>
-                    <div class="show-rj">
-                        <div class="show-rj-thumb">
-                            <img src="vistas/dist/main/assets/images/shows/show-rj.jpg" alt="image">
-                        </div>
-                        <div class="show-rj-content">
-                            <h4 class="show-rj-name">RJ Merino</h4>
-                            <p>09AM To 10PM</p>
+                            setlocale(LC_TIME, 'spanish');
+                            $dia_actual = ucfirst(mb_strtolower(strftime('%A')));
+
+                            $item = null;
+                            $valor = null;
+
+                            $programaciones = ControladorProgramacionRadial::ctrMostrarProgramacionRadial($item, $valor);
+                            foreach ($programaciones as $key => $value) {
+                                if ($value["dia"] == $dia_actual) {
+                            ?>
+                                    <div class="single-slide">
+                                        <div class="podcast-item style-two link-item">
+                                            <a href="#" class="full-link"></a>
+                                            <div class="podcast-item-thumb">
+                                                <img src="<?php echo $value["imagen"] ?>" alt="image">
+                                                <div class="thumb-content">
+                                                    <p><?php echo $value["hora"] ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="podcast-item-content">
+                                                <div class="artist-thumb">
+                                                    <img src="<?php echo $value["imagen"] ?>" alt="image">
+                                                </div>
+                                                <div class="artist-content">
+                                                    <h5 class="show-name"><?php echo $value["titulo"] ?></h5>
+                                                    <p class="artist-name"><?php echo $value["nombre"] ?></p>
+                                                </div>
+                                            </div>
+                                        </div><!-- podcast-item end -->
+                                    </div>
+                            <?php
+                                }
+                            }
+                            ?>
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- upcoming section end -->
 
-<!-- previous show section start -->
+
+
+
+<!-- ======================================
+ESPECTÁCULOS ANTERIORES (AYER)
+====================================== -->
 <section class="previous-show-section pt-120 pb-120 overflow-hidden" style="background-image: url('vistas/dist/main/assets/images/bg/previous-show.jpg');">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-6 text-center">
+            <div class="col-lg-8 text-center">
                 <div class="section-top">
                     <span class="top-title">Ayer</span>
                     <h2 class="section-title">Espectáculos anteriores </h2>
@@ -1236,170 +172,98 @@
         </div><!-- row end -->
     </div>
     <div class="previous-show-slider">
-        <div class="single-slide">
-            <div class="show-item style-two">
-                <div class="thumb">
-                    <img src="vistas/dist/main/assets/images/shows/previous/4.jpg" alt="image">
-                </div>
-                <audio controls src="vistas/dist/main/assets/audio/main.mp3" class="style-two"></audio>
-                <div class="show-item-content">
-                    <div class="show-item-top">
-                        <h5 class="show-item-top-title">“Music Of Life”</h5>
-                        <span class="show-item-duration">24min</span>
-                    </div>
-                    <div class="artist-thumb">
-                        <img src="vistas/dist/main/assets/images/artist/1.jpg" alt="image">
-                    </div>
-                    <div class="artist-content">
-                        <h5 class="show-name">Life Music</h5>
-                        <p class="artist-name">Rj Movin</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-slide">
-            <div class="show-item style-two">
-                <div class="thumb">
-                    <img src="vistas/dist/main/assets/images/shows/previous/6.jpg" alt="image">
-                </div>
-                <audio controls src="vistas/dist/main/assets/audio/main.mp3" class="style-two"></audio>
-                <div class="show-item-content">
-                    <div class="show-item-top">
-                        <h5 class="show-item-top-title">“Music Of Life”</h5>
-                        <span class="show-item-duration">24min</span>
-                    </div>
-                    <div class="artist-thumb">
-                        <img src="vistas/dist/main/assets/images/artist/2.jpg" alt="image">
-                    </div>
-                    <div class="artist-content">
-                        <h5 class="show-name">Music Artist Podcast</h5>
-                        <p class="artist-name">Rj Sonai</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-slide">
-            <div class="show-item style-two">
-                <div class="thumb">
-                    <img src="vistas/dist/main/assets/images/shows/previous/7.jpg" alt="image">
-                </div>
-                <audio controls src="vistas/dist/main/assets/audio/main.mp3" class="style-two"></audio>
-                <div class="show-item-content">
-                    <div class="show-item-top">
-                        <h5 class="show-item-top-title">“Music Of Life”</h5>
-                        <span class="show-item-duration">24min</span>
-                    </div>
-                    <div class="artist-thumb">
-                        <img src="vistas/dist/main/assets/images/artist/3.jpg" alt="image">
-                    </div>
-                    <div class="artist-content">
-                        <h5 class="show-name">Music World</h5>
-                        <p class="artist-name">Rj Josino</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-slide">
-            <div class="show-item style-two">
-                <div class="thumb">
-                    <img src="vistas/dist/main/assets/images/shows/previous/6.jpg" alt="image">
-                </div>
-                <audio controls src="vistas/dist/main/assets/audio/main.mp3" class="style-two"></audio>
-                <div class="show-item-content">
-                    <div class="show-item-top">
-                        <h5 class="show-item-top-title">“Music Of Life”</h5>
-                        <span class="show-item-duration">24min</span>
-                    </div>
-                    <div class="artist-thumb">
-                        <img src="vistas/dist/main/assets/images/artist/2.jpg" alt="image">
-                    </div>
-                    <div class="artist-content">
-                        <h5 class="show-name">Music Artist Podcast</h5>
-                        <p class="artist-name">Rj Sonai</p>
+        <?php
+        setlocale(LC_TIME, 'spanish');
+        $dia_ayer = strftime('%A', strtotime('-1 day'));
+        $dia_ayer = ucfirst(mb_strtolower($dia_ayer));
+        foreach ($programaciones as $key => $value) {
+            if ($value["dia"] == $dia_ayer) {
+            ?>
+                <div class="single-slide">
+                    <div class="show-item style-two">
+                        <div class="thumb">
+                            <img src="<?php echo $value["imagen"]?>" alt="image">
+                        </div>
+                        <audio controls src="vistas/dist/main/assets/audio/main.mp3" class="style-two"></audio>
+                        <div class="show-item-content">
+                            <div class="show-item-top">
+                                <h5 class="show-item-top-title">“<?php echo $value["titulo"]?>”</h5>
+                                <?php
+                                // Obtener la hora de inicio y fin del espectáculo
+                                $horas = explode(" a ", $value["hora"]);
+                                $hora_inicio = date("H:i", strtotime($horas[0]));
+                                $hora_fin = date("H:i", strtotime($horas[1]));
+
+                                // Convertir las horas de inicio y fin a minutos
+                                list($hora_inicio_horas, $hora_inicio_minutos) = explode(":", $hora_inicio);
+                                list($hora_fin_horas, $hora_fin_minutos) = explode(":", $hora_fin);
+
+                                $minutos_inicio = $hora_inicio_horas * 60 + $hora_inicio_minutos;
+                                $minutos_fin = $hora_fin_horas * 60 + $hora_fin_minutos;
+
+                                // Calcular la duración en minutos
+                                $duracion_en_minutos = $minutos_fin - $minutos_inicio;
+
+                                // Verificar si la duración es exactamente 60 minutos
+                                if ($duracion_en_minutos == 60) {
+                                    $duracion = "1 hora";
+                                } else {
+                                    $horas = floor($duracion_en_minutos / 60);
+                                    $minutos = $duracion_en_minutos % 60;
+                                    if ($horas > 0 && $minutos > 0) {
+                                        $duracion = $horas . " h " . $minutos . " m";
+                                    } elseif ($horas > 0) {
+                                        $duracion = $horas . " hora";
+                                    } else {
+                                        $duracion = $minutos . " minutos";
+                                    }
+                                }
+                                ?>
+
+                                <span class="show-item-duration"><?php echo $duracion ?></span>
+
+                            </div>
+                            <div class="artist-thumb">
+                                <img src="vistas/dist/main/assets/images/artist/1.jpg" alt="image">
+                            </div>
+                            <div class="artist-content">
+                                <h5 class="show-name"><?php echo $value["dia"]?></h5>
+                                <p class="artist-name"><?php echo $value["nombre"]?></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="single-slide">
-            <div class="show-item style-two">
-                <div class="thumb">
-                    <img src="vistas/dist/main/assets/images/shows/previous/7.jpg" alt="image">
-                </div>
-                <audio controls src="vistas/dist/main/assets/audio/main.mp3" class="style-two"></audio>
-                <div class="show-item-content">
-                    <div class="show-item-top">
-                        <h5 class="show-item-top-title">“Music Of Life”</h5>
-                        <span class="show-item-duration">24min</span>
-                    </div>
-                    <div class="artist-thumb">
-                        <img src="vistas/dist/main/assets/images/artist/3.jpg" alt="image">
-                    </div>
-                    <div class="artist-content">
-                        <h5 class="show-name">Music World</h5>
-                        <p class="artist-name">Rj Josino</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-slide">
-            <div class="show-item style-two">
-                <div class="thumb">
-                    <img src="vistas/dist/main/assets/images/shows/previous/6.jpg" alt="image">
-                </div>
-                <audio controls src="vistas/dist/main/assets/audio/main.mp3" class="style-two"></audio>
-                <div class="show-item-content">
-                    <div class="show-item-top">
-                        <h5 class="show-item-top-title">“Music Of Life”</h5>
-                        <span class="show-item-duration">24min</span>
-                    </div>
-                    <div class="artist-thumb">
-                        <img src="vistas/dist/main/assets/images/artist/2.jpg" alt="image">
-                    </div>
-                    <div class="artist-content">
-                        <h5 class="show-name">Music Artist Podcast</h5>
-                        <p class="artist-name">Rj Sonai</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-slide">
-            <div class="show-item style-two">
-                <div class="thumb">
-                    <img src="vistas/dist/main/assets/images/shows/previous/7.jpg" alt="image">
-                </div>
-                <audio controls src="vistas/dist/main/assets/audio/main.mp3" class="style-two"></audio>
-                <div class="show-item-content">
-                    <div class="show-item-top">
-                        <h5 class="show-item-top-title">“Music Of Life”</h5>
-                        <span class="show-item-duration">24min</span>
-                    </div>
-                    <div class="artist-thumb">
-                        <img src="vistas/dist/main/assets/images/artist/3.jpg" alt="image">
-                    </div>
-                    <div class="artist-content">
-                        <h5 class="show-name">Music World</h5>
-                        <p class="artist-name">Rj Josino</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <?php
+            }
+        }
+        ?>
     </div>
 </section>
-<!-- previous show section end -->
 
 
-<!-- rj section start -->
+
+<!-- ====================================
+SECCION DE CONDUCTORES
+==================================== -->
+
 <section class="pt-120 pb-120">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 text-center">
                 <div class="section-top">
                     <span class="top-title">Conductores</span>
-                    <h2 class="section-title">Nuestros expertos conductores </h2>
+                    <h2 class="section-title">Nuestros conductores </h2>
                 </div>
             </div>
         </div><!-- row end -->
         <div class="row gy-4">
+            <?php
+            $item = null;
+            $item = null;
+
+            $conductores = ControladorConductor::ctrMostrarConductores($item, $valor);
+            foreach ($conductores as $key => $value) {
+            ?>
             <div class="col-xl-3 col-sm-6">
                 <div class="rj-item style-two">
                     <div class="thumb">
@@ -1407,9 +271,9 @@
                     </div>
                     <div class="content">
                         <h4 class="rj-name">
-                            <a href="jockey-details.html">RJ Merino</a>
+                            <a href="jockey-details.html"><?php echo $value["nombre"]?></a>
                         </h4>
-                        <p class="rj-designation">Music Artist</p>
+                        <p class="rj-designation">+51 <?php echo $value["telefono"]?></p>
                         <ul class="rj-social-links">
                             <li>
                                 <a href="#0"><i class="fab fa-facebook-f"></i></a>
@@ -1427,154 +291,57 @@
                     </div>
                 </div><!-- rj-item end -->
             </div>
-            <div class="col-xl-3 col-sm-6">
-                <div class="rj-item style-two">
-                    <div class="thumb">
-                        <img src="vistas/dist/main/assets/images/rj/2.jpg" alt="image">
-                    </div>
-                    <div class="content">
-                        <h4 class="rj-name">
-                            <a href="jockey-details.html">RJ Jessica</a>
-                        </h4>
-                        <p class="rj-designation">Music Artist</p>
-                        <ul class="rj-social-links">
-                            <li>
-                                <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-linkedin-in"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-twitter"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div><!-- rj-item end -->
-            </div>
-            <div class="col-xl-3 col-sm-6">
-                <div class="rj-item style-two">
-                    <div class="thumb">
-                        <img src="vistas/dist/main/assets/images/rj/3.jpg" alt="image">
-                    </div>
-                    <div class="content">
-                        <h4 class="rj-name">
-                            <a href="jockey-details.html">RJ Miron</a>
-                        </h4>
-                        <p class="rj-designation">Music Artist</p>
-                        <ul class="rj-social-links">
-                            <li>
-                                <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-linkedin-in"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-twitter"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div><!-- rj-item end -->
-            </div>
-            <div class="col-xl-3 col-sm-6">
-                <div class="rj-item style-two">
-                    <div class="thumb">
-                        <img src="vistas/dist/main/assets/images/rj/4.jpg" alt="image">
-                    </div>
-                    <div class="content">
-                        <h4 class="rj-name">
-                            <a href="jockey-details.html">RJ Costari</a>
-                        </h4>
-                        <p class="rj-designation">Music Artist</p>
-                        <ul class="rj-social-links">
-                            <li>
-                                <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-linkedin-in"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-twitter"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div><!-- rj-item end -->
-            </div>
+            <?php
+            }
+            ?>
         </div><!-- row end -->
-        <div class="text-center mt-50">
-            <a href="radio-jockey.html" class="btn btn-main">Explore More</a>
-        </div>
     </div>
 </section>
-<!-- rj section end -->
 
-<!-- sponsor section start -->
+
+<!-- =======================================
+SECCION DE PATROCINADOR
+======================================= -->
 <section class="pt-120 pb-120 section-bg">
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-lg-4 text-center">
                 <div class="section-top">
                     <span class="top-title">Patrocinadores</span>
-                    <h2 class="section-title">Nuestro encantador Pratner</h2>
                 </div>
             </div>
         </div><!-- row end -->
         <div class="sponsor-slider">
+            <?php 
+            
+            $item = null;
+            $valor = null;
+
+            $patrocinadores = ControladorPatrocinador::ctrMostrarPatrocinador($item, $valor);
+            foreach ($patrocinadores as $key => $value) {
+            ?>
             <div class="single-slide">
                 <div class="sponsor-item">
-                    <img src="vistas/dist/main/assets/images/sponsors/1.png" alt="image">
+                    <h4><?php echo $value["empresa"]?></h4>
                 </div>
-            </div><!-- single-slide end -->
-            <div class="single-slide">
-                <div class="sponsor-item">
-                    <img src="vistas/dist/main/assets/images/sponsors/2.png" alt="image">
-                </div>
-            </div><!-- single-slide end -->
-            <div class="single-slide">
-                <div class="sponsor-item">
-                    <img src="vistas/dist/main/assets/images/sponsors/3.png" alt="image">
-                </div>
-            </div><!-- single-slide end -->
-            <div class="single-slide">
-                <div class="sponsor-item">
-                    <img src="vistas/dist/main/assets/images/sponsors/4.png" alt="image">
-                </div>
-            </div><!-- single-slide end -->
-            <div class="single-slide">
-                <div class="sponsor-item">
-                    <img src="vistas/dist/main/assets/images/sponsors/5.png" alt="image">
-                </div>
-            </div><!-- single-slide end -->
-            <div class="single-slide">
-                <div class="sponsor-item">
-                    <img src="vistas/dist/main/assets/images/sponsors/6.png" alt="image">
-                </div>
-            </div><!-- single-slide end -->
-            <div class="single-slide">
-                <div class="sponsor-item">
-                    <img src="vistas/dist/main/assets/images/sponsors/1.png" alt="image">
-                </div>
-            </div><!-- single-slide end -->
+            </div>
+            <?php
+            }
+            ?>
             <div class="single-slide">
                 <div class="sponsor-item">
                     <img src="vistas/dist/main/assets/images/sponsors/2.png" alt="image">
                 </div>
-            </div><!-- single-slide end -->
+            </div>
         </div><!-- sponsor-slider end -->
     </div>
 </section>
-<!-- sponsor section end -->
 
 
-<!-- blog section start -->
+
+<!-- =================================
+SECCION DE ULTIMAS NOTICIAS
+================================= -->
 <section class="pt-120 pb-120">
     <div class="container">
         <div class="row justify-content-center">
@@ -1585,68 +352,38 @@
                 </div>
             </div>
         </div><!-- row end -->
-        <div class="row gy-4 justify-content-center">
+        <div class="row gy-4 justify-content-center" id="seccion_noticia">
+            <?php
+            $item = null;
+            $valor = null;
+
+            $noticias = ControladorNoticia::ctrMostrarNoticias($item, $valor);
+            foreach ($noticias as $key => $value) {
+            ?>
             <div class="col-lg-4 col-md-6">
                 <div class="blog-item style-two">
                     <div class="blog-thumb">
                         <a href="blog-details.html" class="d-block h-100">
-                            <img src="vistas/dist/main/assets/images/blog/1.jpg" alt="image">
+                            <img src="<?php echo $value["imagen"]?>" alt="image">
                         </a>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
-                            <span class="single-meta">John Doe</span>
-                            <span class="single-meta">19 Jan 2022</span>
+                            <span class="single-meta"><?php echo $value["fecha"]?></span>
                         </div>
                         <h4 class="blog-title">
-                            <a href="blog-details.html">One of the daily rituals I often find myself doing</a>
+                            <a href="#" idNoticiaDetalle="<?php echo $value["id_noticia"]?>" class="btnMostrarDetalleNoticia"><?php echo $value["titulo"]?></a>
                         </h4>
-                        <a href="blog-details.html" class="blog-btn">Read more</a>
+                        <a href="#" idNoticiaDetalle="<?php echo $value["id_noticia"]?>" class="blog-btn btnMostrarDetalleNoticia">Leer mas</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-item style-two">
-                    <div class="blog-thumb">
-                        <a href="blog-details.html" class="d-block h-100">
-                            <img src="vistas/dist/main/assets/images/blog/2.jpg" alt="image">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="single-meta">John Doe</span>
-                            <span class="single-meta">19 Jan 2022</span>
-                        </div>
-                        <h4 class="blog-title">
-                            <a href="blog-details.html">Contrary to popular belief, Lorem Ipsum is</a>
-                        </h4>
-                        <a href="blog-details.html" class="blog-btn">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-item style-two">
-                    <div class="blog-thumb">
-                        <a href="blog-details.html" class="d-block h-100">
-                            <img src="vistas/dist/main/assets/images/blog/3.jpg" alt="image">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="single-meta">John Doe</span>
-                            <span class="single-meta">19 Jan 2022</span>
-                        </div>
-                        <h4 class="blog-title">
-                            <a href="blog-details.html">There are many variations of passages</a>
-                        </h4>
-                        <a href="blog-details.html" class="blog-btn">Read more</a>
-                    </div>
-                </div>
-            </div>
+            <?php
+            }
+            ?>
         </div>
         <div class="mt-50 text-center">
-            <a href="blog.html" class="btn btn-main">View More</a>
+            <a href="noticias" class="btn btn-main">Ver más</a>
         </div>
     </div>
 </section>
-<!-- blog section end -->

@@ -17,30 +17,35 @@
             <form method="POST">
               <div class="row gy-4">
                 <div class="col-md-6">
-                  <input type="text" name="#0" autocomplete="off" class="form-control" placeholder="Nombre completo">
+                  <input type="text" name="nombre" autocomplete="off" class="form-control" placeholder="Nombre completo">
                 </div>
                 <div class="col-md-6">
-                  <input type="text" name="#0" autocomplete="off" class="form-control" placeholder="Nombre de la empresa">
+                  <input type="text" name="empresa" autocomplete="off" class="form-control" placeholder="Nombre de la empresa">
                 </div>
                 <div class="col-md-6">
-                  <input type="email" name="#0" autocomplete="off" class="form-control" placeholder="Correo Electrónico">
+                  <input type="email" name="correo" autocomplete="off" class="form-control" placeholder="Correo Electrónico">
                 </div>
                 <div class="col-md-6">
-                  <input type="tel" name="#0" autocomplete="off" class="form-control" placeholder="Teléfono">
+                  <input type="text" name="telefono" autocomplete="off" class="form-control" placeholder="Teléfono">
                 </div>
                 <div class="col-md-6">
-                  <input type="url" name="#0" autocomplete="off" class="form-control" placeholder="Página web">
+                  <input type="text" name="sitio_web" autocomplete="off" class="form-control" placeholder="Página web">
                 </div>
                 <div class="col-md-6">
-                  <input type="text" name="#0" autocomplete="off" class="form-control" placeholder="Dirección">
+                  <input type="text" name="direccion" autocomplete="off" class="form-control" placeholder="Dirección">
                 </div>
                 <div class="col-lg-12">
-                  <textarea class="form-control" placeholder="Mensaje"></textarea>
+                  <textarea class="form-control" name="mensaje" placeholder="Mensaje"></textarea>
                 </div>
                 <div class="col-lg-12 text-center">
                   <button type="submit" class="btn btn-main">Enviar</button>
                 </div>
               </div>
+              <?php 
+              $newSponsor = new ControladorPatrocinador();
+              $newSponsor->ctrCrearPatrocinador();
+              
+              ?>
             </form>
           </div>
         </div>

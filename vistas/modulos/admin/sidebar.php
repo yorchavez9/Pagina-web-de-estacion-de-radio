@@ -125,7 +125,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="patrocinadores">
                 <div class="parent-icon"><i class="bx bx-badge-check"></i>
                 </div>
                 <div class="menu-title">Patrocinadores</div>
