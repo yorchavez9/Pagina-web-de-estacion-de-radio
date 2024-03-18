@@ -30,7 +30,7 @@
 
 <body>
 
-  <div class="preloader">
+ <!--  <div class="preloader">
     <div class="preloader-container">
       <div class="preloader-icon">
         <i class="ri-headphone-line"></i>
@@ -38,7 +38,7 @@
       </div>
       <p><span>FM</span> LAND</p>
     </div>
-  </div>
+  </div> -->
 
   <div class="scroll-top">
     <a href="#"><i class="ri-arrow-up-line"></i></a>

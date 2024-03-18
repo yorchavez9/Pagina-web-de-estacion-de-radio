@@ -112,7 +112,7 @@
         </li>
         <li>
             <a href="sobreNosotros">
-                <div class="parent-icon"><i class="bx bx-envelope"></i>
+                <div class="parent-icon"><i class="bx bx-building"></i>
                 </div>
                 <div class="menu-title">Sobre nosotros</div>
             </a>
