@@ -96,6 +96,9 @@
             </ul>
         </li>
         <li class="menu-label">Contactos</li>
+        <?php
+        if($_SESSION["perfil"] == "administrador"){
+        ?>
         <li>
             <a href="redesSociales">
                 <div class="parent-icon"><i class="bx bx-share-alt"></i>
@@ -117,6 +120,9 @@
                 <div class="menu-title">Sobre nosotros</div>
             </a>
         </li>
+        <?php
+        }
+        ?>
         <li>
             <a href="mensajeContacto">
                 <div class="parent-icon"><i class="bx bx-message-rounded-dots"></i>
@@ -162,7 +168,7 @@
             </a>
         </li>
         <li>
-            <a href="#" target="_blank">
+            <a href="https://apuuray.com/" target="_blank">
                 <div class="parent-icon"><i class="bx bx-support"></i>
                 </div>
                 <div class="menu-title">Soporte</div>
