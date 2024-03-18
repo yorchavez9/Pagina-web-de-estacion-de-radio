@@ -45,7 +45,7 @@
 
                                         if ($value["imagen"] != null) {
 
-                                            echo '<img src="' . $value["imagen"] . '" alt="" width="300" height="150">';
+                                            echo '<img src="' . $value["imagen"] . '" alt="" width="300" height="250">';
                                         } else {
                                             echo '<img src="vistas/img/banner/defualt.png" alt="">';
                                         }
