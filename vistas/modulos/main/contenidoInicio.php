@@ -298,9 +298,9 @@ SECCION DE CONDUCTORES
             ?>
                 <div class="col-xl-3 col-sm-6">
                     <div class="rj-item style-two">
-                        <div class="thumb">
+                        <!-- <div class="thumb">
                             <img src="vistas/dist/main/assets/images/rj/1.jpg" alt="image">
-                        </div>
+                        </div> -->
                         <div class="content">
                             <h4 class="rj-name">
                                 <a href="jockey-details.html"><?php echo $value["nombre"] ?></a>
