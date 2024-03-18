@@ -1,3 +1,39 @@
+<!-- ==============================
+ANUNCIO NUMERO 1
+============================== -->
+<?php
+$item = null;
+$valor = null;
+
+$anuncio1 = ControladorAnuncioA::ctrMostrarAnuncioA($item, $valor);
+$countAnuncio1 = count($anuncio1);
+if ($countAnuncio1 > 0) {
+?>
+    <section class="pt-120 pb-120">
+        <div class="container-fluid">
+            <div class="sponsor-slider">
+
+                <?php
+                foreach ($anuncio1 as $key => $value) {
+                ?>
+                    <div class="single-slide mx-1">
+                        <div class="sponsor-item">
+                            <img src="<?php echo $value["imagen"] ?>" alt="image">
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+
+            </div>
+        </div>
+    </section>
+<?php
+}
+?>
+
+
+
 <!-- =========================================
 SECCION DE SOBRE NOSOTROS
 ========================================= -->
@@ -178,16 +214,16 @@ ESPECTÁCULOS ANTERIORES (AYER)
         $dia_ayer = ucfirst(mb_strtolower($dia_ayer));
         foreach ($programaciones as $key => $value) {
             if ($value["dia"] == $dia_ayer) {
-            ?>
+        ?>
                 <div class="single-slide">
                     <div class="show-item style-two">
                         <div class="thumb">
-                            <img src="<?php echo $value["imagen"]?>" alt="image">
+                            <img src="<?php echo $value["imagen"] ?>" alt="image">
                         </div>
                         <audio controls src="vistas/dist/main/assets/audio/main.mp3" class="style-two"></audio>
                         <div class="show-item-content">
                             <div class="show-item-top">
-                                <h5 class="show-item-top-title">“<?php echo $value["titulo"]?>”</h5>
+                                <h5 class="show-item-top-title">“<?php echo $value["titulo"] ?>”</h5>
                                 <?php
                                 // Obtener la hora de inicio y fin del espectáculo
                                 $horas = explode(" a ", $value["hora"]);
@@ -227,13 +263,13 @@ ESPECTÁCULOS ANTERIORES (AYER)
                                 <img src="vistas/dist/main/assets/images/artist/1.jpg" alt="image">
                             </div>
                             <div class="artist-content">
-                                <h5 class="show-name"><?php echo $value["dia"]?></h5>
-                                <p class="artist-name"><?php echo $value["nombre"]?></p>
+                                <h5 class="show-name"><?php echo $value["dia"] ?></h5>
+                                <p class="artist-name"><?php echo $value["nombre"] ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php
+        <?php
             }
         }
         ?>
@@ -264,39 +300,73 @@ SECCION DE CONDUCTORES
             $conductores = ControladorConductor::ctrMostrarConductores($item, $valor);
             foreach ($conductores as $key => $value) {
             ?>
-            <div class="col-xl-3 col-sm-6">
-                <div class="rj-item style-two">
-                    <div class="thumb">
-                        <img src="vistas/dist/main/assets/images/rj/1.jpg" alt="image">
-                    </div>
-                    <div class="content">
-                        <h4 class="rj-name">
-                            <a href="jockey-details.html"><?php echo $value["nombre"]?></a>
-                        </h4>
-                        <p class="rj-designation">+51 <?php echo $value["telefono"]?></p>
-                        <ul class="rj-social-links">
-                            <li>
-                                <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-linkedin-in"></i></a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fab fa-twitter"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div><!-- rj-item end -->
-            </div>
+                <div class="col-xl-3 col-sm-6">
+                    <div class="rj-item style-two">
+                        <div class="thumb">
+                            <img src="vistas/dist/main/assets/images/rj/1.jpg" alt="image">
+                        </div>
+                        <div class="content">
+                            <h4 class="rj-name">
+                                <a href="jockey-details.html"><?php echo $value["nombre"] ?></a>
+                            </h4>
+                            <p class="rj-designation">+51 <?php echo $value["telefono"] ?></p>
+                            <ul class="rj-social-links">
+                                <li>
+                                    <a href="#0"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#0"><i class="fab fa-instagram"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#0"><i class="fab fa-linkedin-in"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#0"><i class="fab fa-twitter"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!-- rj-item end -->
+                </div>
             <?php
             }
             ?>
         </div><!-- row end -->
     </div>
 </section>
+
+<!-- ==================================
+ANUNCIO NUMERO 2
+================================== -->
+<?php
+$item = null;
+$valor = null;
+
+$anuncio2 = ControladorAnuncioB::ctrMostrarAnuncioB($item, $valor);
+$totalAnuncio = count($anuncio2);
+if($totalAnuncio > 0){
+?>
+<section class="pt-120 pb-120 section-bg overflow-hidden">
+    <div class="container">
+        
+        <div class="testimonial-slider">
+            <?php
+            foreach ($anuncio2 as $key => $value) {
+            ?>
+            <div class="single-slide">
+                <div class="testimonial-item">
+                    <img src="<?php echo $value["imagen"]?>" alt="image">
+                </div>
+            </div><!-- single-slide end -->
+            <?php 
+            }
+            ?>
+        </div>
+    </div>
+</section>
+<?php
+}
+?>
+
 
 
 <!-- =======================================
@@ -312,19 +382,19 @@ SECCION DE PATROCINADOR
             </div>
         </div><!-- row end -->
         <div class="sponsor-slider">
-            <?php 
-            
+            <?php
+
             $item = null;
             $valor = null;
 
             $patrocinadores = ControladorPatrocinador::ctrMostrarPatrocinador($item, $valor);
             foreach ($patrocinadores as $key => $value) {
             ?>
-            <div class="single-slide">
-                <div class="sponsor-item">
-                    <h4><?php echo $value["empresa"]?></h4>
+                <div class="single-slide">
+                    <div class="sponsor-item">
+                        <h4><?php echo $value["empresa"] ?></h4>
+                    </div>
                 </div>
-            </div>
             <?php
             }
             ?>
@@ -360,24 +430,24 @@ SECCION DE ULTIMAS NOTICIAS
             $noticias = ControladorNoticia::ctrMostrarNoticias($item, $valor);
             foreach ($noticias as $key => $value) {
             ?>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-item style-two">
-                    <div class="blog-thumb">
-                        <a href="blog-details.html" class="d-block h-100">
-                            <img src="<?php echo $value["imagen"]?>" alt="image">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="single-meta"><?php echo $value["fecha"]?></span>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-item style-two">
+                        <div class="blog-thumb">
+                            <a href="blog-details.html" class="d-block h-100">
+                                <img src="<?php echo $value["imagen"] ?>" alt="image">
+                            </a>
                         </div>
-                        <h4 class="blog-title">
-                            <a href="#" idNoticiaDetalle="<?php echo $value["id_noticia"]?>" class="btnMostrarDetalleNoticia"><?php echo $value["titulo"]?></a>
-                        </h4>
-                        <a href="#" idNoticiaDetalle="<?php echo $value["id_noticia"]?>" class="blog-btn btnMostrarDetalleNoticia">Leer mas</a>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="single-meta"><?php echo $value["fecha"] ?></span>
+                            </div>
+                            <h4 class="blog-title">
+                                <a href="#" idNoticiaDetalle="<?php echo $value["id_noticia"] ?>" class="btnMostrarDetalleNoticia"><?php echo $value["titulo"] ?></a>
+                            </h4>
+                            <a href="#" idNoticiaDetalle="<?php echo $value["id_noticia"] ?>" class="blog-btn btnMostrarDetalleNoticia">Leer mas</a>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php
             }
             ?>

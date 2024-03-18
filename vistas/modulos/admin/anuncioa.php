@@ -112,6 +112,7 @@ setlocale(LC_TIME, "es_ES");
                     <div class="form-group">
                         <label for="imagen" class="form-label">Selecionar una imagen</label>
                         <input type="file" name="imagen" id="imagenAnuncioA" class="form-control" accept="image/*" required>
+                        <small>(<span class="text-danger">*</span>) El tamaño: 156px - 48px</small>
                         <div class="text-center mt-3">
                             <img src="vistas/img/banner/default.png" id="previewImgAnuncioA" class="img img-fluid" alt="">
                         </div>
@@ -152,6 +153,7 @@ setlocale(LC_TIME, "es_ES");
                     <div class="form-group">
                         <label for="imagen" class="form-label">Selecionar una imagen</label>
                         <input type="file" name="editImagen" id="EditImagenAnuncioA" class="form-control" accept="image/*">
+                        <small>(<span class="text-danger">*</span>) El tamaño: 156px - 48px</small>
                         <div class="text-center mt-3">
                             <img src="vistas/img/banner/default.png" id="editPreviewImgAnuncioA" class="img img-fluid" alt="">
                         </div>
