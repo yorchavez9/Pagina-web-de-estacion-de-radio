@@ -93,8 +93,7 @@
                     <div class="form-group">
                         <label for="imagen" class="form-label">Selecionar una imagen</label>
                         <input type="file" name="imagen" id="newImagen" class="form-control" accept="image/*" required>
-                        <small class="fw-bold">* El peso máximo de la imagen 5MB</small><br>
-                        <small class="fw-bold">* El tamaño (1920 x 950) pixels</small>
+                        <small>Tamaño: 838 x 950 píxeles</small>
                         <div class="text-center">
                             <img src="vistas/img/banner/default.png" id="imagenPreview" class="img img-fluid" alt="">
                         </div>

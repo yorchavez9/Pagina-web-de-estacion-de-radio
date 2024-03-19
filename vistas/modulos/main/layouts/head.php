@@ -24,7 +24,9 @@
   <!-- alert Sweetalert2 -->
   <link rel="stylesheet" href="vistas/dist/sweetalert2/dist/sweetalert2.min.css">
   <script src="vistas/dist/sweetalert2/dist/sweetalert2.min.js"></script>
-  
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 
@@ -32,7 +34,7 @@
 
 <body>
 
- <!--  <div class="preloader">
+  <!--  <div class="preloader">
     <div class="preloader-container">
       <div class="preloader-icon">
         <i class="ri-headphone-line"></i>

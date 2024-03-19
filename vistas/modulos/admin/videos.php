@@ -102,7 +102,6 @@
                     </div>
                     <div class="form-group mt-3">
                         <label for="video_url" class="form-label">Ingrese la url del video</label>
-                        <small>Modificar el tamaño </small>
                         <textarea name="video_url" class="form-control" id="" cols="30" rows="10"></textarea>
                         <a href=""></a>
                     </div>

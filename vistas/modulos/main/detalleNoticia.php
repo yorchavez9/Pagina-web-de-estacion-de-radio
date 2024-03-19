@@ -40,7 +40,7 @@ if (isset($_GET["idNoticiaDetalle"])) {
                             <div class="col-xl-8">
                                 <div class="blog-details-wrapper">
                                     <div class="blog-details-thumb">
-                                        <img src="<?php echo $value["imagen"]?>" alt="image">
+                                        <img src="<?php echo $value["imagen"] ?>" alt="image">
                                     </div>
                                     <div class="blog-details-content">
                                         <div class="blog-meta">
@@ -51,7 +51,9 @@ if (isset($_GET["idNoticiaDetalle"])) {
                                             </span>
                                         </div>
                                         <h2 class="blog-details-title"><?php echo $value["titulo"] ?></h2>
-                                        <p><?php echo $value["descripcion"] ?></p>
+                                        <div style="color: white;">
+                                            <?php echo $value["descripcion"] ?>
+                                        </div>
 
 
                                     </div>
@@ -97,18 +99,18 @@ if (isset($_GET["idNoticiaDetalle"])) {
                             foreach ($noticiasDetalle as $key => $value) {
                                 $key++;
                                 if ($key <= 3) {
-                                ?>
+                            ?>
                                     <div class="side-post">
                                         <div class="side-post-thumb">
                                             <img src="<?php echo $value["imagen"] ?>" alt="image">
                                         </div>
                                         <div class="side-post-content">
-                                            <h6 class="side-post-title"><a href="#" class="btnMostrarDetalleNoticia"  idNoticiaDetalle="<?php echo $value["id_noticia"]?>"><?php echo $value["titulo"] ?></a>
+                                            <h6 class="side-post-title"><a href="#" class="btnMostrarDetalleNoticia" idNoticiaDetalle="<?php echo $value["id_noticia"] ?>"><?php echo $value["titulo"] ?></a>
                                             </h6>
                                             <p class="side-post-date"><i class="ri-alarm-line me-2"></i> 21 JUN, 2022</p>
                                         </div>
                                     </div><!-- side-post end -->
-                                <?php
+                            <?php
                                 }
                             }
                             ?>

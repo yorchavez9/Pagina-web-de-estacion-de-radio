@@ -1,6 +1,3 @@
-<!-- ==============================
-ANUNCIO NUMERO 1
-============================== -->
 <?php
 $item = null;
 $valor = null;
@@ -9,26 +6,35 @@ $anuncio1 = ControladorAnuncioA::ctrMostrarAnuncioA($item, $valor);
 $countAnuncio1 = count($anuncio1);
 if ($countAnuncio1 > 0) {
 ?>
-    <section class="pt-120 pb-120">
-        <div class="container-fluid">
-            <div class="sponsor-slider">
-
-                <?php foreach ($anuncio1 as $key => $value) { ?>
-                    <div class="single-slide mx-1">
-                        <div class="">
-                            <img src="<?php echo $value["imagen"] ?>" alt="image">
-                        </div>
+<section class="pt-120 pb-120">
+    <div class="container-fluid">
+        <div class="sponsor-slider">
+            <?php foreach ($anuncio1 as $key => $value) { ?>
+                <div class="single-slide mx-1">
+                    <div class="">
+                        <img src="<?php echo $value["imagen"] ?>" alt="image">
                     </div>
-                <?php } ?>
-
-            </div>
+                </div>
+            <?php } ?>
         </div>
-    </section>
+    </div>
+</section>
+<script>
+    $(document).ready(function() {
+        $('.sponsor-slider').slick({
+            autoplay: true,
+            autoplaySpeed: 3000, // Cambia el tiempo de desplazamiento a 3 segundos
+            arrows: false,
+            dots: true,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1
+        });
+    });
+</script>
 <?php
 }
 ?>
-
-
 
 <!-- =========================================
 SECCION DE SOBRE NOSOTROS
@@ -459,16 +465,3 @@ SECCION DE ULTIMAS NOTICIAS
 SCRIPT
 ================================= -->
 
-<script>
-    $(document).ready(function(){
-        $('.sponsor-slider').slick({
-            autoplay: true, // Slider se reproduce automáticamente
-            autoplaySpeed: 2000, // Velocidad del slider en milisegundos
-            arrows: false, // Oculta las flechas de navegación
-            dots: true, // Muestra los puntos de navegación
-            infinite: true, // Habilita el desplazamiento infinito del slider
-            slidesToShow: 3, // Número de diapositivas que se muestran al mismo tiempo
-            slidesToScroll: 1 // Número de diapositivas que se desplazan al mismo tiempo
-        });
-    });
-</script>
